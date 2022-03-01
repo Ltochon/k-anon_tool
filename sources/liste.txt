@@ -1,0 +1,6 @@
+weight algo k-anon [28.02] : https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6663954
+weight k-ano [28.01] : https://reader.elsevier.com/reader/sd/pii/S0167404820300377?token=972D83A48892A9FF19BE15C8414DDBC03D6FFBA8368DC2A19B323D1A1FC46DC67B1D89401CB6D817DD67AF3F6692BE32&originRegion=eu-west-1&originCreation=20220228204232
+Mondrian [01.03] : https://personal.utdallas.edu/~muratk/courses/privacy08f_files/MultiDim.pdf
+Incognito explained [01.03] : https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6406297
+
+ARX and amnesia
