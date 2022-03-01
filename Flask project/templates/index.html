@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h1>Template</h1>
+{% for x in range(0,10) %}
+    {% if x % 2 == 1 %}
+    <p>{{x}}</p>
+        {% if x == 3 %}
+        <p>Youhou</p>
+        {% else %}
+        <p>Perdu</p>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+{% for x in content %}
+    <p> {{x}}</p>
+{% endfor %}
+{% endblock %}
