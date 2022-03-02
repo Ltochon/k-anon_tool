@@ -1,4 +1,6 @@
+from typing import final
 from numpy import array
+import numpy as np
 import pandas as pd
 from operator import itemgetter
 import operator 
@@ -18,13 +20,27 @@ def generalize(level, data, qid2):
                     data[qid2] = data['canton']
         else:
             data[qid2] = ['X'] * len(data)
-        return data
+    return data   
+
+def order_solutions(tab,priority,max_level):
+    return_tab = []
+    for sol in tab:
+        total_cost = 0
+        for index in range(len(sol)):
+            total_cost = total_cost + (sol[index]/max_level[index])**priority[index]
+        total_cost = 1/len(max_level) * total_cost
+        return_tab.append(total_cost)
+    index_order = list(np.argsort(return_tab))
+    return_tab_ordered = [tab[i] for i in index_order]
+    return return_tab_ordered  
+
 
 cmpt_qid = 0
 deg_gen = [1,1,2]
+priority_deg = [3,1,1] ##Higher is the level, less must be the change
 qid = ["birth_year","sex","zipcode"]
 tab_res = []
-k = 4
+k = 5
 ##STEP1
 print("\nSTEP 1\n")
 while cmpt_qid < len(qid):
@@ -46,6 +62,7 @@ tab_res_save = tab_res
 tab_res = []
 cmpt = 0
 print("\nSTEP 2\n")
+
 ##STEP2
 i = 0 #to change
 while(i < 2):
@@ -77,18 +94,47 @@ while(i < 2):
         j = j + 1
         cmpt = cmpt + 1
     i = i + 1
+print(tab_res)
+
+final_tab = [0]*len(qid)
+a = 0
+cmpt_pair_a = 0
+cmpt_pair_b = 1
+max = len(qid)-1
+max_a = len(qid)-1
+for comp in range(len(qid)):
+    
+    for case in tab_res[comp]:
+        if(final_tab[a] < case[0]):
+            final_tab[a] = case[0]
+        if(final_tab[cmpt_pair_b] < case[1]):
+            final_tab[cmpt_pair_b] = case[1]
+    if(cmpt_pair_a == max_a):
+        a = a + 1
+        cmpt_pair_a  = 0
+        max_a = max_a - 1
+    if(cmpt_pair_b == max):
+        cmpt_pair_b = a + 1
+    cmpt_pair_b = cmpt_pair_b + 1
+    cmpt_pair_a = cmpt_pair_a + 1
+print(final_tab)
 
 ##to do
-final_tab = [1,0,2]
+solutions = []
 print("\nSTEP 3\n")
 for i in range(deg_gen[0] - final_tab[0] + 1):
     for j in range(deg_gen[1] - final_tab[1]+ 1):
-        for k in range(deg_gen[2] - final_tab[2]+ 1):
+        for l in range(deg_gen[2] - final_tab[2]+ 1):
             datas = pd.read_csv('test_algo/data/records.csv')
-            data = generalize(final_tab[2] + k,datas,qid[2])
-            data = generalize(final_tab[0] + i,data,qid[0])
-            data = generalize(final_tab[1] + j,data,qid[1])
+            datas = generalize(final_tab[2] + l,datas,qid[2])
+            datas = generalize(final_tab[0] + i,datas,qid[0])
+            datas = generalize(final_tab[1] + j,datas,qid[1])
             
             datas_qid = datas[qid]
             dups_shape = datas_qid.pivot_table(columns=qid, aggfunc='size')
-            print(qid, final_tab[0] + i,final_tab[1] + j, final_tab[2] + k, " : Smallest class size : ",min(dups_shape))
+            print(qid, final_tab[0] + i,final_tab[1] + j, final_tab[2] + l, " : Smallest class size : ",min(dups_shape))
+            if(min(dups_shape) >= k):
+                solutions.append([final_tab[0] + i,final_tab[1] + j, final_tab[2] + l])
+
+
+print(order_solutions(solutions, priority_deg, deg_gen))
