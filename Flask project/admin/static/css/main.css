@@ -1,4 +1,9 @@
 body{
     margin: 0;
     font-family: sans-serif;
+    color: blue;
+}
+
+.firstimg{
+    width: 50%;
 }
