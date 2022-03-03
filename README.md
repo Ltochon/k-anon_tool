@@ -40,7 +40,7 @@ The main goal of this project is to provide an anonymization tool to k-anonymize
 
 ## Description of the project
 
-The algorithm called *Datafly* is an algorithm for providing anonymity in medical data [[1](https://en.wikipedia.org/wiki/Datafly_algorithm)]. This algorithm is based on a greedy approach and global generalization with tuples suppression [[2](http://www.mathcs.emory.edu/~lxiong/cs573_s12/share/slides/03anonymity_generalization.pdf)]. The goal will be to use this algorithm to provide k-anonymity of a dataset by incorporating weights on the attributes to evaluate the importance of each one of them. Indeed, the main purpose of this project is to allow the user to choose which one of the different attributes must be generalized first and on the opposite side, which one must not be generalized. 
+The algorithm called *Datafly* is an algorithm for providing anonymity in medical data [[1](https://en.wikipedia.org/wiki/Datafly_algorithm)]. This algorithm is based on a greedy approach and global generalization with tuples suppression [[2](http://www.mathcs.emory.edu/~lxiong/cs573_s12/share/slides/03anonymity_generalization.pdf)] [[3](http://www.tdp.cat/issues11/tdp.a100a12.pdf)] [[4](https://kanonymity.github.io/ola.pdf)]. The goal will be to use this algorithm to provide k-anonymity of a dataset by incorporating weights on the attributes to evaluate the importance of each one of them. Indeed, the main purpose of this project is to allow the user to choose which one of the different attributes must be generalized first and on the opposite side, which one must not be generalized. 
 
 This anonymization algorithm will be deployed on a web application written in Python through the framework *Flask*. 
 
@@ -74,6 +74,10 @@ Mondrian [01.03] : https://personal.utdallas.edu/~muratk/courses/privacy08f_file
 
 Incognito explained [01.03] : https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6406297
 
-Datafly explained [03.03] : http://www.mathcs.emory.edu/~lxiong/cs573_s12/share/slides/03anonymity_generalization.pdf
+Datafly explained [02.03] : http://www.mathcs.emory.edu/~lxiong/cs573_s12/share/slides/03anonymity_generalization.pdf
 
-Datafly wikipédia [03.03] : https://en.wikipedia.org/wiki/Datafly_algorithm
+Datafly wikipédia [02.03] : https://en.wikipedia.org/wiki/Datafly_algorithm
+
+Improved Greedy vs Datafly [03.03] : http://www.tdp.cat/issues11/tdp.a100a12.pdf
+
+Analysis of Datafly [03.03] :  https://kanonymity.github.io/ola.pdf
