@@ -1,4 +1,9 @@
-![Licence: Apache 2](https://img.shields.io/badge/license-Apache%202-blue) ![](https://img.shields.io/github/directory-file-count/Ltochon/k-ano_Tool) ![](https://img.shields.io/github/last-commit/Ltochon/k-ano_Tool)
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/) 
+[![Npm package license](https://badgen.net/npm/license/discord.js)](https://npmjs.com/package/discord.js) [![PyPI status](https://img.shields.io/pypi/status/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+
+
+
+
 # K-Anonymization Tool for databases
 
 ## Goal
