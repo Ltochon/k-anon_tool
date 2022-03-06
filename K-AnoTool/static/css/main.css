@@ -1,0 +1,35 @@
+ul{
+    align-items: center !important;
+}
+
+nav{
+    margin-bottom: 15px;
+}
+
+.container-fluid{
+    padding-left: 0;
+}
+
+body{
+    color: blue;
+}
+
+.table-wrapper{
+    overflow-y: scroll;
+    height: 23em;
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+.table-wrapper th{
+    position: sticky;
+    top: 0;
+    background-color: rgb(180, 246, 255);
+}
+
+
+.firsttable tr:nth-child(even){
+    background-color: #f3f3f3;
+}
+

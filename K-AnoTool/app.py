@@ -42,8 +42,9 @@ def uploadFiles():
       return print_csv(file_path)
 
 def print_csv(path):
-    data = pd.read_csv(path)
-    return render_template('upload.html', tables=[data.to_html(classes='data', header="true")])
+    data = pd.read_csv(path, sep=',', encoding="ISO-8859-1")
+    print(data.values, file=sys.stderr)
+    return render_template('upload.html', headers = data.columns, data = data.values)
 
 if (__name__ == "__main__"):
      app.run(port = 5000)
