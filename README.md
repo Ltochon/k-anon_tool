@@ -9,11 +9,14 @@
 - Kevin Huguenin (Superviser)
 
 ## Table of contents
-* [Arborescence des fichiers](#arborescence-des-fichiers)
-* [Goal](#goal)
-* [Description of the project](#description-of-the-project)
-* [Milestones](#milestones)
-* [Sources](#sources)
+- [K-Anonymization Tool for databases](#k-anonymization-tool-for-databases)
+  - [Authors](#authors)
+  - [Table of contents](#table-of-contents)
+  - [Arborescence des fichiers](#arborescence-des-fichiers)
+  - [Goal](#goal)
+  - [Description of the project](#description-of-the-project)
+  - [Milestones](#milestones)
+  - [Sources](#sources)
 
 ## Arborescence des fichiers
 
@@ -58,7 +61,7 @@ This project will focus on the medical domain to handle a single use case and go
 2) Gaining knowledge about Flask (first web application with Python) :hourglass_flowing_sand:
 3) Implementing *Datafly* algorithm
 4) Algorithm's proposal with weighted attributes
-5) Implementation of Flask application with the algorithm
+5) Implementation of Flask application with the algorithm :hourglass_flowing_sand:
 6) Prototyping the interface of custom generalization
 7) Prototype testing
 8) Implementation of the generalization's interface

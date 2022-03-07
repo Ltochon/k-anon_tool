@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block body %}
-<h1>Upload your CSV file</h1>
-<form method="POST" action="" enctype="multipart/form-data">
-  <p><input type="file" name="file"></p>
-  <p><input type="submit" value="Submit"></p>
+<h1 style="text-align: center; font-family: sans-serif; margin-top : 80px;">Upload your CSV file</h1>
+<h5 style="text-align: center; color: red;">Only .csv files can be uploaded</h5>
+<form method="POST" action="" enctype="multipart/form-data" class="selectfile">
+  <p><input type="file" name="file" class = "inputfile" accept=".csv"></p>
+  <p style="margin-bottom: 0;"><input type="submit" value="Choose"></p>
 </form>
 {% endblock %}

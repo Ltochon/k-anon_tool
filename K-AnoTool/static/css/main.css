@@ -10,8 +10,18 @@ nav{
     padding-left: 0;
 }
 
-body{
-    color: blue;
+body {
+  font-family: sans-serif;
+  background-color: #eeeeee;
+}
+
+.selectfile{
+  padding: 10px;
+  width: 30%;
+  margin-top: 25px;
+  text-align: center;
+  border: solid 3px;
+  margin : auto;
 }
 
 .table-wrapper{
@@ -25,11 +35,21 @@ body{
 .table-wrapper th{
     position: sticky;
     top: 0;
-    background-color: rgb(180, 246, 255);
+    background-color: rgb(65, 148, 100);
 }
 
 
 .firsttable tr:nth-child(even){
     background-color: #f3f3f3;
+}
+
+footer {
+  position: fixed;
+  height: 5%;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
 }
 
