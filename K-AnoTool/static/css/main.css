@@ -26,7 +26,7 @@ body {
 
 .table-wrapper{
     overflow-y: scroll;
-    height: 23em;
+    height: 20em;
     width: 75%;
     margin-right: auto;
     margin-left: auto;
@@ -53,3 +53,15 @@ footer {
   padding: 10px;
 }
 
+#first {
+  width: 65%;
+  float: left;
+}
+#second {
+  width: 35%;
+  float: right;
+}
+
+.underlinedelem{
+  border-bottom: solid 1px rgb(110, 110, 110);
+}

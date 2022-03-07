@@ -9,7 +9,7 @@
     My datas
 </h1>
 <div class = "table-wrapper" style="text-align: center;">
-    <table class="table table-hover table-bordered firsttable">
+    <table class="table table-hover table-bordered firsttable" style="border: solid 1px;">
         <tr>
             {% for header in headers %}
                 <th>{{header}}</th>
@@ -23,5 +23,38 @@
             </tr>
         {%endfor%}
     </table>
+    
+</div>
+<div style="width: 60%; margin-top: 40px; margin-left: 15%; margin-right: auto; text-align: left; overflow: hidden; padding: 10px;">
+    <div id = "first">
+        {% for header in headers %}
+            {% if header == headers[headers|length -1]%}
+                <div>
+                    <input type="checkbox" id={{header}} name={{header}}>
+                    <label for={{header}}>{{header}}</label>
+                </div>
+            {% else %}
+                <div class="underlinedelem">
+                    <input type="checkbox" id={{header}} name={{header}}>
+                    <label for={{header}}>{{header}}</label>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div id = "second">
+        {% for header in headers %}
+            {% if header == headers[headers|length -1]%}
+                <div>
+                    <label for={{header}}>Importance Level : </label>
+                    <input type="number" id={{header}} name={{header}} style="width: 50px; height: 20px;">    
+                </div>
+            {% else %}
+                <div class="underlinedelem">
+                    <label for={{header}}>Importance Level : </label>
+                    <input type="number" id={{header}} name={{header}} style="width: 50px; height: 20px;">    
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
