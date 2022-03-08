@@ -42,7 +42,7 @@ def uploadFiles():
       return print_csv(file_path)
 
 def print_csv(path):
-    data = pd.read_csv(path, sep=',', encoding="ISO-8859-1")
+    data = pd.read_csv(path, sep=request.form['input_delim'], encoding="ISO-8859-1")
     print(data.values, file=sys.stderr)
     return render_template('upload.html', headers = data.columns, data = data.values)
 

@@ -54,14 +54,26 @@ footer {
 }
 
 #first {
-  width: 65%;
+  width: 30%;
   float: left;
 }
 #second {
-  width: 35%;
+  width: 25%;
+  float: left;
+}
+#third {
+  width: 30%;
+  float: left;
+}
+#forth{
+  width: 15%;
   float: right;
 }
 
 .underlinedelem{
   border-bottom: solid 1px rgb(110, 110, 110);
+}
+
+.btnhiera{
+  background-color: rgb(99, 148, 94);
 }

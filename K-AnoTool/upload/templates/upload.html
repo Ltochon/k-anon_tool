@@ -5,9 +5,7 @@
 {% endblock %}
 
 {% block body %}
-<h1>
-    My datas
-</h1>
+<h1 style="text-align: center; font-family: sans-serif; margin-top : 20px;">My Datas</h1>
 <div class = "table-wrapper" style="text-align: center;">
     <table class="table table-hover table-bordered firsttable" style="border: solid 1px;">
         <tr>
@@ -25,18 +23,18 @@
     </table>
     
 </div>
-<div style="width: 60%; margin-top: 40px; margin-left: 15%; margin-right: auto; text-align: left; overflow: hidden; padding: 10px;">
+<div style="width: 60%; margin-top: 40px; margin-left: auto; margin-right: auto; text-align: left; overflow: hidden; padding: 10px;">
     <div id = "first">
         {% for header in headers %}
             {% if header == headers[headers|length -1]%}
-                <div>
+                <div style="padding : 10px;">
                     <input type="checkbox" id={{header}} name={{header}}>
-                    <label for={{header}}>{{header}}</label>
+                    <label for={{header}} style="margin-left: 5px;">{{header}}</label>
                 </div>
             {% else %}
-                <div class="underlinedelem">
+                <div class="underlinedelem" style="padding : 10px;">
                     <input type="checkbox" id={{header}} name={{header}}>
-                    <label for={{header}}>{{header}}</label>
+                    <label for={{header}} style="margin-left: 5px;">{{header}}</label>
                 </div>
             {% endif %}
         {% endfor %}
@@ -44,14 +42,52 @@
     <div id = "second">
         {% for header in headers %}
             {% if header == headers[headers|length -1]%}
-                <div>
+                <div style="padding : 10px;">
                     <label for={{header}}>Importance Level : </label>
                     <input type="number" id={{header}} name={{header}} style="width: 50px; height: 20px;">    
                 </div>
             {% else %}
-                <div class="underlinedelem">
+                <div class="underlinedelem" style="padding : 10px;">
                     <label for={{header}}>Importance Level : </label>
                     <input type="number" id={{header}} name={{header}} style="width: 50px; height: 20px;">    
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div id = "third">
+        {% for header in headers %}
+            {% if header == headers[headers|length -1]%}
+                <div style="padding : 10px;">
+                    <label for={{header}}>Type : </label>
+                    <select name="selecttype" id="selecttype" style="width: 170px;">
+                        <option value="">--Choose an option--</option>
+                        <option value="str">String</option>
+                        <option value="int">Integer</option>
+                        <option value="cat">Categorical</option>
+                    </select>
+                </div>
+            {% else %}
+                <div class="underlinedelem" style="padding : 10px;">
+                    <label for={{header}}>Type : </label>
+                    <select name="selecttype" id="selecttype" style="width: 170px;">
+                        <option value="">--Choose an option--</option>
+                        <option value="str">String</option>
+                        <option value="int">Integer</option>
+                        <option value="cat">Categorical</option>
+                    </select>   
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div id = "forth">
+        {% for header in headers %}
+            {% if header == headers[headers|length -1]%}
+                <div style="padding : 10px; height: 45px;">
+                    <button class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold;">Edit Hierarchy</button>
+                </div>
+            {% else %}
+                <div class="underlinedelem" style="padding : 10px; height: 45px;">
+                    <button class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold;">Edit Hierarchy</button>  
                 </div>
             {% endif %}
         {% endfor %}
