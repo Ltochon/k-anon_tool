@@ -29,12 +29,12 @@
             {% for header in headers %}
                 {% if header == headers[headers|length -1]%}
                     <div style="padding : 10px;">
-                        <input type="checkbox" id={{header}} name={{header}}>
+                        <input type="checkbox" id={{header}} name=checkbox_{{header}}>
                         <label for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
                     </div>
                 {% else %}
                     <div class="underlinedelem" style="padding : 10px;">
-                        <input type="checkbox" id={{header}} name={{header}}>
+                        <input type="checkbox" id={{header}} name=checkbox_{{header}}>
                         <label for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
                     </div>
                 {% endif %}
@@ -45,8 +45,8 @@
                 {% if header == headers[headers|length -1]%}
                     <div style="padding : 10px;">
                         <label for={{header}}>Importance Level : </label>
-                        <select name="selectimportance" id="selectimportance" style="width: 170px;">
-                            <option value="">--Choose an option--</option>
+                        <select name="level_{{header}}" id="selectimportance" style="width: 170px;">
+                            <option value="0">--Choose an option--</option>
                             <option value="1">1 - Very Low</option>
                             <option value="2">2 - Low</option>
                             <option value="3">3 - Medium</option>
@@ -57,8 +57,8 @@
                 {% else %}
                     <div class="underlinedelem" style="padding : 10px;">
                         <label for={{header}}>Importance Level : </label>
-                        <select name="selectimportance" id="selectimportance" style="width: 170px;">
-                            <option value="">--Choose an option--</option>
+                        <select name="level_{{header}}" id="selectimportance" style="width: 170px;">
+                            <option value="0">--Choose an option--</option>
                             <option value="1">1 - Very Low</option>
                             <option value="2">2 - Low</option>
                             <option value="3">3 - Medium</option>
@@ -74,7 +74,7 @@
                 {% if header == headers[headers|length -1]%}
                     <div style="padding : 10px;">
                         <label for={{header}}>Type : </label>
-                        <select name="selecttype" id="selecttype" style="width: 170px;">
+                        <select name="type_{{header}}" id="selecttype" style="width: 170px;">
                             <option value="">--Choose an option--</option>
                             <option value="str">String</option>
                             <option value="int">Integer</option>
@@ -84,7 +84,7 @@
                 {% else %}
                     <div class="underlinedelem" style="padding : 10px;">
                         <label for={{header}}>Type : </label>
-                        <select name="selecttype" id="selecttype" style="width: 170px;">
+                        <select name="type_{{header}}" id="selecttype" style="width: 170px;">
                             <option value="">--Choose an option--</option>
                             <option value="str">String</option>
                             <option value="int">Integer</option>

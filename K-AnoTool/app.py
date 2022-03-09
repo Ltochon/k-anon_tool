@@ -4,7 +4,7 @@ import os
 import sys
 from numpy import save
 import pandas as pd
-from flask import Flask, redirect, render_template, request, send_from_directory, url_for, flash
+from flask import Flask, current_app, redirect, render_template, request, send_from_directory, url_for, flash
 from upload.upload import upload
 from result.result import result
 
@@ -54,6 +54,12 @@ def render_upload(data):
 
 @app.route("/upload/", methods=['POST'])
 def render_result():
+    data = current_app.config['data']
+    inputs = ["level_","checkbox_","type_"]
+    for header in data.columns:
+        for input in inputs:
+            txt = input+header
+            app.config[txt] = request.form.get(txt)
     return redirect(url_for("result.result_page"))
 
 if (__name__ == "__main__"):

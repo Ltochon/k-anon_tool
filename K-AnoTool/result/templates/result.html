@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
-
-<p>result</p>
+{% for d in details %}
+    <p>{{d}}</p>
+{%endfor%}
 {% endblock %}
