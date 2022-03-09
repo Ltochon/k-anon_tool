@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block body %}
+<div id="toc_container">
+    <h2 class="toc_title">Table of content</h2>
+    <ul class="toc_list">
+        <li><a class="toclink" href="#goal">1. Goal</a></li>
+        <li><a class="toclink" href="#context">2. Context</a></li>
+        <li><a class="toclink" href="#description">3. Complete description</a></li>
+    </ul>
+</div>
+
+<div style="margin-left: 5%; margin-right: 5%; margin-top: 2%; text-align: justify;">
+  <h1 style="font-weight: bold;"><u><i>K-AnoTool</i></u></h1>
+  <h4 id="goal"><u>Goal</u></h4>
+  <p>
+    Welcome to the K-AnoTool website. This tool provides a k-anonymization of any dataset using the <i>Datafly</i> algorithm and enables users to give weight on the different attributes to anonymize priority attributes that are the least utile.
+  </p>
+  <h4 id="context"><u>Context</u></h4>
+  <p>
+    This tool has been created by Louis Tochon (Student in the MScIS) as a semester project with the supervision of Pr. Kévin Huguenin.
+  </p>
+  <h4 id="description"><u>Complete description</u></h4>
+  <p>
+    The algorithm called Datafly is an algorithm for providing anonymity in medical data [1] and is computationally efficient (and practicaly implementable) [2]. This algorithm is based on a greedy approach and global generalization with tuples suppression [3] [4]. The goal will be to use this algorithm to provide k-anonymity of a dataset by incorporating weights on the attributes to evaluate the importance of each one of them. Indeed, the main purpose of this project is to allow the user to choose which one of the different attributes must be generalized first and on the opposite side, which one must not be generalized.
+
+    This anonymization algorithm will be deployed on a web application written in Python through the framework Flask.
+
+    In a second time, an interface on the same web application will be created to provide a tool to the user to easily create his own tree of generalization.
+
+    The crucial point of this project is to do a user-friendly tool with easy interactions to make the experience as simple as possible.
+
+    This project will focus on the medical domain to handle a single use case and go as deep as possible to provide a complete tool.
+  </p>
+</div>
+{%endblock%}

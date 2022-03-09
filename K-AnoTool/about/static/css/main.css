@@ -1,0 +1,31 @@
+#toc_container {
+    display: table;
+    font-size: 95%;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-top: 20px;
+    width: auto;
+}
+
+.toc_title {
+    font-weight: 600;
+    text-align: center;
+}
+
+#toc_container li, #toc_container ul, #toc_container ul li{
+    list-style: outside none none !important;
+}
+
+#toc_container li{
+    margin-bottom: 4px;
+}
+
+.toclink{
+    text-decoration: none;
+    color: darkblue;
+    font-size: large;
+}
+
+h4{
+    margin-top: 40px;
+}

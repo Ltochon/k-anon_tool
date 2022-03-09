@@ -1,5 +1,3 @@
-from dataclasses import dataclass
-import sys
 from flask import Blueprint, current_app, render_template
 
 result = Blueprint("result", __name__, static_folder="static", template_folder="templates")

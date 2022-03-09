@@ -7,11 +7,13 @@ import pandas as pd
 from flask import Flask, current_app, redirect, render_template, request, send_from_directory, url_for, flash
 from upload.upload import upload
 from result.result import result
+from about.about import about
 
 
 app = Flask(__name__)
 app.register_blueprint(upload, url_prefix = "/upload")
 app.register_blueprint(result, url_prefix = "/result")
+app.register_blueprint(about, url_prefix = "/about")
 app.secret_key = "super key"
 app.permanent_session_lifetime = timedelta(days=365)
 # enable debugging mode
@@ -27,6 +29,11 @@ app.config['UPLOAD_FOLDER'] =  UPLOAD_FOLDER
 def index():
      # Set The upload HTML template '\templates\csv.html'
     return render_template('csv.html')
+
+@app.route('/about/')
+def about():
+     # Set The upload HTML template '\templates\csv.html'
+    return redirect(url_for("about.about_page"))
 
 
 # Get the uploaded files

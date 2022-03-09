@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="static/js/main.js">
     {% block head %}{% endblock %}
 </head>
-<body>
+<body style="padding-bottom: 5%; font-family: sans-serif; background-color: #eeeeee">
   <nav class="navbar navbar navbar-default navbar-fixed-top navbar-expand-lg navbar-dark bg-dark shadow-sm">
     <div class="container">
       <a class="navbar-brand">
@@ -24,14 +24,14 @@
       <div id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item fixright"><a href="http://127.0.0.1:5000/" class="nav-link">Home</a></li>
-          <li class="nav-item fixright"><a href="#" class="nav-link">About</a></li>
+          <li class="nav-item fixright"><a href="http://127.0.0.1:5000/about/" class="nav-link">About</a></li>
           <li class="nav-item fixright"><a href="#" class="nav-link">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
     {% block body %}{% endblock %}
-  <footer class="fixed-bottom bg-dark">
+  <footer class="fixed-bottom bg-dark" style="position: fixed; height: 5%; bottom: 0; width: 100%; text-align: center; margin: auto; padding: 10px;">
     <span style="color: white; float: left; padding-left: 30px;">&copy; 2022 Louis Tochon</span>
     <div style="float: right; padding-right: 30px;">
       <p>
