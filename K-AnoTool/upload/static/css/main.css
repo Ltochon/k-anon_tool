@@ -1,0 +1,71 @@
+body {
+  font-family: sans-serif;
+  background-color: #eeeeee;
+}
+
+.table-wrapper{
+    overflow-y: scroll;
+    height: 20em;
+    width: 75%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+.table-wrapper th{
+    position: sticky;
+    top: 0;
+    background-color: rgb(99, 148, 94);
+}
+
+
+.firsttable tr:nth-child(even){
+    background-color: #f3f3f3;
+}
+
+footer {
+  position: fixed;
+  height: 5%;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+}
+
+#first {
+  width: 30%;
+  float: left;
+}
+#second {
+  width: 35%;
+  float: left;
+}
+#third {
+  width: 20%;
+  float: left;
+}
+#forth{
+  width: 15%;
+  float: right;
+  text-align: end;
+}
+
+.underlinedelem{
+  border-bottom: solid 1px rgb(110, 110, 110);
+}
+
+.btnhiera{
+  background-color: rgb(150, 160, 149);
+}
+
+.submit{
+  border-radius: 20%;
+  background-color: rgb(99, 148, 94);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  padding: 5px 10px;
+}
+
+.submit:hover{
+  color: white;
+  background-color: red;
+}

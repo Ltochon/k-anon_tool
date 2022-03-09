@@ -1,7 +1,9 @@
-from flask import Blueprint, render_template
+from unittest import result
+from flask import Blueprint, redirect, render_template, current_app, url_for
 
 upload = Blueprint("upload", __name__, static_folder="static", template_folder="templates")
 
 @upload.route("/")
 def upload_page():
-    return render_template("upload.html")
+    data = current_app.config['data']
+    return render_template("upload.html", headers = data.columns, data = data.values)

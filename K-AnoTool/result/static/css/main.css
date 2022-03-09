@@ -1,27 +1,6 @@
-ul{
-    align-items: center !important;
-}
-
-nav{
-    margin-bottom: 15px;
-}
-
-.container-fluid{
-    padding-left: 0;
-}
-
 body {
   font-family: sans-serif;
   background-color: #eeeeee;
-}
-
-.selectfile{
-  padding: 10px;
-  width: 30%;
-  margin-top: 25px;
-  text-align: center;
-  border: solid 3px;
-  margin : auto;
 }
 
 footer {

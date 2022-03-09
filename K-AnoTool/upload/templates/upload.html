@@ -6,7 +6,7 @@
 
 {% block body %}
 <h1 style="text-align: center; font-family: sans-serif; margin-top : 20px;">My Datas</h1>
-<div class = "table-wrapper" style="text-align: center;">
+<div class = "table-wrapper" style="text-align: center; border: solid 2px;">
     <table class="table table-hover table-bordered firsttable" style="border: solid 1px;">
         <tr>
             {% for header in headers %}
@@ -23,74 +23,93 @@
     </table>
     
 </div>
-<div style="width: 60%; margin-top: 40px; margin-left: auto; margin-right: auto; text-align: left; overflow: hidden; padding: 10px;">
-    <div id = "first">
-        {% for header in headers %}
-            {% if header == headers[headers|length -1]%}
-                <div style="padding : 10px;">
-                    <input type="checkbox" id={{header}} name={{header}}>
-                    <label for={{header}} style="margin-left: 5px;">{{header}}</label>
-                </div>
-            {% else %}
-                <div class="underlinedelem" style="padding : 10px;">
-                    <input type="checkbox" id={{header}} name={{header}}>
-                    <label for={{header}} style="margin-left: 5px;">{{header}}</label>
-                </div>
-            {% endif %}
-        {% endfor %}
+<form method="POST" action="" enctype="multipart/form-data">
+    <div style="width: 80%; margin-top: 20px; margin-left: auto; margin-right: auto; text-align: left; overflow: hidden; padding: 10px;">
+        <div id = "first">
+            {% for header in headers %}
+                {% if header == headers[headers|length -1]%}
+                    <div style="padding : 10px;">
+                        <input type="checkbox" id={{header}} name={{header}}>
+                        <label for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
+                    </div>
+                {% else %}
+                    <div class="underlinedelem" style="padding : 10px;">
+                        <input type="checkbox" id={{header}} name={{header}}>
+                        <label for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id = "second">
+            {% for header in headers %}
+                {% if header == headers[headers|length -1]%}
+                    <div style="padding : 10px;">
+                        <label for={{header}}>Importance Level : </label>
+                        <select name="selectimportance" id="selectimportance" style="width: 170px;">
+                            <option value="">--Choose an option--</option>
+                            <option value="1">1 - Very Low</option>
+                            <option value="2">2 - Low</option>
+                            <option value="3">3 - Medium</option>
+                            <option value="4">4 - High</option>
+                            <option value="5">5 - Very High</option>
+                        </select>
+                    </div>
+                {% else %}
+                    <div class="underlinedelem" style="padding : 10px;">
+                        <label for={{header}}>Importance Level : </label>
+                        <select name="selectimportance" id="selectimportance" style="width: 170px;">
+                            <option value="">--Choose an option--</option>
+                            <option value="1">1 - Very Low</option>
+                            <option value="2">2 - Low</option>
+                            <option value="3">3 - Medium</option>
+                            <option value="4">4 - High</option>
+                            <option value="5">5 - Very High</option>
+                        </select>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id = "third">
+            {% for header in headers %}
+                {% if header == headers[headers|length -1]%}
+                    <div style="padding : 10px;">
+                        <label for={{header}}>Type : </label>
+                        <select name="selecttype" id="selecttype" style="width: 170px;">
+                            <option value="">--Choose an option--</option>
+                            <option value="str">String</option>
+                            <option value="int">Integer</option>
+                            <option value="cat">Categorical</option>
+                        </select>
+                    </div>
+                {% else %}
+                    <div class="underlinedelem" style="padding : 10px;">
+                        <label for={{header}}>Type : </label>
+                        <select name="selecttype" id="selecttype" style="width: 170px;">
+                            <option value="">--Choose an option--</option>
+                            <option value="str">String</option>
+                            <option value="int">Integer</option>
+                            <option value="cat">Categorical</option>
+                        </select>   
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id = "forth">
+            {% for header in headers %}
+                {% if header == headers[headers|length -1]%}
+                    <div style="padding : 10px; height: 45px;">
+                        <button class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold;">Edit Hierarchy</button>
+                    </div>
+                {% else %}
+                    <div class="underlinedelem" style="padding : 10px; height: 45px;">
+                        <button class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold;">Edit Hierarchy</button>  
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
-    <div id = "second">
-        {% for header in headers %}
-            {% if header == headers[headers|length -1]%}
-                <div style="padding : 10px;">
-                    <label for={{header}}>Importance Level : </label>
-                    <input type="number" id={{header}} name={{header}} style="width: 50px; height: 20px;">    
-                </div>
-            {% else %}
-                <div class="underlinedelem" style="padding : 10px;">
-                    <label for={{header}}>Importance Level : </label>
-                    <input type="number" id={{header}} name={{header}} style="width: 50px; height: 20px;">    
-                </div>
-            {% endif %}
-        {% endfor %}
+    <div style="text-align: center;">
+        <input type="submit" value="Anonymze This Dataset !" class = "submit">
     </div>
-    <div id = "third">
-        {% for header in headers %}
-            {% if header == headers[headers|length -1]%}
-                <div style="padding : 10px;">
-                    <label for={{header}}>Type : </label>
-                    <select name="selecttype" id="selecttype" style="width: 170px;">
-                        <option value="">--Choose an option--</option>
-                        <option value="str">String</option>
-                        <option value="int">Integer</option>
-                        <option value="cat">Categorical</option>
-                    </select>
-                </div>
-            {% else %}
-                <div class="underlinedelem" style="padding : 10px;">
-                    <label for={{header}}>Type : </label>
-                    <select name="selecttype" id="selecttype" style="width: 170px;">
-                        <option value="">--Choose an option--</option>
-                        <option value="str">String</option>
-                        <option value="int">Integer</option>
-                        <option value="cat">Categorical</option>
-                    </select>   
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-    <div id = "forth">
-        {% for header in headers %}
-            {% if header == headers[headers|length -1]%}
-                <div style="padding : 10px; height: 45px;">
-                    <button class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold;">Edit Hierarchy</button>
-                </div>
-            {% else %}
-                <div class="underlinedelem" style="padding : 10px; height: 45px;">
-                    <button class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold;">Edit Hierarchy</button>  
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
+</form>
 {% endblock %}

@@ -5,11 +5,13 @@ import sys
 from numpy import save
 import pandas as pd
 from flask import Flask, redirect, render_template, request, send_from_directory, url_for, flash
-from werkzeug.utils import secure_filename
 from upload.upload import upload
+from result.result import result
+
 
 app = Flask(__name__)
 app.register_blueprint(upload, url_prefix = "/upload")
+app.register_blueprint(result, url_prefix = "/result")
 app.secret_key = "super key"
 app.permanent_session_lifetime = timedelta(days=365)
 # enable debugging mode
@@ -41,10 +43,19 @@ def uploadFiles():
           # save the file
       return print_csv(file_path)
 
+
 def print_csv(path):
     data = pd.read_csv(path, sep=request.form['input_delim'], encoding="ISO-8859-1")
-    print(data.values, file=sys.stderr)
-    return render_template('upload.html', headers = data.columns, data = data.values)
+    return render_upload(data)
+
+def render_upload(data):
+    app.config['data'] = data
+    return redirect(url_for('upload.upload_page'))
+
+@app.route("/upload/", methods=['POST'])
+def render_result():
+    return redirect(url_for("result.result_page"))
 
 if (__name__ == "__main__"):
-     app.run(port = 5000)
+    print(app.url_map, sys.stderr)
+    app.run(port = 5000)
