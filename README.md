@@ -1,5 +1,5 @@
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)    
-[![Npm package license](https://badgen.net/npm/license/discord.js)](https://npmjs.com/package/discord.js) [![PyPI status](https://img.shields.io/pypi/status/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
+[![Npm package license](https://badgen.net/npm/license/discord.js)](https://npmjs.com/package/discord.js) [![last commit](https://img.shields.io/github/last-commit/Ltochon/k-ano_Tool)](https://github.com/Ltochon/k-ano_Tool/commits) [![commits](https://img.shields.io/github/commit-activity/w/Ltochon/k-ano_Tool)](https://github.com/Ltochon/k-ano_Tool/commits) [![nb lines](https://img.shields.io/tokei/lines/github/Ltochon/k-ano_Tool)](https://github.com/Ltochon/k-ano_Tool) [![PyPI status](https://img.shields.io/pypi/status/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
 
 # K-Anonymization Tool for databases
 
