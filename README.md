@@ -83,4 +83,8 @@ Datafly wikipédia [02.03] : https://en.wikipedia.org/wiki/Datafly_algorithm
 
 Improved Greedy vs Datafly [03.03] : http://www.tdp.cat/issues11/tdp.a100a12.pdf
 
-Analysis of Datafly [03.03] :  https://kanonymity.github.io/ola.pdf
+Analysis of Datafly [03.03] :  https://kanonymity.github.io/ola.
+
+Datafly explained [10.03] : https://dataprivacylab.org/datafly/paper2.pdf
+
+Schema of core's principles of Datafly [10.03] : https://www.researchgate.net/publication/287537219_A_Systematic_Comparison_and_Evaluation_of_k-Anonymization_Algorithms_for_Practitioners

@@ -21,24 +21,38 @@ def order_occu(df,qid):
     return index_tab,occu_tab
 
 def generalize(df,column):
-    return 0
+    #custom generalization to do
+    max_gen = 0
+    if(column == "13"):
+        df[column] = df["15"]
+    else:
+        max_gen = 1
+    return df,max_gen
 
 def fly(df,qid,val,total,k):
-    tab_distinct = []
-    for q in range(0,qid-1):
-        if total[q][0] >= k:
-            tab_distinct.append(0)
+    index_max = 1
+
+    while(check_ano(df,qid) < k):
+        tab_distinct = []
+        for q in range(0,len(qid)):
+            if total[q][0] >= k:
+                tab_distinct.append(0)
+            else:
+                tab_distinct.append(len(total[q]))
+        index_max = max(range(len(tab_distinct)), key=tab_distinct.__getitem__)
+        gen = generalize(df,qid[index_max])
+        if(gen[1] > 0):
+            break
         else:
-            tab_distinct.append(len(total[q]))
-    index_max = max(range(len(tab_distinct)), key=tab_distinct.__getitem__)
-    generalize(df,qid[index_max])
+            df = gen[0]
     return df
 
 #Run
 df = read_file('test_algo/data/adult.csv', ';')
-qid = ["1","10"]
+qid = ["10","13"]
 k = 4
 compute_occu = order_occu(df,qid)
 val = compute_occu[0]
 total = compute_occu[1]
-fly(df,qid,val,total,k)
+df_final = fly(df,qid,val,total,k)
+print(df_final)
