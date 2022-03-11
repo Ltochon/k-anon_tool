@@ -5,4 +5,4 @@ def testfly():
     df = read_file('test_algo/data/adult.csv', ';')
     k = 4
     qid = ["3"]
-    assert(run(k,qid) >= k)
+    assert(run(df,k,qid) >= k)
