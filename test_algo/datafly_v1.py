@@ -55,13 +55,12 @@ def fly(df,qid,val,total,k):
     return df
 
 #Run
-df = read_file('test_algo/data/adult.csv', ';')
-qid = ["3"]
-k = 4
-compute_occu = order_occu(df,qid)
-val = compute_occu[0]
-total = compute_occu[1]
-print(total)
-df_final = fly(df,qid,val,total,k)
-print(check_ano(df_final,qid))
-print(df_final)
+def run(k):
+    df = read_file('test_algo/data/adult.csv', ';')
+    qid = ["3"]
+    k = 4
+    compute_occu = order_occu(df,qid)
+    val = compute_occu[0]
+    total = compute_occu[1]
+    df_final = fly(df,qid,val,total,k)
+    return check_ano(df_final,qid)
