@@ -59,8 +59,8 @@ This project will focus on the medical domain to handle a single use case and go
 
 1) Research about the *Datafly* algorithm :heavy_check_mark:
 2) Gaining knowledge about Flask (first web application with Python) :heavy_check_mark:
-3) Implementing *Datafly* algorithm :hourglass_flowing_sand:
-4) Algorithm's proposal with weighted attributes
+3) Implementing *Datafly* algorithm :heavy_check_mark:
+4) Algorithm's proposal with weighted attributes :hourglass_flowing_sand:
 5) Implementation of Flask application with the algorithm :hourglass_flowing_sand:
 6) Prototyping the interface of custom generalization
 7) Prototype testing

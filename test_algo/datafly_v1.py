@@ -32,7 +32,6 @@ def generalize(df,column):
 
 def fly(df,qid,val,total,k):
     index_max = 1
-
     while(check_ano(df,qid) < k):
         tab_distinct = []
         for q in range(0,len(qid)):
