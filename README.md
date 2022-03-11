@@ -16,6 +16,7 @@
   - [Goal](#goal)
   - [Description of the project](#description-of-the-project)
   - [Milestones](#milestones)
+  - [Run commands](#run-commands)
   - [Sources](#sources)
 
 ## Arborescence des fichiers
@@ -24,18 +25,27 @@ Les fichiers omis sont des fichiers internes aux programmes utilisés et ne devr
 
 ```C
 📦k-ano_Tool
+ ┣ 📂.github\workflows //First Flask project to gain knowledge
+ ┃ ┗ 📜python-app.yml //test environnement properties
  ┣ 📂Flask project //First Flask project to gain knowledge
  ┣ 📂K-anoTool //Flask project with the anonimization tool
+ ┃ ┣ 📂Env //Virtual Python Env
  ┃ ┣ 📂Static //Static files (JS, CSS, IMG, Saved files)
  ┃ ┣ 📂Templates //HTML Templates
  ┃ ┣ 📂Upload //Sub-directory for Upload part of the project
+ ┃ ┣ 📂Result //Sub-directory for Upload part of the project
+ ┃ ┣ 📂About //Sub-directory for Upload part of the project
  ┃ ┗ 📜app.py //launch project file
  ┣ 📂Sources //Folder to save sources that have been used
  ┣ 📂Test_algo //Algorithm's development folder
  ┃ ┣ 📂data
- ┃ ┣ 📜incognito.v1 //First try with incognito algorithm
+ ┃ ┣ 📜incognito_v1.py //First try with incognito algorithm
+ ┃ ┣ 📜mondarian.py //Open Source Code for mondarian algorithm
+ ┃ ┗ 📜datafly_v1.py //Basic datafly algorithm
+ ┣ 📜test.py //test file
  ┣ 📜LICENSE
  ┗ 📜README.md
+
 ```
 ## Goal
 
@@ -66,6 +76,16 @@ This project will focus on the medical domain to handle a single use case and go
 7) Prototype testing
 8) Implementation of the generalization's interface
 9) Final application's usability tests
+
+## Run commands
+
+After cloning, just write this line in your terminal at the root of the repository :
+
+```
+python K-AnoTool\app.py
+```
+
+This will launch the web tool on the port 5000 of your localhost.
 
 ## Sources
 
