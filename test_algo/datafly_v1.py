@@ -50,10 +50,10 @@ def fly(df,qid,val,total,k):
     return df
 
 #Run
-def run(k):
-    df = read_file('test_algo/data/adult.csv', ';')
-    qid = ["3"]
-    k = 4
+def run(df,k,qid):
+    #df = read_file('test_algo/data/adult.csv', ';')
+    #qid = ["3"]
+    #k = 4
     compute_occu = order_occu(df,qid)
     val = compute_occu[0]
     total = compute_occu[1]
