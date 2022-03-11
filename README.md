@@ -41,7 +41,8 @@ Les fichiers omis sont des fichiers internes aux programmes utilisés et ne devr
  ┃ ┣ 📂data
  ┃ ┣ 📜incognito_v1.py //First try with incognito algorithm
  ┃ ┣ 📜mondarian.py //Open Source Code for mondarian algorithm
- ┃ ┗ 📜datafly_v1.py //Basic datafly algorithm
+ ┃ ┣ 📜datafly_v1.py //Basic datafly algorithm
+ ┃ ┗ 📜datafly_v1_weighted.py //Proposal of datafly algorithm with weighted attributes
  ┣ 📜test.py //test file
  ┣ 📜LICENSE
  ┗ 📜README.md

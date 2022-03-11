@@ -1,4 +1,5 @@
 import pandas as pd
+from operator import index, itemgetter 
 def read_file(path, delim):
     csv = pd.read_csv(path, sep=delim)
     return csv
@@ -21,11 +22,13 @@ def generalize(df,column):
     max_gen = 0
     if(column == "13"):
         df[column] = df["15"]
+    elif(column == "10"):
+        df[column] = "*"
     else:
         max_gen = 1
     return df,max_gen
 
-def fly(df,qid,k):
+def fly(df,qid,w_qid,k):
     index_max = 1
     while(check_ano(df,qid) < k):
         compute_occu = order_occu(df,qid)
@@ -37,7 +40,15 @@ def fly(df,qid,k):
                 tab_distinct.append(0)
             else:
                 tab_distinct.append(len(total[q]))
-        index_max = max(range(len(tab_distinct)), key=tab_distinct.__getitem__)
+        print(check_ano(df,qid))
+        #WEIGHTS
+        for w in range(5,0,-1):
+            indices = [i for i, x in enumerate(w_qid) if x == w]
+            if(len(indices) > 0):
+                index_max_local = max(range(len(indices)), key=[tab_distinct[i] for i in indices].__getitem__)
+                if([tab_distinct[i] for i in indices][index_max_local] > 0):
+                    index_max = tab_distinct.index([tab_distinct[i] for i in indices][index_max_local])
+                    break
         gen = generalize(df,qid[index_max])
         if(gen[1] > 0):
             #delete all seq which occu < k
@@ -53,6 +64,13 @@ def fly(df,qid,k):
     return df
 
 #Run
-def run(df,k,qid):
-    df_final = fly(df,qid,k)
+def run(df,k,qid,w_qid):
+    df_final = fly(df,qid,w_qid,k)
+    print(df_final)
     return check_ano(df_final,qid)
+
+df = read_file('test_algo/data/adult.csv', ';')
+k = 16193
+qid = ["10","13"]
+w_qid = [4,2]
+print(run(df,k,qid,w_qid))
