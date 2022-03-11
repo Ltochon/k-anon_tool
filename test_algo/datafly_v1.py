@@ -1,4 +1,5 @@
 from os import sep
+from tabnanny import check
 from turtle import pd
 
 
@@ -42,17 +43,26 @@ def fly(df,qid,val,total,k):
         index_max = max(range(len(tab_distinct)), key=tab_distinct.__getitem__)
         gen = generalize(df,qid[index_max])
         if(gen[1] > 0):
-            break
+            #delete all seq which occu < k
+            for q in range(0,len(qid)):
+                for i in range(0,len(total[q])):
+                    if(total[q][i] < k):
+                        df = df[getattr(df,qid[q]) != val[q][i]]
+                    else:
+                        break
+                break
         else:
             df = gen[0]
     return df
 
 #Run
 df = read_file('test_algo/data/adult.csv', ';')
-qid = ["10","13"]
+qid = ["3"]
 k = 4
 compute_occu = order_occu(df,qid)
 val = compute_occu[0]
 total = compute_occu[1]
+print(total)
 df_final = fly(df,qid,val,total,k)
+print(check_ano(df_final,qid))
 print(df_final)
