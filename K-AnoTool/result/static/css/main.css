@@ -3,6 +3,25 @@ body {
   background-color: #eeeeee;
 }
 
+.table-wrapper{
+  overflow-y: scroll;
+  height: 20em;
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.table-wrapper th{
+  position: sticky;
+  top: 0;
+  background-color: rgb(99, 148, 94);
+}
+
+
+.firsttable tr:nth-child(even){
+  background-color: #f3f3f3;
+}
+
 footer {
   position: fixed;
   height: 5%;

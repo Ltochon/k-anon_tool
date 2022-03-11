@@ -50,7 +50,6 @@ def uploadFiles():
           # save the file
       return print_csv(file_path)
 
-
 def print_csv(path):
     data = pd.read_csv(path, sep=request.form['input_delim'], encoding="ISO-8859-1")
     return render_upload(data)

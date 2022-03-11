@@ -6,7 +6,7 @@
 
 {% block body %}
 <h1 style="text-align: center; font-family: sans-serif; margin-top : 20px;">My Datas</h1>
-<div class = "table-wrapper" style="text-align: center; border: solid 2px;">
+<div class = "table-wrapper" style="text-align: center;">
     <table class="table table-hover table-bordered firsttable" style="border: solid 1px;">
         <tr>
             {% for header in headers %}
@@ -26,6 +26,7 @@
 <form method="POST" action="" enctype="multipart/form-data">
     <div style="width: 80%; margin-top: 20px; margin-left: auto; margin-right: auto; text-align: left; overflow: hidden; padding: 10px;">
         <div id = "first">
+            <p class = "headerchoice"><b>Select checkboxes of   QIDs</b></p>
             {% for header in headers %}
                 {% if header == headers[headers|length -1]%}
                     <div style="padding : 10px;">
@@ -41,6 +42,7 @@
             {% endfor %}
         </div>
         <div id = "second">
+            <p class = "headerchoice"><b>Select QIDs importance levels</b></p>
             {% for header in headers %}
                 {% if header == headers[headers|length -1]%}
                     <div style="padding : 10px;">
@@ -70,6 +72,7 @@
             {% endfor %}
         </div>
         <div id = "third">
+            <p class = "headerchoice"><b>Select QIDs types</b></p>
             {% for header in headers %}
                 {% if header == headers[headers|length -1]%}
                     <div style="padding : 10px;">
@@ -95,6 +98,7 @@
             {% endfor %}
         </div>
         <div id = "forth">
+            <p style="text-align: end; margin-bottom: 0px;"><b>Custom QIDs hierarchy</b></p>
             {% for header in headers %}
                 {% if header == headers[headers|length -1]%}
                     <div style="padding : 10px; height: 45px;">

@@ -29,7 +29,6 @@ def fly(df,qid,w_qid,k,max_gen):
     tab_gen = len(qid)*[0] #array to check how deep in generalization we are
     index_max = 1
     while(check_ano(df,qid) < k):
-        print("ok")
         compute_occu = order_occu(df,qid)
         val = compute_occu[0]
         total = compute_occu[1]
@@ -42,7 +41,7 @@ def fly(df,qid,w_qid,k,max_gen):
         #WEIGHTS
         find = False
         if(tab_gen != max_gen):
-            for w in range(5,0,-1):
+            for w in range(1,6):
                 indices = [i for i, x in enumerate(w_qid) if x == w]
                 if(len(indices) > 0):
                     for indice in indices:
@@ -72,12 +71,12 @@ def fly(df,qid,w_qid,k,max_gen):
 #Run
 def run(df,k,qid,w_qid,max_gen):
     df_final = fly(df,qid,w_qid,k,max_gen)
-    print(df_final)
-    return check_ano(df_final,qid)
+    k_final = check_ano(df_final,qid)
+    return df_final,k_final
 
-df = read_file('test_algo/data/adult.csv', ';')
-k = 22000
-qid = ["10","13"]
-w_qid = [4,2]
-max_gen = [1,1]
-print(run(df,k,qid,w_qid,max_gen))
+# df = read_file('test_algo/data/adult.csv', ';')
+# k = 4
+# qid = ["10","13"]
+# w_qid = [4,2]
+# max_gen = [1,1]
+# print(run(df,k,qid,w_qid,max_gen))
