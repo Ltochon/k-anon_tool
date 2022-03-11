@@ -33,8 +33,8 @@ Les fichiers omis sont des fichiers internes aux programmes utilisés et ne devr
  ┃ ┣ 📂Static //Static files (JS, CSS, IMG, Saved files)
  ┃ ┣ 📂Templates //HTML Templates
  ┃ ┣ 📂Upload //Sub-directory for Upload part of the project
- ┃ ┣ 📂Result //Sub-directory for Upload part of the project
- ┃ ┣ 📂About //Sub-directory for Upload part of the project
+ ┃ ┣ 📂Result //Sub-directory for Result part of the project
+ ┃ ┣ 📂About //Sub-directory for About part of the project
  ┃ ┗ 📜app.py //launch project file
  ┣ 📂Sources //Folder to save sources that have been used
  ┣ 📂Test_algo //Algorithm's development folder
