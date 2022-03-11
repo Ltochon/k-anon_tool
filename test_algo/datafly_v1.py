@@ -1,8 +1,3 @@
-from os import sep
-from tabnanny import check
-from turtle import pd
-
-
 import pandas as pd
 def read_file(path, delim):
     csv = pd.read_csv(path, sep=delim)
