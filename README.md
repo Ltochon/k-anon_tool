@@ -73,10 +73,11 @@ This project will focus on the medical domain to handle a single use case and go
 3) Implementing *Datafly* algorithm :heavy_check_mark:
 4) Algorithm's proposal with weighted attributes :heavy_check_mark:
 5) Implementation of Flask application with the algorithm :heavy_check_mark:
-6) Prototyping the interface of custom generalization
-7) Prototype testing
-8) Implementation of the generalization's interface
-9) Final application's usability tests
+6) Make Flask application be shiny :hourglass_flowing_sand:
+7) Prototyping the interface of custom generalization :hourglass_flowing_sand:
+8) Prototype testing
+9) Implementation of the generalization's interface
+10) Final application's usability tests
 
 ## Run commands
 
