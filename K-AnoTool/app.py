@@ -4,7 +4,7 @@ import os
 import sys
 from numpy import save
 import pandas as pd
-from flask import Flask, current_app, redirect, render_template, request, send_from_directory, url_for, flash
+from flask import Flask, current_app, make_response, redirect, render_template, request, send_from_directory, url_for, flash
 from upload.upload import upload
 from result.result import result
 from about.about import about
@@ -67,6 +67,17 @@ def render_result():
             txt = input+header
             app.config[txt] = request.form.get(txt)
     return redirect(url_for("result.result_page"))
+
+@app.route("/result/", methods=['POST'])
+def export_csv():
+    data = current_app.config['final_df']
+    resp = make_response(data.to_csv())
+    qids = '-'.join([str(item) for item in current_app.config['qid']])
+    weights = '-'.join([str(item) for item in current_app.config['weights']])
+    txt_file = "k-ano_tool.dataset(qids=[" + qids + "]|k-ano=" + current_app.config['k'] + "|weights=[" + weights + "])"
+    resp.headers["Content-Disposition"] = "attachment; filename=" + txt_file + ".csv"
+    resp.headers["Content-Type"] = "text/csv"
+    return resp
 
 if (__name__ == "__main__"):
     print(app.url_map, sys.stderr)

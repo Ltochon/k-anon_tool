@@ -33,25 +33,47 @@ footer {
 }
 
 #first {
-  width: 30%;
+  text-align: center;
+  width: 24%;
   float: left;
 }
 #second {
+  text-align: center;
+  margin-left: 2%;
   width: 35%;
   float: left;
 }
 #third {
+  text-align: center;
+  margin-left: 2%;
+  margin-right: 2%;
   width: 20%;
   float: left;
 }
 #forth{
   width: 15%;
-  float: right;
-  text-align: end;
+  float: left;
 }
 
 .underlinedelem{
   border-bottom: solid 1px rgb(110, 110, 110);
+}
+
+.lightgrey{
+  background-color: lightgrey;
+}
+
+.entete{
+  position: sticky;
+  top: 0;
+  background-color: rgb(99, 148, 94);
+}
+
+.entetecache{
+  position: sticky;
+  top: 0;
+  background-color: #eeeeee;
+  color: #eeeeee;
 }
 
 .btnhiera{

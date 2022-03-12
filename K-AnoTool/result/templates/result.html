@@ -5,25 +5,27 @@
 {% endblock %}
 
 {% block body %}
-<h1 style="text-align: center; font-family: sans-serif; margin-top : 20px;">My Datas Anonymized</h1>
-<h5 style="color: red; text-align: center;">{{k}}-anonyme</h5>
-<div class = "table-wrapper" style="text-align: center; margin-top: 3%;">
-    <table class="table table-hover table-bordered firsttable" style="border: solid 1px;">
-        <tr>
-            {% for header in df.columns %}
-                <th>{{header}}</th>
-            {% endfor %}
-        </tr>
-        {%for row in df.values%}
+<h1 style="text-align: center; font-family: sans-serif; margin-top : 20px;">My Anonymized Datas</h1>
+<h5 style="color: red; text-align: center;">This dataset is {{k}}-anonyme</h5>
+<form method="POST" action="" enctype="multipart/form-data">
+    <div class = "table-wrapper" style="text-align: center; margin-top: 3%;">
+        <table class="table table-hover table-bordered firsttable" style="border: solid 1px;">
             <tr>
-            {%for cell in row%}
-                <td>{{cell}}</td>
-            {%endfor%}
+                {% for header in df.columns %}
+                    <th>{{header}}</th>
+                {% endfor %}
             </tr>
-        {%endfor%}
-    </table>
-</div>
-<div style="text-align: center;">
-    <button class="submit" style="margin-top: 3%">Download CSV Anonymized</button>
-</div>
+            {%for row in df.values%}
+                <tr>
+                {%for cell in row%}
+                    <td>{{cell}}</td>
+                {%endfor%}
+                </tr>
+            {%endfor%}
+        </table>
+    </div>
+    <div style="text-align: center;">
+        <input type="submit" value="Download CSV Anonymized" class = "submit" style="margin-top: 3%">
+    </div>
+</form>
 {% endblock %}

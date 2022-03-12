@@ -24,30 +24,40 @@
     
 </div>
 <form method="POST" action="" enctype="multipart/form-data">
-    <div style="width: 80%; margin-top: 20px; margin-left: auto; margin-right: auto; text-align: left; overflow: hidden; padding: 10px;">
+    <div style="height: 20em; width: 80%; overflow-y:scroll; margin-top: 20px; margin-left: auto; margin-right: auto; margin-bottom: 10px; text-align: left; padding: 10px; padding-top: 0px;">
         <div id = "first">
-            <p class = "headerchoice"><b>Select checkboxes of   QIDs</b></p>
+            <p class = "headerchoice entete"><b>Select QIDs</b></p>
             {% for header in headers %}
+                {% if loop.index is divisibleby 2 == 1 %}
+                    {% set color = "white" %}
+                {%else%}
+                    {% set color = "lightgrey" %}
+                {%endif%}
                 {% if header == headers[headers|length -1]%}
-                    <div style="padding : 10px;">
-                        <input type="checkbox" id={{header}} name=checkbox_{{header}}>
-                        <label for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
+                    <div id="div_{{header}}" class="{{color}}" style="padding : 10px;">
+                        <input type="checkbox" id={{header}} name="checkbox_{{header}}" class = "checkbox">
+                        <label id="l_{{header}}" for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
                     </div>
                 {% else %}
-                    <div class="underlinedelem" style="padding : 10px;">
-                        <input type="checkbox" id={{header}} name=checkbox_{{header}}>
-                        <label for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
+                    <div id="div_{{header}}" class="underlinedelem {{color}}" style="padding : 10px;">
+                        <input type="checkbox" id={{header}} name="checkbox_{{header}}" class = "checkbox">
+                        <label id="l_{{header}}" for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
                     </div>
                 {% endif %}
             {% endfor %}
         </div>
         <div id = "second">
-            <p class = "headerchoice"><b>Select QIDs importance levels</b></p>
+            <p class = "headerchoice entetecache" id="h2"><b>a</b></p>
             {% for header in headers %}
+                {% if loop.index is divisibleby 2 == 1 %}
+                    {% set color = "white" %}
+                {%else%}
+                    {% set color = "lightgrey" %}
+                {%endif%}
                 {% if header == headers[headers|length -1]%}
-                    <div style="padding : 10px;">
-                        <label for={{header}}>Importance Level : </label>
-                        <select name="level_{{header}}" id="selectimportance" style="width: 170px;">
+                    <div style="padding : 10px;" class = "{{color}}">
+                        <label id="l2_{{header}}" for={{header}} style="visibility: hidden;">Importance Level : </label>
+                        <select name="level_{{header}}" id="selectimportance_{{header}}" style="width: 170px; visibility: hidden;">
                             <option value="0">--Choose an option--</option>
                             <option value="1">1 - Very Low</option>
                             <option value="2">2 - Low</option>
@@ -57,9 +67,9 @@
                         </select>
                     </div>
                 {% else %}
-                    <div class="underlinedelem" style="padding : 10px;">
-                        <label for={{header}}>Importance Level : </label>
-                        <select name="level_{{header}}" id="selectimportance" style="width: 170px;">
+                    <div class="underlinedelem {{color}}" style="padding : 10px;">
+                        <label id="l2_{{header}}" for={{header}} style="visibility: hidden;">Importance Level : </label>
+                        <select name="level_{{header}}" id="selectimportance_{{header}}" style="width: 170px; visibility: hidden;">
                             <option value="0">--Choose an option--</option>
                             <option value="1">1 - Very Low</option>
                             <option value="2">2 - Low</option>
@@ -72,12 +82,17 @@
             {% endfor %}
         </div>
         <div id = "third">
-            <p class = "headerchoice"><b>Select QIDs types</b></p>
+            <p id="h3" class = "headerchoice entetecache"><b>a</b></p>
             {% for header in headers %}
+                {% if loop.index is divisibleby 2 == 1 %}
+                    {% set color = "white" %}
+                {%else%}
+                    {% set color = "lightgrey" %}
+                {%endif%}
                 {% if header == headers[headers|length -1]%}
-                    <div style="padding : 10px;">
-                        <label for={{header}}>Type : </label>
-                        <select name="type_{{header}}" id="selecttype" style="width: 170px;">
+                    <div class="{{color}}" style="padding : 10px;">
+                        <label id="l3_{{header}}" for={{header}} style="visibility: hidden;">Type : </label>
+                        <select name="type_{{header}}" id="selecttype_{{header}}" style="width: 170px; visibility: hidden;">
                             <option value="">--Choose an option--</option>
                             <option value="str">String</option>
                             <option value="int">Integer</option>
@@ -85,9 +100,9 @@
                         </select>
                     </div>
                 {% else %}
-                    <div class="underlinedelem" style="padding : 10px;">
-                        <label for={{header}}>Type : </label>
-                        <select name="type_{{header}}" id="selecttype" style="width: 170px;">
+                    <div class="underlinedelem {{color}}" style="padding : 10px;">
+                        <label id="l3_{{header}}" for={{header}} style="visibility: hidden;">Type : </label>
+                        <select name="type_{{header}}" id="selecttype_{{header}}" style="width: 170px; visibility: hidden;">
                             <option value="">--Choose an option--</option>
                             <option value="str">String</option>
                             <option value="int">Integer</option>
@@ -98,15 +113,20 @@
             {% endfor %}
         </div>
         <div id = "forth">
-            <p style="text-align: end; margin-bottom: 0px;"><b>Custom QIDs hierarchy</b></p>
+            <p id="h4" class="entetecache" style="text-align: center; margin-bottom: 0px;"><b>a</b></p>
             {% for header in headers %}
+                {% if loop.index is divisibleby 2 == 1 %}
+                    {% set color = "white" %}
+                {%else%}
+                    {% set color = "lightgrey" %}
+                {%endif%}
                 {% if header == headers[headers|length -1]%}
-                    <div style="padding : 10px; height: 45px;">
-                        <button class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold;">Edit Hierarchy</button>
+                    <div class="{{color}}" style="padding : 10px; height: 45px; text-align: center;">
+                        <button id="hiera_{{header}}" class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold; visibility: hidden;" >Edit Hierarchy</button>
                     </div>
                 {% else %}
-                    <div class="underlinedelem" style="padding : 10px; height: 45px;">
-                        <button class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold;">Edit Hierarchy</button>  
+                    <div class="underlinedelem {{color}}" style="padding : 10px; height: 45px; text-align: center;">
+                        <button id="hiera_{{header}}" class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold; visibility: hidden;">Edit Hierarchy</button>  
                     </div>
                 {% endif %}
             {% endfor %}
@@ -116,4 +136,5 @@
         <input type="submit" value="Anonymze This Dataset !" class = "submit">
     </div>
 </form>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}

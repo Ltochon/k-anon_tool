@@ -1,7 +1,7 @@
 import sys
 import json
 from operator import itemgetter 
-from flask import Blueprint, current_app, render_template
+from flask import Blueprint, Response, current_app, render_template
 sys.path.append('./')
 from test_algo.datafly_v1_weighted import run
 
@@ -32,5 +32,10 @@ def result_page():
     weights = itemgetter(*index_qid)(tab_level)
     types = itemgetter(*index_qid)(tab_type)
     compute_ano = run(data,4,qid_str,weights,[1,1])
-    
+    current_app.config['final_df'] = compute_ano[0]
+    current_app.config['qid'] = qid
+    current_app.config['weights'] = weights
+    current_app.config['k'] = str(compute_ano[1])
     return render_template("result.html", df = compute_ano[0].head(50), k = compute_ano[1])
+
+    
