@@ -3,6 +3,6 @@ import pandas as pd
 # testing dafly algo
 def testfly():
     df = read_file('test_algo/data/adult.csv', ';')
-    k = 4
+    k = 11600
     qid = ["3"]
     assert(run(df,k,qid) >= k)

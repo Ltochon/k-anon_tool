@@ -15,6 +15,9 @@
   - [Arborescence des fichiers](#arborescence-des-fichiers)
   - [Goal](#goal)
   - [Description of the project](#description-of-the-project)
+  - [The algorithms](#the-algorithms)
+    - [Datafly](#datafly)
+    - [Datafly-weighted](#datafly-weighted)
   - [Milestones](#milestones)
   - [Run commands](#run-commands)
   - [Sources](#sources)
@@ -39,6 +42,7 @@ Les fichiers omis sont des fichiers internes aux programmes utilisés et ne devr
  ┣ 📂Sources //Folder to save sources that have been used
  ┣ 📂Test_algo //Algorithm's development folder
  ┃ ┣ 📂data
+ ┃ ┣ 📂yed //Folder containing algorithm's graph
  ┃ ┣ 📜incognito_v1.py //First try with incognito algorithm
  ┃ ┣ 📜mondarian.py //Open Source Code for mondarian algorithm
  ┃ ┣ 📜datafly_v1.py //Basic datafly algorithm
@@ -63,6 +67,16 @@ In a second time, an interface on the same web application will be created to pr
 The crucial point of this project is to do a user-friendly tool with easy interactions to make the experience as simple as possible.
 
 This project will focus on the medical domain to handle a single use case and go as deep as possible to provide a complete tool.
+
+## The algorithms
+
+### Datafly
+
+![Datafly Algorithm](test_algo\yed\datafly.png)
+
+### Datafly-weighted
+
+![Datafly-weighted Algorithm](test_algo\yed\datafly_weighted.png)
 
 ## Milestones
 
