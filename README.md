@@ -6,7 +6,7 @@
 ## Authors
 
 - Louis Tochon
-- Kevin Huguenin (Superviser)
+- Kévin Huguenin (Superviser)
 
 ## Table of contents
 - [K-Anonymization Tool for databases](#k-anonymization-tool-for-databases)

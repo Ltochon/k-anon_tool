@@ -29,9 +29,11 @@ def result_page():
     qid_str = []
     for q in qid: #need to transform from 
         qid_str.append(q.replace("'",'"'))
+    k = int(current_app.config['inputk'])
     weights = itemgetter(*index_qid)(tab_level)
     types = itemgetter(*index_qid)(tab_type)
-    compute_ano = run(data,4,qid_str,weights,[1,1])
+    print(k,sys.stderr)
+    compute_ano = run(data,k,qid_str,weights,[1,1])
     current_app.config['final_df'] = compute_ano[0]
     current_app.config['qid'] = qid
     current_app.config['weights'] = weights

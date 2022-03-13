@@ -66,6 +66,7 @@ def render_result():
         for input in inputs:
             txt = input+header
             app.config[txt] = request.form.get(txt)
+    app.config['inputk'] = request.form.get('inputk')
     return redirect(url_for("result.result_page"))
 
 @app.route("/result/", methods=['POST'])

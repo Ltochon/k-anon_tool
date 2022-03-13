@@ -133,7 +133,10 @@
         </div>
     </div>
     <div style="text-align: center;">
-        <input type="submit" value="Anonymze This Dataset !" class = "submit">
+        <label for="inputk"><b>K-anonymity wanted :</b></label>
+        <input id = "inputk" name="inputk" type="number" placeholder="ex : 5" style="width: 5em;">
+        <br>
+        <input type="submit" value="Anonymze This Dataset !" class = "submit" style="margin-top : 10px">
     </div>
 </form>
 <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
