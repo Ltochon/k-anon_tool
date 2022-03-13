@@ -72,11 +72,15 @@ This project will focus on the medical domain to handle a single use case and go
 
 ### Datafly
 
-![Datafly Algorithm](test_algo\yed\datafly.png)
+<p align="center">
+  <img src="test_algo/yed/datafly.png" alt="Datafly Algorithm"/>
+</p>
 
-### Datafly-weighted
+### Datafly-weighted (Proposal)
 
-![Datafly-weighted Algorithm](test_algo\yed\datafly_weighted.png)
+<p align="center">
+  <img src="test_algo/yed/datafly_weighted.png" alt="Datafly-weighted Algorithm"/>
+</p>
 
 ## Milestones
 
