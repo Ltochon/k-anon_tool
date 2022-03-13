@@ -17,7 +17,7 @@
   - [Description of the project](#description-of-the-project)
   - [The algorithms](#the-algorithms)
     - [Datafly](#datafly)
-    - [Datafly-weighted](#datafly-weighted)
+    - [Datafly-weighted (Proposal)](#datafly-weighted-proposal)
   - [Milestones](#milestones)
   - [Run commands](#run-commands)
   - [Sources](#sources)
@@ -39,6 +39,7 @@ Les fichiers omis sont des fichiers internes aux programmes utilisés et ne devr
  ┃ ┣ 📂Result //Sub-directory for Result part of the project
  ┃ ┣ 📂About //Sub-directory for About part of the project
  ┃ ┗ 📜app.py //launch project file
+ ┣ 📂Prototyping //Folder with prototypes of generalizytion interface
  ┣ 📂Sources //Folder to save sources that have been used
  ┣ 📂Test_algo //Algorithm's development folder
  ┃ ┣ 📂data
@@ -92,8 +93,8 @@ This project will focus on the medical domain to handle a single use case and go
 4) Algorithm's proposal with weighted attributes :heavy_check_mark:
 5) Implementation of Flask application with the algorithm :heavy_check_mark:
 6) Make Flask application be shiny :hourglass_flowing_sand:
-7) Prototyping the interface of custom generalization :hourglass_flowing_sand:
-8) Prototype testing
+7) Prototyping the interface of custom generalization :heavy_check_mark:
+8) Prototype testing :hourglass_flowing_sand:
 9) Implementation of the generalization's interface
 10) Final application's usability tests
 
