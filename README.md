@@ -129,3 +129,5 @@ Analysis of Datafly [03.03] :  https://kanonymity.github.io/ola.
 Datafly explained [10.03] : https://dataprivacylab.org/datafly/paper2.pdf
 
 Schema of core's principles of Datafly [10.03] : https://www.researchgate.net/publication/287537219_A_Systematic_Comparison_and_Evaluation_of_k-Anonymization_Algorithms_for_Practitioners
+
+Distortion calcul with weighted attributes [15.03] : https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4606080
