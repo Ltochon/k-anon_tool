@@ -39,6 +39,7 @@ Les fichiers omis sont des fichiers internes aux programmes utilisés et ne devr
  ┃ ┣ 📂Result //Sub-directory for Result part of the project
  ┃ ┣ 📂About //Sub-directory for About part of the project
  ┃ ┗ 📜app.py //launch project file
+ ┣ 📂Presentation //Folder with powerpoint for meetings
  ┣ 📂Prototyping //Folder with prototypes of generalizytion interface
  ┣ 📂Sources //Folder to save sources that have been used
  ┣ 📂Test_algo //Algorithm's development folder

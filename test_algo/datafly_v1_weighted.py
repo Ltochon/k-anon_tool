@@ -77,6 +77,6 @@ def run(df,k,qid,w_qid,max_gen):
 # df = read_file('test_algo/data/adult.csv', ';')
 # k = 4
 # qid = ["10","13"]
-# w_qid = [4,2]
+# w_qid = [2,4]
 # max_gen = [1,1]
 # print(run(df,k,qid,w_qid,max_gen))

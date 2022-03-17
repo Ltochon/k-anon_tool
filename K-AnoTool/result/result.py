@@ -32,7 +32,6 @@ def result_page():
     k = int(current_app.config['inputk'])
     weights = itemgetter(*index_qid)(tab_level)
     types = itemgetter(*index_qid)(tab_type)
-    print(k,sys.stderr)
     compute_ano = run(data,k,qid_str,weights,[1,1])
     current_app.config['final_df'] = compute_ano[0]
     current_app.config['qid'] = qid
