@@ -61,7 +61,7 @@ def algo(df_init,qid,max_gen,weigths,k):
                     count_supp += s
         sum_w = 0
         for q2 in range(0,len(qid)):
-            sum_w += sum(weigths[q][0:c[q2]])
+            sum_w += sum(weigths[q2][0:c[q2]])
         print(f"\nQID : {qid}, lvl of generalization : {c}, number of suppression : {count_supp}, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k without suppression = {check_ano(df,qid)}")
         cost.append(count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w)
         if(count_supp == 0):
