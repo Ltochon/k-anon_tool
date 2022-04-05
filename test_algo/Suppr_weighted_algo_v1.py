@@ -8,9 +8,8 @@ def read_file(path, delim):
     return csv
 
 def check_ano(df,qid):
-    datas_qid = df[qid]
-    dups_shape = datas_qid.pivot_table(columns=qid, aggfunc='size')
-    return min(dups_shape)
+    res = get_class(df,qid)
+    return min(res)
 
 def get_class(df,qid):
     datas_qid = df[qid]
@@ -28,6 +27,9 @@ def generalize(df,qid,lvl):
             df["age"] = df["age_dizaine"]
         elif lvl == 2:
             df["age"] = df["age_split"]
+    elif qid == "illness":
+        if lvl == 1:
+            df["illness"] = df["general_illness"]
     return df
 
 def occu(df,qid):
@@ -62,7 +64,7 @@ def algo(df_init,qid,max_gen,weigths,k):
         sum_w = 0
         for q2 in range(0,len(qid)):
             sum_w += sum(weigths[q2][0:c[q2]])
-        print(f"\nQID : {qid}, lvl of generalization : {c}, number of suppression : {count_supp}, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k without suppression = {check_ano(df,qid)}")
+        print(f"\nQID : {qid}, lvl of generalization : {c}, number of suppression : {count_supp}, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k before suppression = {check_ano(df,qid)}")
         cost.append(count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w)
         if(count_supp == 0):
             ok = c
@@ -73,8 +75,8 @@ def algo(df_init,qid,max_gen,weigths,k):
 
 
 df = read_file("test_algo/data/complete_data_test.csv",",")
-qid = ["zip","age"]
-max_gen = [2,2]
-weigths = [[2,3],[3,4]]
-k = 10
+qid = ["zip","age","illness"]
+max_gen = [2,2,1]
+weigths = [[2,3],[3,4],[6]]
+k = 7
 algo(df,qid,max_gen,weigths,k)

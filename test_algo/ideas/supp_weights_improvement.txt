@@ -1,0 +1,6 @@
+Datafly : generalize qid with most distinct value (https://link.springer.com/content/pdf/10.1007/s00778-006-0008-z.pdf)
+Incognito : test rapidity of QID to converge to k (https://www.profsandhu.com/cs6393_s13/p49-lefevre_2005.pdf)
+Samarati : binary search based on distance graph (http://www.sti.uniurb.it/events/fosad08/slides/samarati-2.pdf)
+Top-Down Specialization : top-down search replacing the criteria by cost suppr/weights (https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1410123)
+
+--> add l-diversity test?
