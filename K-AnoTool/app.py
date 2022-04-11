@@ -67,6 +67,7 @@ def render_result():
             txt = input+header
             app.config[txt] = request.form.get(txt)
     app.config['inputk'] = request.form.get('inputk')
+    app.config['inputmaxsupp'] = request.form.get('inputmaxsupp')
     return redirect(url_for("result.result_page"))
 
 @app.route("/result/", methods=['POST'])

@@ -1,7 +1,23 @@
 from numpy import NaN
 import pandas as pd
-import samarati_lattice
-from samarati_lattice import create_lattice
+
+def create_lattice(max_gen):
+    current = [tuple(len(max_gen)*[0])]
+    tree = []
+    while current != []:
+        tree.append(current) 
+        copy = current
+        next_lvl = []
+        for elem in range(len(copy)):
+            l = list(copy[elem])
+            for i in range(len(l)):
+                new_l = l.copy()
+                new_l[i] += 1
+                if(new_l[i] <= max_gen[i]):
+                    if(tuple(new_l) not in next_lvl):
+                        next_lvl.append(tuple(new_l))  
+        current = next_lvl
+    return tree
 
 def read_file(path, delim):
     csv = pd.read_csv(path, sep=delim)
@@ -41,9 +57,8 @@ def occu(df,qid):
     return tab_dict
 
 def algo(df_init,qid,max_gen,weigths,k,max_supp):
+    print(max_supp)
     list_comb = create_lattice(max_gen)
-    print(list_comb)
-    print("Start")
     list_cost = []
     current_level = [round(len(list_comb)/2)-1]
     stop = False
@@ -55,18 +70,20 @@ def algo(df_init,qid,max_gen,weigths,k,max_supp):
             for q in range(0,len(qid)):
                 df = generalize(df,qid[q],c[q])
             count_supp = 0
-            if(check_ano(df,qid) < k):
+            ano = check_ano(df,qid)
+            if(ano < k):
                 size_class = get_class(df,qid)
                 for s in size_class:
                     if(s < k):
                         count_supp += s
-            if(count_supp/len(df) <= max_supp):
+                ano = k
+            if(count_supp/len(df)*100 <= max_supp):
                 found_no_supp = True
             sum_w = 0
             for q2 in range(0,len(qid)):
                 sum_w += sum(weigths[q2][0:c[q2]])
             print(f"\nQID : {qid}, lattice : {current_level[len(current_level)-1]}, lvl of generalization : {c}, supp : {count_supp/len(df)*100}%, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k before suppression = {check_ano(df,qid)}")
-            cost.append([c,count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w])
+            cost.append([df,c,round(count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w,2),ano,round(count_supp/len(df)*100,2)])
         if(found_no_supp):
             if(len(current_level) == 1):
                 current_level.append(round(len(list_comb)/4)-1)
@@ -87,10 +104,10 @@ def algo(df_init,qid,max_gen,weigths,k,max_supp):
     return list_cost
 
 
-df = read_file("test_algo/data/complete_data_test.csv",",")
-qid = ["age","zip"]
-max_gen = [2,2]
-weigths = [[3,4],[5,6]]
-k = 7
-max_supp = 0.1
-print(algo(df,qid,max_gen,weigths,k,max_supp))
+# df = read_file("test_algo/data/complete_data_test.csv",",")
+# qid = ["age","zip"]
+# max_gen = [2,2]
+# weigths = [[3,4],[5,6]]
+# k = 7
+# max_supp = 0.1
+# print(algo(df,qid,max_gen,weigths,k,max_supp))

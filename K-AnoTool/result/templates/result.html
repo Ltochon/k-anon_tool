@@ -5,17 +5,28 @@
 {% endblock %}
 
 {% block body %}
+<script>
+    console.log('{{suppr}}')
+    var all_comb = '{{comb|tojson}}';
+    all_comb = all_comb.replace(']]','').replace('[[','').split('], [')
+    var all_ano = '{{k|tojson}}';
+    all_ano = all_ano.replace(']','').replace('[','').split(', ')
+    var all_suppr = '{{suppr|tojson}}';
+    all_suppr = all_suppr.replace(']','').replace('[','').split(', ')
+    var all_cost = '{{cost|tojson}}';
+    all_cost = all_cost.replace(']','').replace('[','').split(', ')
+</script>
 <h1 style="text-align: center; font-family: sans-serif; margin-top : 20px;">My Anonymized Datas</h1>
-<h5 style="color: red; text-align: center;">This dataset is {{k}}-anonyme</h5>
+<h5 id = "ano" style="color: red; text-align: center;">This dataset is {{k[0]}}-anonyme</h5>
 <form method="POST" action="" enctype="multipart/form-data">
-    <div class = "table-wrapper" style="text-align: center; margin-top: 3%;">
+    <div class = "table-wrapper" style="text-align: center; margin-top: 1%;">
         <table class="table table-hover table-bordered firsttable" style="border: solid 1px;">
             <tr>
-                {% for header in df.columns %}
+                {% for header in df[0].head(50).columns %}
                     <th>{{header}}</th>
                 {% endfor %}
             </tr>
-            {%for row in df.values%}
+            {%for row in df[0].head(50).values%}
                 <tr>
                 {%for cell in row%}
                     <td>{{cell}}</td>
@@ -24,8 +35,26 @@
             {%endfor%}
         </table>
     </div>
+    <div class = "infos" style="margin-top: 1%">
+        <div style="float: left; width: 10%; text-align: center;">
+            <div id = "previous" onclick="previous()"><</div>
+            <span id = "previoustxt" style="font-size: small;">Previous</span>
+        </div>
+        <div style="float: left; width: 80%;">
+            <h4 id = "infosol" style="text-align: center;">Informations about the solution 1</h4>
+            <h6 style="color: black; text-align: center;">Generalization levels : <span id = "comb" style="color: red;">{{comb[0]}}</span></h6>
+            <h6 style="color: black; text-align: center;">Percentage of suppression : <span id = "suppr" style="color: red;">{{suppr[0]}}%</span></h6>
+            <h6 style="color: black; text-align: center;">Total cost : <span id = "cost" style="color: red;">{{cost[0]}}</span></h6>
+        </div>
+        <div style="float: left; width: 10%; text-align: center;">
+            <div id="next" onclick="next();">></div>
+            <span id="nexttxt" style="font-size: small;">Next</span>
+        </div>
+        <br style="clear: left;" />
+    </div>
     <div style="text-align: center;">
-        <input type="submit" value="Download CSV Anonymized" class = "submit" style="margin-top: 3%">
+        <input type="submit" value="Download CSV Anonymized" class = "submit" style="margin-top: 1%">
     </div>
 </form>
+<script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}

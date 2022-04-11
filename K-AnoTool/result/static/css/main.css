@@ -11,6 +11,12 @@ body {
   margin-left: auto;
 }
 
+.infos{
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .table-wrapper th{
   position: sticky;
   top: 0;
