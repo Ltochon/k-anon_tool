@@ -6,3 +6,4 @@ Samarati : binary search based on distance graph (http://www.sti.uniurb.it/event
 Top-Down Specialization : top-down search replacing the criteria by cost suppr/weights (https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1410123)
 
 --> add l-diversity test?
+--> ajout d'un param MaxSupp?
