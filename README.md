@@ -24,11 +24,11 @@
 
 ## Arborescence des fichiers
 
-Les fichiers omis sont des fichiers internes aux programmes utilisés et ne devraient pas être modifiés.
+Omitted files are not required to understand the project.
 
 ```C
 📦k-ano_Tool
- ┣ 📂.github\workflows //First Flask project to gain knowledge
+ ┣ 📂.github\workflows //Configuration folder
  ┃ ┗ 📜python-app.yml //test environnement properties
  ┣ 📂Flask project //First Flask project to gain knowledge
  ┣ 📂K-anoTool //Flask project with the anonimization tool
@@ -41,14 +41,17 @@ Les fichiers omis sont des fichiers internes aux programmes utilisés et ne devr
  ┃ ┗ 📜app.py //launch project file
  ┣ 📂Presentation //Folder with powerpoint for meetings
  ┣ 📂Prototyping //Folder with prototypes of generalizytion interface
- ┣ 📂Sources //Folder to save sources that have been used
  ┣ 📂Test_algo //Algorithm's development folder
  ┃ ┣ 📂data
- ┃ ┣ 📂yed //Folder containing algorithm's graph
+ ┃ ┣ 📂ideas //Ideas for improving algorithms
+ ┃ ┣ 📂yed //Folder containing algorithm's graph 
+ ┃ ┣ 📜datafly_v1_weighted.py //Proposal of datafly algorithm with weighted attributes
+ ┃ ┣ 📜datafly_v1.py //Basic datafly algorithm
  ┃ ┣ 📜incognito_v1.py //First try with incognito algorithm
  ┃ ┣ 📜mondarian.py //Open Source Code for mondarian algorithm
- ┃ ┣ 📜datafly_v1.py //Basic datafly algorithm
- ┃ ┗ 📜datafly_v1_weighted.py //Proposal of datafly algorithm with weighted attributes
+ ┃ ┣ 📜samarati_tree.py //File to generate the distance matrix lattice for samarati algorithm
+ ┃ ┣ 📜sw.py //Original proposal algorithm to include weights
+ ┃ ┗ 📜ssw.py //Suppr_weighted_algo combined with samarati
  ┣ 📜test.py //test file
  ┣ 📜LICENSE
  ┗ 📜README.md
@@ -60,7 +63,9 @@ The main goal of this project is to provide an anonymization tool to k-anonymize
 
 ## Description of the project
 
-The algorithm called *Datafly* is an algorithm for providing anonymity in medical data [[1](https://en.wikipedia.org/wiki/Datafly_algorithm)] and is computationally efficient (and practicaly implementable) [[2](http://www.mathcs.emory.edu/~lxiong/cs573_s12/share/slides/03anonymity_generalization.pdf)]. This algorithm is based on a greedy approach and global generalization with tuples suppression [[3](http://www.tdp.cat/issues11/tdp.a100a12.pdf)] [[4](https://kanonymity.github.io/ola.pdf)]. The goal will be to use this algorithm to provide k-anonymity of a dataset by incorporating weights on the attributes to evaluate the importance of each one of them. Indeed, the main purpose of this project is to allow the user to choose which one of the different attributes must be generalized first and on the opposite side, which one must not be generalized. 
+*TO DO : Presentation of algorithm*
+
+The goal will be to use this algorithm to provide k-anonymity of a dataset by incorporating weights on the attributes to evaluate the importance of each one of them. Indeed, the main purpose of this project is to allow the user to choose which one of the different attributes must be generalized first and on the opposite side, which one must not be generalized. 
 
 This anonymization algorithm will be deployed on a web application written in Python through the framework *Flask*. 
 
@@ -72,16 +77,16 @@ This project will focus on the medical domain to handle a single use case and go
 
 ## The algorithms
 
-### Datafly
+### SW (Proposal)
 
 <p align="center">
-  <img src="test_algo/yed/datafly.png" alt="Datafly Algorithm"/>
+  <img src="test_algo/yed/supp_weight.bmp" alt="SW Algorithm"/>
 </p>
 
-### Datafly-weighted (Proposal)
+### SSW (Proposal)
 
 <p align="center">
-  <img src="test_algo/yed/datafly_weighted.png" alt="Datafly-weighted Algorithm"/>
+  <img src="test_algo/yed/supp_weight+Samarati.bmp" alt="SSW Algorithm"/>
 </p>
 
 ## Milestones
