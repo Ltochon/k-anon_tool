@@ -75,8 +75,8 @@ def algo(df_init,qid,max_gen,weigths,k):
 
 
 df = read_file("test_algo/data/complete_data_test.csv",",")
-qid = ["zip","age","illness"]
-max_gen = [2,2,1]
-weigths = [[2,3],[3,4],[6]]
+qid = ["age","illness"]
+max_gen = [2,1]
+weigths = [[3,4],[6]]
 k = 7
 algo(df,qid,max_gen,weigths,k)

@@ -9,7 +9,7 @@ illness = cancer_illness + sexual_illness
 ill, ill2, ill3 = [],[],[]
 age, age2, age3 = [],[],[]
 zip_list,canton_list,pays_list = [],[],[]
-for x in range(200):
+for x in range(500):
     e = randint(0,len(zip)-1)
     a = randint(10,50)
     i = randint(0,len(illness)-1)
