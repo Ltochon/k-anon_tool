@@ -80,13 +80,13 @@ This project will focus on the medical domain to handle a single use case and go
 ### SW (Proposal)
 
 <p align="center">
-  <img src="test_algo/yed/supp_weight.bmp" alt="SW Algorithm"/>
+  <img src="test_algo/yed/supp_weight.svg" alt="SW Algorithm"/>
 </p>
 
 ### SSW (Proposal)
 
 <p align="center">
-  <img src="test_algo/yed/supp_weight+Samarati.bmp" alt="SSW Algorithm"/>
+  <img src="test_algo/yed/supp_weight+Samarati.svg" alt="SSW Algorithm"/>
 </p>
 
 ## Milestones
