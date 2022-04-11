@@ -65,7 +65,7 @@ def algo(df_init,qid,max_gen,weigths,k,max_supp):
             sum_w = 0
             for q2 in range(0,len(qid)):
                 sum_w += sum(weigths[q2][0:c[q2]])
-            print(f"\nQID : {qid}, lvl in lattice : {current_level[len(current_level)-1]}, lvl of generalization : {c}, number of suppression : {count_supp}, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k before suppression = {check_ano(df,qid)}")
+            print(f"\nQID : {qid}, lattice : {current_level[len(current_level)-1]}, lvl of generalization : {c}, supp : {count_supp/len(df)*100}%, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k before suppression = {check_ano(df,qid)}")
             cost.append([c,count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w])
         if(found_no_supp):
             if(len(current_level) == 1):

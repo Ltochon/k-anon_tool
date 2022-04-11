@@ -2,7 +2,7 @@ import sys
 import json
 from operator import itemgetter 
 from flask import Blueprint, Response, current_app, render_template
-sys.path.append('./')
+sys.path.append('../')
 from test_algo.datafly_v1_weighted import run
 
 result = Blueprint("result", __name__, static_folder="static", template_folder="templates")
