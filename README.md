@@ -139,3 +139,11 @@ Schema of core's principles of Datafly [10.03] : https://www.researchgate.net/pu
 Distortion calcul with weighted attributes [15.03] : https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=4606080
 
 Anonymization by Local Recoding in Data with Attribute Hierarchical Taxonomies (Article)[22.03]
+
+Datafly [4.4]: https://link.springer.com/content/pdf/10.1007/s00778-006-0008-z.pdf)
+
+Incognito [4.4] : https://www.profsandhu.com/cs6393_s13/p49-lefevre_2005.pdf
+
+Samarati [4.4] : http://www.sti.uniurb.it/events/fosad08/slides/samarati-2.pdf
+
+Top-Down Specialization [4.4] : https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=1410123

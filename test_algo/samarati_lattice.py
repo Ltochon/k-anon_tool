@@ -1,4 +1,4 @@
-def samarati_tree(max_gen):
+def create_lattice(max_gen):
     current = [tuple(len(max_gen)*[0])]
     tree = []
     while current != []:
@@ -16,4 +16,4 @@ def samarati_tree(max_gen):
         current = next_lvl
     return tree
 
-print(samarati_tree([3,2]))
+#print(samarati_tree([3,2]))
