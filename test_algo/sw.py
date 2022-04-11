@@ -64,6 +64,7 @@ def algo(df_init,qid,max_gen,weigths,k):
         sum_w = 0
         for q2 in range(0,len(qid)):
             sum_w += sum(weigths[q2][0:c[q2]])
+        print(len(df))
         print(f"\nQID : {qid}, lvl of generalization : {c}, number of suppression : {count_supp}, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k before suppression = {check_ano(df,qid)}")
         cost.append(count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w)
         if(count_supp == 0):
@@ -75,8 +76,8 @@ def algo(df_init,qid,max_gen,weigths,k):
 
 
 df = read_file("test_algo/data/complete_data_test.csv",",")
-qid = ["age","illness"]
-max_gen = [2,1]
-weigths = [[3,4],[6]]
+qid = ["age","zip"]
+max_gen = [2,2]
+weigths = [[3,4],[5,6]]
 k = 7
 algo(df,qid,max_gen,weigths,k)

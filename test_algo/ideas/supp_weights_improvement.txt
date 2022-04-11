@@ -7,3 +7,7 @@ Top-Down Specialization : top-down search replacing the criteria by cost suppr/w
 
 --> add l-diversity test?
 --> ajout d'un param MaxSupp?
+
+--> detailler schémas
+--> indications complex
+--> contreexpemple samara
