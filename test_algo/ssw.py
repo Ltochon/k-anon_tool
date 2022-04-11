@@ -40,15 +40,16 @@ def occu(df,qid):
         tab_dict.append(dict(zip(index_tab,occu_tab)))
     return tab_dict
 
-def algo(df_init,qid,max_gen,weigths,k):
+def algo(df_init,qid,max_gen,weigths,k,max_supp):
     list_comb = create_lattice(max_gen)
     print(list_comb)
     print("Start")
-    cost = []
+    list_cost = []
     current_level = [round(len(list_comb)/2)-1]
     stop = False
     while not stop:
         found_no_supp = False
+        cost = []
         for c in list_comb[current_level[len(current_level)-1]]:
             df = df_init.copy()
             for q in range(0,len(qid)):
@@ -59,12 +60,11 @@ def algo(df_init,qid,max_gen,weigths,k):
                 for s in size_class:
                     if(s < k):
                         count_supp += s
-            if(count_supp == 0):
+            if(count_supp/len(df) <= max_supp):
                 found_no_supp = True
             sum_w = 0
             for q2 in range(0,len(qid)):
                 sum_w += sum(weigths[q2][0:c[q2]])
-            print(len(df))
             print(f"\nQID : {qid}, lvl in lattice : {current_level[len(current_level)-1]}, lvl of generalization : {c}, number of suppression : {count_supp}, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k before suppression = {check_ano(df,qid)}")
             cost.append([c,count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w])
         if(found_no_supp):
@@ -83,7 +83,8 @@ def algo(df_init,qid,max_gen,weigths,k):
                     current_level.append((current_level[len(current_level)-1] + current_level[len(current_level)-1])/2)
                 else:
                     stop = True
-    return cost
+        list_cost.append(cost)
+    return list_cost
 
 
 df = read_file("test_algo/data/complete_data_test.csv",",")
@@ -91,4 +92,5 @@ qid = ["age","zip"]
 max_gen = [2,2]
 weigths = [[3,4],[5,6]]
 k = 7
-print(algo(df,qid,max_gen,weigths,k))
+max_supp = 0.1
+print(algo(df,qid,max_gen,weigths,k,max_supp))
