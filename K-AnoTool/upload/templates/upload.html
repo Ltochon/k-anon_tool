@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
-
 {% block head %}
-
 {% endblock %}
-
 {% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 <h1 style="text-align: center; font-family: sans-serif; margin-top : 20px;">My Datas</h1>
 <div class = "table-wrapper" style="text-align: center;">
     <table class="table table-hover table-bordered firsttable" style="border: solid 1px;">

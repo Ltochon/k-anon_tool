@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block body %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 <h1 style="text-align: center; font-family: sans-serif; margin-top : 60px;">Upload your CSV file</h1>
 <h5 style="text-align: center; color: red;">Only .csv files can be uploaded</h5>
 <form method="POST" action="" enctype="multipart/form-data" class="selectfile">

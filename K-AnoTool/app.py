@@ -39,16 +39,21 @@ def about():
 # Get the uploaded files
 @app.route("/", methods=['POST'])
 def uploadFiles():
-      # get the uploaded file
-      uploaded_file = request.files['file']
-      if uploaded_file.filename != '':
-          basedir = os.path.abspath(os.path.dirname(__file__))
-          file_path = os.path.join(basedir, app.config['UPLOAD_FOLDER'], uploaded_file.filename).replace("\\","/")
-          # set the file path
-          uploaded_file.save(file_path)
-          print_csv(file_path)
-          # save the file
-      return print_csv(file_path)
+
+    # get the uploaded file
+    print(request.files['file'],sys.stderr)
+    if(request.files['file'].filename != ''):
+        uploaded_file = request.files['file']
+        basedir = os.path.abspath(os.path.dirname(__file__))
+        file_path = os.path.join(basedir, app.config['UPLOAD_FOLDER'], uploaded_file.filename).replace("\\","/")
+        # set the file path
+        uploaded_file.save(file_path)
+        print_csv(file_path)
+        # save the file
+        return print_csv(file_path)
+    else:
+        flash("Please enter a valid file")
+        return index()
 
 def print_csv(path):
     with open(path, 'r') as csvfile:
@@ -63,13 +68,20 @@ def render_upload(data):
 @app.route("/upload/", methods=['POST'])
 def render_result():
     data = current_app.config['data']
-    inputs = ["level_","checkbox_","type_"]
+    inputs = ["checkbox_","type_"]
     for header in data.columns:
         for input in inputs:
             txt = input+header
             app.config[txt] = request.form.get(txt)
-    app.config['inputk'] = request.form.get('inputk')
-    app.config['inputmaxsupp'] = request.form.get('inputmaxsupp')
+    if(request.form.get('inputk') == '' or int(request.form.get('inputk')) < 1):
+        flash("Please enter a valid k")
+        return render_upload(data)
+    elif(request.form.get('inputmaxsupp') == '' or int(request.form.get('inputmaxsupp')) < 0 or int(request.form.get('inputmaxsupp')) > 100):
+        flash("Please enter a valid suppression percentage")
+        return render_upload(data)
+    else:
+        app.config['inputk'] = request.form.get('inputk')
+        app.config['inputmaxsupp'] = request.form.get('inputmaxsupp')
     return redirect(url_for("result.result_page"))
 
 @app.route("/result/", methods=['POST'])
