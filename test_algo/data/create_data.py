@@ -40,10 +40,10 @@ for x in range(500):
         age3.append("<30")
     elif(a < 40):
         age2.append("<40")
-        age3.append(">=40")
+        age3.append(">=30")
     else:
         age2.append(">=40")
-        age3.append(">=40")
+        age3.append(">=30")
     
     canton_list.append(canton)
     pays_list.append(pays)

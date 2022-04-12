@@ -8,9 +8,11 @@ from flask import Flask, current_app, make_response, redirect, render_template, 
 from upload.upload import upload
 from result.result import result
 from about.about import about
+from generalization.generalization import generalization
 
 
 app = Flask(__name__)
+app.register_blueprint(generalization, url_prefix = "/generalization")
 app.register_blueprint(upload, url_prefix = "/upload")
 app.register_blueprint(result, url_prefix = "/result")
 app.register_blueprint(about, url_prefix = "/about")
@@ -35,6 +37,10 @@ def about():
      # Set The upload HTML template '\templates\csv.html'
     return redirect(url_for("about.about_page"))
 
+@app.route('/generalization/')
+def generalization():
+     # Set The upload HTML template '\templates\csv.html'
+    return redirect(url_for("generalization.generalization_page"))
 
 # Get the uploaded files
 @app.route("/", methods=['POST'])
