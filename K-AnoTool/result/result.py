@@ -1,7 +1,6 @@
 import sys
-import json
 from operator import itemgetter 
-from flask import Blueprint, Response, current_app, render_template
+from flask import Blueprint, Response, current_app, render_template, jsonify
 sys.path.append('./')
 from test_algo.ssw import algo
 
@@ -43,12 +42,13 @@ def result_page():
         lastitem = len(list_cost)
     else:
         lastitem = 5
-    df,ano,comb,cost,suppr = [],[],[],[],[]
+    df,dfjson,ano,comb,cost,suppr = [],[],[],[],[],[]
     for j in compute_ano:
-        for i in j:
-            for c in list_cost[0:lastitem]:
+        for c in list_cost[0:lastitem]:
+            for i in j:
                 if(i[2] == c):
                     df.append(i[0])
+                    dfjson.append(i[0].to_json(orient = "split"))
                     ano.append(i[3])
                     comb.append(i[1])
                     cost.append(i[2])
@@ -60,6 +60,6 @@ def result_page():
     current_app.config['comb'] = str(comb)
     current_app.config['cost'] = str(cost)
     current_app.config['suppr'] = str(suppr)
-    return render_template("result.html", df = df, k = ano, comb = comb, cost = cost, suppr = suppr)
+    return render_template("result.html", df = df[0], qid = qid, dfjson = dfjson, k = ano, comb = comb, cost = cost, suppr = suppr)
 
     

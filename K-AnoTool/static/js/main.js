@@ -61,13 +61,23 @@ function getinfos(){
 }
 
 function next(){
-    console.log(all_suppr)
     current_sol++;
+    i = 0;
+    var table = document.getElementById('table');
+    while(i < 50){
+        j = 0;
+        arr = all_df_split[current_sol].split('[')[5+i].replace("],","").split(",")
+        for(elem in arr){
+            table.rows[1+i].cells[j].innerHTML = arr[elem].replace('"','').replace('"','');
+            j++;
+        }
+        i++;
+    }
     document.getElementById("comb").innerHTML = '(' + all_comb[current_sol] + ')'
     document.getElementById("suppr").innerHTML = all_suppr[current_sol] + ' %'
     document.getElementById("cost").innerHTML = all_cost[current_sol]
     document.getElementById("ano").innerHTML = 'This dataset is ' + all_ano[current_sol] + '-anonyme'
-    document.getElementById("infosol").innerHTML = "Informations about the solution " + (current_sol+1).toString()
+    document.getElementById("infosol").innerHTML = (current_sol+1).toString()
     if(current_sol+1 == all_comb.length){
         document.getElementById("next").style.visibility = "hidden";
         document.getElementById("nexttxt").style.visibility = "hidden";
@@ -80,7 +90,18 @@ function next(){
 
 function previous(){
     current_sol--;
-    document.getElementById("infosol").innerHTML = "Informations about the solution " + (current_sol+1).toString()
+    i = 0;
+    var table = document.getElementById('table');
+    while(i < 50){
+        j = 0;
+        arr = all_df_split[current_sol].split('[')[5+i].replace("],","").split(",")
+        for(elem in arr){
+            table.rows[1+i].cells[j].innerHTML = arr[elem].replace('"','').replace('"','');
+            j++;
+        }
+        i++;
+    }
+    document.getElementById("infosol").innerHTML = (current_sol+1).toString()
     document.getElementById("comb").innerHTML = '(' + all_comb[current_sol] + ')'
     document.getElementById("suppr").innerHTML = all_suppr[current_sol] + ' %'
     document.getElementById("cost").innerHTML = all_cost[current_sol]
@@ -97,6 +118,7 @@ function previous(){
 }
 
 var current_sol = 0
+all_df_split = all_df.split(", ")
 document.getElementById("previous").style.visibility = "hidden";
 document.getElementById("previoustxt").style.visibility = "hidden";
 
