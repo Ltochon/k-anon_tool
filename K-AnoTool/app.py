@@ -51,7 +51,9 @@ def uploadFiles():
       return print_csv(file_path)
 
 def print_csv(path):
-    data = pd.read_csv(path, sep=request.form['input_delim'], encoding="ISO-8859-1")
+    with open(path, 'r') as csvfile:
+        dialect = csv.Sniffer().sniff(csvfile.readline())
+    data = pd.read_csv(path, sep=dialect.delimiter, encoding="ISO-8859-1", dtype = str)
     return render_upload(data)
 
 def render_upload(data):
