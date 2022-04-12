@@ -24,7 +24,7 @@
     
 </div>
 <form method="POST" action="" enctype="multipart/form-data">
-    <div style="height: 20em; width: 80%; overflow-y:scroll; margin-top: 20px; margin-left: auto; margin-right: auto; margin-bottom: 10px; text-align: left; padding: 10px; padding-top: 0px;">
+    <div style="height: 20em; width: 60%; overflow-y:scroll; margin-top: 20px; margin-left: auto; margin-right: auto; margin-bottom: 10px; text-align: left; padding: 10px; padding-top: 0px;">
         <div id = "first">
             <p class = "headerchoice entete"><b>Select QIDs</b></p>
             {% for header in headers %}
@@ -42,41 +42,6 @@
                     <div id="div_{{header}}" class="underlinedelem {{color}}" style="padding : 10px;">
                         <input type="checkbox" id={{header}} name="checkbox_{{header}}" class = "checkbox">
                         <label id="l_{{header}}" for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <div id = "second">
-            <p class = "headerchoice entetecache" id="h2"><b>a</b></p>
-            {% for header in headers %}
-                {% if loop.index is divisibleby 2 == 1 %}
-                    {% set color = "white" %}
-                {%else%}
-                    {% set color = "lightgrey" %}
-                {%endif%}
-                {% if header == headers[headers|length -1]%}
-                    <div style="padding : 10px;" class = "{{color}}">
-                        <label id="l2_{{header}}" for={{header}} style="visibility: hidden;">Importance Level : </label>
-                        <select name="level_{{header}}" id="selectimportance_{{header}}" style="width: auto; visibility: hidden;">
-                            <option value="0">--Options--</option>
-                            <option value="1">1 - Very Low</option>
-                            <option value="2">2 - Low</option>
-                            <option value="3">3 - Medium</option>
-                            <option value="4">4 - High</option>
-                            <option value="5">5 - Very High</option>
-                        </select>
-                    </div>
-                {% else %}
-                    <div class="underlinedelem {{color}}" style="padding : 10px;">
-                        <label id="l2_{{header}}" for={{header}} style="visibility: hidden;">Importance Level : </label>
-                        <select name="level_{{header}}" id="selectimportance_{{header}}" style="width: auto; visibility: hidden;">
-                            <option value="0">--Options--</option>
-                            <option value="1">1 - Very Low</option>
-                            <option value="2">2 - Low</option>
-                            <option value="3">3 - Medium</option>
-                            <option value="4">4 - High</option>
-                            <option value="5">5 - Very High</option>
-                        </select>
                     </div>
                 {% endif %}
             {% endfor %}
