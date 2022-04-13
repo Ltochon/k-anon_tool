@@ -10,40 +10,13 @@ function* generateid(){
     yield i;
   } 
 }
+
+let nblvl = 0;
+
 var treeData = [
   {
     "name": "Level 0 : *",
     "parent": "null",
-    "children": [
-      {
-        "name": "Level 1: >= 30",
-        "parent": "Level 0 : *",
-        "children": [
-          {
-            "name": "Level 2 : [30;39]",
-            "parent": "Level 1: >= 30"
-          },
-          {
-            "name": "Level 2 : [40;49]",
-            "parent": "Level 1: >= 30"
-          }
-        ]
-      },
-      {
-        "name": "Level 1: <30",
-        "parent": "Level 0 : *",
-        "children": [
-          {
-            "name": "Level 2 : [20;29]",
-            "parent": "Level 1: < 30"
-          },
-          {
-            "name": "Level 2 : [10;19]",
-            "parent": "Level 1: < 30"
-          }
-        ]
-      }
-    ]
   }
 ];
 
@@ -59,7 +32,6 @@ var i = 0,
 
 var tree = d3.layout.tree()
 	.size([height, width]);
-
 var diagonal = d3.svg.diagonal()
 	.projection(function(d) { return [d.y, d.x]; });
 
@@ -70,25 +42,36 @@ var svg = d3.select("body").append("svg")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 document.body.addEventListener("contextmenu",(e) =>{e.preventDefault()})
+
 root = treeData[0];
 root.x0 = height / 2;
 root.y0 = 0;
 
 var gen = generateid();
-console.log(gen.next().value)
-
 update(root);
 
 d3.select(self.frameElement).style("height", "500px");
 
 function update(source) {
-
   // Compute the new tree layout.
   var nodes = tree.nodes(root).reverse(),
 	  links = tree.links(nodes);
-
   // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 180; });
+  let tabdepth = [];
+  nodes.forEach(function(d) { d.y = d.depth * 100; tabdepth.push(d.depth);});
+
+  //remove labal and inputs
+  if(Math.max(...tabdepth) < nblvl){
+    while(nblvl > Math.max(...tabdepth)){
+      nblvl--;
+      let lbltoremove = document.getElementById("lbl" + nblvl.toString());
+      let inptoremove = document.getElementById("inp" + nblvl.toString());
+      let d = document.getElementById("inplvl");
+      d.removeChild(lbltoremove);
+      d.removeChild(inptoremove);
+    }
+    
+  }
 
   // Update the nodes…
   var node = svg.selectAll("g.node")
@@ -145,13 +128,13 @@ function update(source) {
 	  .attr("d", function(d) {
 		var o = {x: source.x0, y: source.y0};
 		return diagonal({source: o, target: o});
-	  });
-
+	  })
+  
   // Transition links to their new position.
   link.transition()
 	  .duration(duration)
 	  .attr("d", diagonal);
-
+  
   // Transition exiting nodes to the parent's new position.
   link.exit().transition()
 	  .duration(duration)
@@ -160,6 +143,7 @@ function update(source) {
 		return diagonal({source: o, target: o});
 	  })
 	  .remove();
+  
 
   // Stash the old positions for transition.
   nodes.forEach(function(d) {
@@ -178,13 +162,26 @@ document.onmousemove = function(event) {
 }
 
 function add(){
+  if(parseInt(d_copy.depth) + 1 > nblvl){
+    nblvl++;
+    let lab = document.createElement("label");
+    lab.classList.add("labellvl");
+    lab.setAttribute("id","lbl" + (nblvl-1).toString());
+    lab.innerHTML = "Level " + (nblvl-1).toString() + " to " + (nblvl).toString();
+    let inp = document.createElement("input");
+    inp.type = "number";
+    inp.classList.add("inputlvl");
+    inp.setAttribute("id","inp" + (nblvl-1).toString())
+    document.getElementById("inplvl").appendChild(lab);
+    document.getElementById("inplvl").appendChild(inp);
+  }
   if(d_copy["children"] == undefined){
-    d_copy["children"] = [{"name": "Level "+ (parseInt(d_copy.depth) + 1).toString() +" : [30;39]",
+    d_copy["children"] = [{"name": "Level "+ (parseInt(d_copy.depth) + 1).toString(),
             "parent": "Level 1: >= 30"}]
   }
   else{
     d_copy.children.push({
-              "name": "Level "+ (parseInt(d_copy.depth) + 1).toString() +" : [30;39]",
+              "name": "Level "+ (parseInt(d_copy.depth) + 1).toString(),
               "parent": "Level 1: >= 30"
             });
   }
@@ -237,17 +234,11 @@ function click(d) {
   <div style="text-align: center;">
     <p id="qid" style="font-weight: bold; font-size: large; color : green;">a</p>
   </div>
-  <div style="border: solid black 2px; padding: 1em;">
+  <div id = "inplvl" style="border: solid black 2px; padding: 1em;">
     <div style="text-align: center; font-weight: bold; color: black;">
         <span>Level's weights</span>
         <br>
     </div>
-    <label for="" class="labellvl">Level 0 : </label>
-    <input type="number" class="inputlvl">
-    <label for="" class="labellvl">Level 1 : </label>
-    <input type="number" class="inputlvl">
-    <label for="" class="labellvl">Level 2 : </label>
-    <input type="number" class="inputlvl">
   </div>
 </div>
 
