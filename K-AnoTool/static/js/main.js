@@ -1,5 +1,4 @@
 function ischecked(evt){
-    console.log(cmpt_check)
     var visible = "";
     if(document.getElementById(evt.currentTarget.myParam).checked){
         visible = "visible"
@@ -39,7 +38,6 @@ for(i = 0; i < headers.length; i++){
 }
 
 for (let i = 0; i < tab_headers.length; i++) {
-    console.log(tab_headers[i])
     obj = document.getElementById(tab_headers[i]);
     obj.addEventListener("click", ischecked, false);
     obj.myParam = tab_headers[i]
@@ -110,5 +108,10 @@ var current_sol = 0
 all_df_split = all_df.split(", ")
 document.getElementById("previous").style.visibility = "hidden";
 document.getElementById("previoustxt").style.visibility = "hidden";
+
+function gotohiera(clicked_id){
+    localStorage.setItem("qid",clicked_id);
+    document.location.href = "http://127.0.0.1:5000/generalization/";
+}
 
 

@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 {% block body %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-	
+
 <script>
+function* generateid(){
+  let i = 0;
+  while(true){
+    i++;
+    yield i;
+  } 
+}
+
 
 var treeData = [
   {
@@ -63,10 +71,14 @@ var svg = d3.select("body").append("svg")
   .append("g")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  document.body.addEventListener("contextmenu",(e) =>{e.preventDefault()})
 root = treeData[0];
 root.x0 = height / 2;
 root.y0 = 0;
-  
+
+var gen = generateid();
+console.log(gen.next().value)
+
 update(root);
 
 d3.select(self.frameElement).style("height", "500px");
@@ -82,13 +94,17 @@ function update(source) {
 
   // Update the nodes…
   var node = svg.selectAll("g.node")
-	  .data(nodes, function(d) { return d.id || (d.id = ++i); });
+	  .data(nodes, function(d) { return d.id || (d.id = ++i); })
 
   // Enter any new nodes at the parent's previous position.
   var nodeEnter = node.enter().append("g")
 	  .attr("class", "node")
 	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-	  .on("click", click);
+	  .on("click", click)
+    .on("contextmenu",(e) => {console.log(e.children); e.children.push({
+            "name": "Level 2 : [30;39]",
+            "parent": "Level 1: >= 30"
+          });update(e)})
 
   nodeEnter.append("circle")
 	  .attr("r", 1e-6)
@@ -160,6 +176,7 @@ function update(source) {
 
 // Toggle children on click.
 function click(d) {
+  console.log(d)
   if (d.children) {
 	d._children = d.children;
 	d.children = null;
@@ -171,8 +188,11 @@ function click(d) {
 }
 
 </script>
-
-<div style="border: solid black 2px; float : right; width: 20%; margin-top: 1em; margin-right: 1em; padding: 1em;">
+<div style="float : right; width: 20%; margin-top: 1em; margin-right: 1em;">
+  <div>
+    <span id="qid">a</span>
+  </div>
+  <div style="border: solid black 2px; padding: 1em;">
     <div style="text-align: center; font-weight: bold; color: red;">
         <span>Level's weights</span>
     </div>
@@ -182,6 +202,12 @@ function click(d) {
     <input type="number" class="inputlvl">
     <label for="" class="labellvl">Level 2 : </label>
     <input type="number" class="inputlvl">
+  </div>
 </div>
+
+<script>
+  window.onload = alert(localStorage.getItem("storageName"));
+  document.getElementById("qid").innerHTML = localStorage.getItem("qid");
+</script>
 
 {%endblock%}

@@ -91,11 +91,11 @@
                 {%endif%}
                 {% if header == headers[headers|length -1]%}
                     <div class="{{color}}" style="padding : 10px; height: 45px; text-align: center;">
-                        <button id="hiera_{{header}}" class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold; visibility: hidden;" >Edit Hierarchy</button>
+                        <button id="hiera_{{header}}" type="button" class="btnhiera" onclick="gotohiera(this.id)" style="font-size: small; font-family: sans-serif; font-weight: bold; visibility: hidden;" >Edit Hierarchy</button>
                     </div>
                 {% else %}
                     <div class="underlinedelem {{color}}" style="padding : 10px; height: 45px; text-align: center;">
-                        <button id="hiera_{{header}}" class="btnhiera" style="font-size: small; font-family: sans-serif; font-weight: bold; visibility: hidden;">Edit Hierarchy</button>  
+                        <button id="hiera_{{header}}" type="button" class="btnhiera" onclick="gotohiera(this.id)" style="font-size: small; font-family: sans-serif; font-weight: bold; visibility: hidden;">Edit Hierarchy</button>  
                     </div>
                 {% endif %}
             {% endfor %}

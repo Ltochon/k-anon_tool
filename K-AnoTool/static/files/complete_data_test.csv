@@ -1,501 +1,501 @@
-id,zip,canton,pays,age,age_dizaine,age_split,illness,general_illness
-0,1202,GE,CH,49,>=40,>=40,AIDS,std
-1,1204,GE,CH,28,<30,<30,Syphilis,std
-2,02,Aisne,FR,39,<40,>=40,Chlamyida,std
-3,1203,GE,CH,44,>=40,>=40,HIV,std
-4,1002,VD,CH,18,<20,<30,Kidney cancer,Cancer illness
-5,1002,VD,CH,15,<20,<30,Syphilis,std
-6,02,Aisne,FR,50,>=40,>=40,Breast Cancer,Cancer illness
-7,01,Ain,FR,12,<20,<30,Lung cancer,Cancer illness
-8,1004,VD,CH,29,<30,<30,Breast Cancer,Cancer illness
-9,02,Aisne,FR,28,<30,<30,Syphilis,std
-10,1004,VD,CH,15,<20,<30,Syphilis,std
-11,01,Ain,FR,43,>=40,>=40,Breast Cancer,Cancer illness
-12,1203,GE,CH,12,<20,<30,HIV,std
-13,1001,VD,CH,44,>=40,>=40,Syphilis,std
-14,1001,VD,CH,22,<30,<30,VIH,Cancer illness
-15,02,Aisne,FR,26,<30,<30,Lung cancer,Cancer illness
-16,02,Aisne,FR,23,<30,<30,AIDS,std
-17,1202,GE,CH,35,<40,>=40,Syphilis,std
-18,01,Ain,FR,29,<30,<30,HIV,std
-19,1202,GE,CH,21,<30,<30,VIH,Cancer illness
-20,02,Aisne,FR,43,>=40,>=40,HIV,std
-21,1201,GE,CH,26,<30,<30,Lung cancer,Cancer illness
-22,1003,VD,CH,17,<20,<30,Bladder cancer,Cancer illness
-23,01,Ain,FR,38,<40,>=40,VIH,Cancer illness
-24,1204,GE,CH,29,<30,<30,AIDS,std
-25,1004,VD,CH,22,<30,<30,Lung cancer,Cancer illness
-26,02,Aisne,FR,13,<20,<30,Colorectal cancer,Cancer illness
-27,01,Ain,FR,25,<30,<30,Colorectal cancer,Cancer illness
-28,1003,VD,CH,43,>=40,>=40,VIH,Cancer illness
-29,1002,VD,CH,18,<20,<30,Colorectal cancer,Cancer illness
-30,01,Ain,FR,38,<40,>=40,Breast Cancer,Cancer illness
-31,01,Ain,FR,46,>=40,>=40,Breast Cancer,Cancer illness
-32,1002,VD,CH,17,<20,<30,AIDS,std
-33,01,Ain,FR,27,<30,<30,Syphilis,std
-34,01,Ain,FR,41,>=40,>=40,Breast Cancer,Cancer illness
-35,1003,VD,CH,22,<30,<30,Bladder cancer,Cancer illness
-36,1001,VD,CH,14,<20,<30,Kidney cancer,Cancer illness
-37,1002,VD,CH,40,>=40,>=40,Lung cancer,Cancer illness
-38,1201,GE,CH,43,>=40,>=40,Colorectal cancer,Cancer illness
-39,1002,VD,CH,50,>=40,>=40,AIDS,std
-40,01,Ain,FR,23,<30,<30,Colorectal cancer,Cancer illness
-41,01,Ain,FR,35,<40,>=40,Lung cancer,Cancer illness
-42,1202,GE,CH,16,<20,<30,Bladder cancer,Cancer illness
-43,1203,GE,CH,20,<30,<30,VIH,Cancer illness
-44,01,Ain,FR,41,>=40,>=40,Syphilis,std
-45,1001,VD,CH,50,>=40,>=40,Lung cancer,Cancer illness
-46,02,Aisne,FR,16,<20,<30,Colorectal cancer,Cancer illness
-47,01,Ain,FR,32,<40,>=40,Kidney cancer,Cancer illness
-48,02,Aisne,FR,31,<40,>=40,VIH,Cancer illness
-49,1204,GE,CH,41,>=40,>=40,HIV,std
-50,01,Ain,FR,49,>=40,>=40,AIDS,std
-51,1202,GE,CH,23,<30,<30,Chlamyida,std
-52,02,Aisne,FR,11,<20,<30,Chlamyida,std
-53,1002,VD,CH,21,<30,<30,HIV,std
-54,1201,GE,CH,40,>=40,>=40,Colorectal cancer,Cancer illness
-55,01,Ain,FR,15,<20,<30,HIV,std
-56,01,Ain,FR,26,<30,<30,Breast Cancer,Cancer illness
-57,1203,GE,CH,38,<40,>=40,Colorectal cancer,Cancer illness
-58,02,Aisne,FR,29,<30,<30,Colorectal cancer,Cancer illness
-59,02,Aisne,FR,32,<40,>=40,Kidney cancer,Cancer illness
-60,1203,GE,CH,29,<30,<30,Breast Cancer,Cancer illness
-61,02,Aisne,FR,20,<30,<30,Syphilis,std
-62,1202,GE,CH,27,<30,<30,Breast Cancer,Cancer illness
-63,01,Ain,FR,28,<30,<30,Colorectal cancer,Cancer illness
-64,1204,GE,CH,29,<30,<30,Lung cancer,Cancer illness
-65,01,Ain,FR,16,<20,<30,Breast Cancer,Cancer illness
-66,1001,VD,CH,24,<30,<30,AIDS,std
-67,02,Aisne,FR,18,<20,<30,Bladder cancer,Cancer illness
-68,1201,GE,CH,32,<40,>=40,Kidney cancer,Cancer illness
-69,02,Aisne,FR,28,<30,<30,Kidney cancer,Cancer illness
-70,01,Ain,FR,18,<20,<30,Bladder cancer,Cancer illness
-71,02,Aisne,FR,38,<40,>=40,VIH,Cancer illness
-72,1002,VD,CH,38,<40,>=40,Kidney cancer,Cancer illness
-73,1003,VD,CH,35,<40,>=40,HIV,std
-74,01,Ain,FR,43,>=40,>=40,Bladder cancer,Cancer illness
-75,1004,VD,CH,33,<40,>=40,Breast Cancer,Cancer illness
-76,01,Ain,FR,15,<20,<30,Kidney cancer,Cancer illness
-77,01,Ain,FR,47,>=40,>=40,Bladder cancer,Cancer illness
-78,1001,VD,CH,34,<40,>=40,Colorectal cancer,Cancer illness
-79,1001,VD,CH,21,<30,<30,Lung cancer,Cancer illness
-80,1004,VD,CH,23,<30,<30,VIH,Cancer illness
-81,02,Aisne,FR,49,>=40,>=40,Lung cancer,Cancer illness
-82,02,Aisne,FR,18,<20,<30,Kidney cancer,Cancer illness
-83,02,Aisne,FR,13,<20,<30,AIDS,std
-84,01,Ain,FR,12,<20,<30,Chlamyida,std
-85,1004,VD,CH,44,>=40,>=40,Colorectal cancer,Cancer illness
-86,1003,VD,CH,47,>=40,>=40,Lung cancer,Cancer illness
-87,02,Aisne,FR,22,<30,<30,VIH,Cancer illness
-88,01,Ain,FR,41,>=40,>=40,Syphilis,std
-89,1003,VD,CH,24,<30,<30,Bladder cancer,Cancer illness
-90,02,Aisne,FR,10,<20,<30,Lung cancer,Cancer illness
-91,01,Ain,FR,35,<40,>=40,Kidney cancer,Cancer illness
-92,1002,VD,CH,20,<30,<30,Lung cancer,Cancer illness
-93,02,Aisne,FR,19,<20,<30,Syphilis,std
-94,01,Ain,FR,15,<20,<30,VIH,Cancer illness
-95,02,Aisne,FR,42,>=40,>=40,Lung cancer,Cancer illness
-96,1204,GE,CH,28,<30,<30,HIV,std
-97,01,Ain,FR,19,<20,<30,Colorectal cancer,Cancer illness
-98,01,Ain,FR,29,<30,<30,Colorectal cancer,Cancer illness
-99,01,Ain,FR,40,>=40,>=40,HIV,std
-100,1003,VD,CH,44,>=40,>=40,Lung cancer,Cancer illness
-101,02,Aisne,FR,39,<40,>=40,AIDS,std
-102,02,Aisne,FR,35,<40,>=40,HIV,std
-103,1202,GE,CH,38,<40,>=40,Bladder cancer,Cancer illness
-104,1002,VD,CH,26,<30,<30,HIV,std
-105,01,Ain,FR,11,<20,<30,Chlamyida,std
-106,02,Aisne,FR,48,>=40,>=40,Bladder cancer,Cancer illness
-107,1202,GE,CH,10,<20,<30,Breast Cancer,Cancer illness
-108,1202,GE,CH,35,<40,>=40,AIDS,std
-109,1202,GE,CH,49,>=40,>=40,Bladder cancer,Cancer illness
-110,1201,GE,CH,34,<40,>=40,Colorectal cancer,Cancer illness
-111,1004,VD,CH,45,>=40,>=40,Kidney cancer,Cancer illness
-112,1004,VD,CH,43,>=40,>=40,Colorectal cancer,Cancer illness
-113,01,Ain,FR,42,>=40,>=40,Syphilis,std
-114,01,Ain,FR,21,<30,<30,AIDS,std
-115,1201,GE,CH,28,<30,<30,VIH,Cancer illness
-116,1003,VD,CH,12,<20,<30,Breast Cancer,Cancer illness
-117,02,Aisne,FR,49,>=40,>=40,HIV,std
-118,1001,VD,CH,34,<40,>=40,Chlamyida,std
-119,1201,GE,CH,43,>=40,>=40,Colorectal cancer,Cancer illness
-120,1202,GE,CH,28,<30,<30,AIDS,std
-121,02,Aisne,FR,24,<30,<30,Colorectal cancer,Cancer illness
-122,1203,GE,CH,21,<30,<30,Syphilis,std
-123,1004,VD,CH,37,<40,>=40,Bladder cancer,Cancer illness
-124,1202,GE,CH,12,<20,<30,AIDS,std
-125,1002,VD,CH,23,<30,<30,VIH,Cancer illness
-126,1204,GE,CH,34,<40,>=40,Breast Cancer,Cancer illness
-127,02,Aisne,FR,39,<40,>=40,Colorectal cancer,Cancer illness
-128,1203,GE,CH,21,<30,<30,VIH,Cancer illness
-129,01,Ain,FR,23,<30,<30,AIDS,std
-130,1204,GE,CH,43,>=40,>=40,Chlamyida,std
-131,01,Ain,FR,48,>=40,>=40,Breast Cancer,Cancer illness
-132,1002,VD,CH,29,<30,<30,VIH,Cancer illness
-133,1004,VD,CH,31,<40,>=40,Colorectal cancer,Cancer illness
-134,1002,VD,CH,18,<20,<30,Breast Cancer,Cancer illness
-135,01,Ain,FR,15,<20,<30,Lung cancer,Cancer illness
-136,01,Ain,FR,44,>=40,>=40,VIH,Cancer illness
-137,02,Aisne,FR,15,<20,<30,Bladder cancer,Cancer illness
-138,02,Aisne,FR,34,<40,>=40,Syphilis,std
-139,02,Aisne,FR,45,>=40,>=40,Kidney cancer,Cancer illness
-140,1003,VD,CH,42,>=40,>=40,AIDS,std
-141,02,Aisne,FR,18,<20,<30,Colorectal cancer,Cancer illness
-142,02,Aisne,FR,37,<40,>=40,VIH,Cancer illness
-143,1001,VD,CH,14,<20,<30,Syphilis,std
-144,01,Ain,FR,39,<40,>=40,Lung cancer,Cancer illness
-145,1203,GE,CH,14,<20,<30,Bladder cancer,Cancer illness
-146,1203,GE,CH,35,<40,>=40,Bladder cancer,Cancer illness
-147,1204,GE,CH,40,>=40,>=40,Chlamyida,std
-148,01,Ain,FR,27,<30,<30,AIDS,std
-149,1204,GE,CH,37,<40,>=40,HIV,std
-150,02,Aisne,FR,15,<20,<30,Syphilis,std
-151,01,Ain,FR,49,>=40,>=40,Breast Cancer,Cancer illness
-152,02,Aisne,FR,28,<30,<30,VIH,Cancer illness
-153,1001,VD,CH,50,>=40,>=40,Syphilis,std
-154,1202,GE,CH,48,>=40,>=40,Bladder cancer,Cancer illness
-155,1002,VD,CH,28,<30,<30,AIDS,std
-156,02,Aisne,FR,11,<20,<30,Breast Cancer,Cancer illness
-157,1204,GE,CH,47,>=40,>=40,Colorectal cancer,Cancer illness
-158,01,Ain,FR,28,<30,<30,AIDS,std
-159,1202,GE,CH,47,>=40,>=40,Breast Cancer,Cancer illness
-160,1002,VD,CH,33,<40,>=40,Bladder cancer,Cancer illness
-161,1001,VD,CH,20,<30,<30,Colorectal cancer,Cancer illness
-162,1202,GE,CH,12,<20,<30,Kidney cancer,Cancer illness
-163,1204,GE,CH,34,<40,>=40,Kidney cancer,Cancer illness
-164,02,Aisne,FR,30,<40,>=40,Lung cancer,Cancer illness
-165,02,Aisne,FR,48,>=40,>=40,AIDS,std
-166,1004,VD,CH,13,<20,<30,HIV,std
-167,02,Aisne,FR,10,<20,<30,HIV,std
-168,01,Ain,FR,38,<40,>=40,Syphilis,std
-169,1202,GE,CH,31,<40,>=40,AIDS,std
-170,1003,VD,CH,27,<30,<30,HIV,std
-171,1204,GE,CH,36,<40,>=40,HIV,std
-172,02,Aisne,FR,43,>=40,>=40,HIV,std
-173,1001,VD,CH,27,<30,<30,Colorectal cancer,Cancer illness
-174,01,Ain,FR,15,<20,<30,Chlamyida,std
-175,01,Ain,FR,40,>=40,>=40,Colorectal cancer,Cancer illness
-176,1004,VD,CH,38,<40,>=40,Kidney cancer,Cancer illness
-177,1201,GE,CH,15,<20,<30,Chlamyida,std
-178,1204,GE,CH,11,<20,<30,Breast Cancer,Cancer illness
-179,1202,GE,CH,26,<30,<30,HIV,std
-180,1001,VD,CH,13,<20,<30,HIV,std
-181,01,Ain,FR,49,>=40,>=40,VIH,Cancer illness
-182,1001,VD,CH,34,<40,>=40,Breast Cancer,Cancer illness
-183,1001,VD,CH,43,>=40,>=40,Chlamyida,std
-184,1202,GE,CH,42,>=40,>=40,Breast Cancer,Cancer illness
-185,1002,VD,CH,43,>=40,>=40,AIDS,std
-186,01,Ain,FR,49,>=40,>=40,HIV,std
-187,1002,VD,CH,29,<30,<30,HIV,std
-188,01,Ain,FR,11,<20,<30,Kidney cancer,Cancer illness
-189,1201,GE,CH,24,<30,<30,VIH,Cancer illness
-190,02,Aisne,FR,16,<20,<30,Bladder cancer,Cancer illness
-191,1002,VD,CH,41,>=40,>=40,Chlamyida,std
-192,1004,VD,CH,32,<40,>=40,Chlamyida,std
-193,01,Ain,FR,35,<40,>=40,Kidney cancer,Cancer illness
-194,02,Aisne,FR,20,<30,<30,AIDS,std
-195,1204,GE,CH,20,<30,<30,Lung cancer,Cancer illness
-196,1002,VD,CH,16,<20,<30,Breast Cancer,Cancer illness
-197,02,Aisne,FR,16,<20,<30,Colorectal cancer,Cancer illness
-198,1003,VD,CH,27,<30,<30,Lung cancer,Cancer illness
-199,02,Aisne,FR,33,<40,>=40,Kidney cancer,Cancer illness
-200,1004,VD,CH,17,<20,<30,Chlamyida,std
-201,1204,GE,CH,45,>=40,>=40,Chlamyida,std
-202,02,Aisne,FR,23,<30,<30,HIV,std
-203,02,Aisne,FR,48,>=40,>=40,AIDS,std
-204,1002,VD,CH,18,<20,<30,Lung cancer,Cancer illness
-205,1002,VD,CH,47,>=40,>=40,Lung cancer,Cancer illness
-206,1002,VD,CH,48,>=40,>=40,VIH,Cancer illness
-207,1002,VD,CH,26,<30,<30,Colorectal cancer,Cancer illness
-208,02,Aisne,FR,43,>=40,>=40,AIDS,std
-209,02,Aisne,FR,39,<40,>=40,Breast Cancer,Cancer illness
-210,1004,VD,CH,30,<40,>=40,Lung cancer,Cancer illness
-211,1001,VD,CH,26,<30,<30,Breast Cancer,Cancer illness
-212,1004,VD,CH,44,>=40,>=40,HIV,std
-213,1003,VD,CH,40,>=40,>=40,Breast Cancer,Cancer illness
-214,01,Ain,FR,19,<20,<30,Colorectal cancer,Cancer illness
-215,1002,VD,CH,24,<30,<30,HIV,std
-216,1002,VD,CH,47,>=40,>=40,VIH,Cancer illness
-217,01,Ain,FR,22,<30,<30,HIV,std
-218,1001,VD,CH,15,<20,<30,Lung cancer,Cancer illness
-219,1003,VD,CH,50,>=40,>=40,Bladder cancer,Cancer illness
-220,1204,GE,CH,16,<20,<30,AIDS,std
-221,1001,VD,CH,13,<20,<30,Lung cancer,Cancer illness
-222,1003,VD,CH,47,>=40,>=40,Lung cancer,Cancer illness
-223,02,Aisne,FR,23,<30,<30,Chlamyida,std
-224,1201,GE,CH,29,<30,<30,Syphilis,std
-225,1002,VD,CH,23,<30,<30,Syphilis,std
-226,01,Ain,FR,41,>=40,>=40,Syphilis,std
-227,02,Aisne,FR,36,<40,>=40,HIV,std
-228,01,Ain,FR,11,<20,<30,Breast Cancer,Cancer illness
-229,1203,GE,CH,16,<20,<30,Breast Cancer,Cancer illness
-230,1002,VD,CH,28,<30,<30,Kidney cancer,Cancer illness
-231,1203,GE,CH,30,<40,>=40,Syphilis,std
-232,1002,VD,CH,45,>=40,>=40,HIV,std
-233,1203,GE,CH,21,<30,<30,Lung cancer,Cancer illness
-234,02,Aisne,FR,49,>=40,>=40,Syphilis,std
-235,1201,GE,CH,50,>=40,>=40,VIH,Cancer illness
-236,1203,GE,CH,43,>=40,>=40,AIDS,std
-237,01,Ain,FR,17,<20,<30,Colorectal cancer,Cancer illness
-238,1003,VD,CH,31,<40,>=40,Breast Cancer,Cancer illness
-239,01,Ain,FR,20,<30,<30,HIV,std
-240,1003,VD,CH,35,<40,>=40,HIV,std
-241,1201,GE,CH,48,>=40,>=40,Chlamyida,std
-242,1204,GE,CH,45,>=40,>=40,HIV,std
-243,1202,GE,CH,44,>=40,>=40,Kidney cancer,Cancer illness
-244,01,Ain,FR,11,<20,<30,Syphilis,std
-245,01,Ain,FR,17,<20,<30,Chlamyida,std
-246,1201,GE,CH,10,<20,<30,Bladder cancer,Cancer illness
-247,1001,VD,CH,23,<30,<30,VIH,Cancer illness
-248,1002,VD,CH,44,>=40,>=40,Bladder cancer,Cancer illness
-249,1003,VD,CH,47,>=40,>=40,Kidney cancer,Cancer illness
-250,1003,VD,CH,22,<30,<30,Syphilis,std
-251,01,Ain,FR,37,<40,>=40,HIV,std
-252,01,Ain,FR,36,<40,>=40,Colorectal cancer,Cancer illness
-253,02,Aisne,FR,37,<40,>=40,Colorectal cancer,Cancer illness
-254,02,Aisne,FR,27,<30,<30,Chlamyida,std
-255,02,Aisne,FR,25,<30,<30,Colorectal cancer,Cancer illness
-256,02,Aisne,FR,29,<30,<30,Kidney cancer,Cancer illness
-257,02,Aisne,FR,22,<30,<30,VIH,Cancer illness
-258,01,Ain,FR,12,<20,<30,Chlamyida,std
-259,01,Ain,FR,12,<20,<30,Kidney cancer,Cancer illness
-260,02,Aisne,FR,40,>=40,>=40,Kidney cancer,Cancer illness
-261,01,Ain,FR,30,<40,>=40,Breast Cancer,Cancer illness
-262,1004,VD,CH,15,<20,<30,Syphilis,std
-263,1001,VD,CH,27,<30,<30,Chlamyida,std
-264,02,Aisne,FR,19,<20,<30,Chlamyida,std
-265,01,Ain,FR,24,<30,<30,Syphilis,std
-266,1001,VD,CH,46,>=40,>=40,AIDS,std
-267,01,Ain,FR,43,>=40,>=40,Lung cancer,Cancer illness
-268,01,Ain,FR,16,<20,<30,Colorectal cancer,Cancer illness
-269,1201,GE,CH,32,<40,>=40,Lung cancer,Cancer illness
-270,01,Ain,FR,36,<40,>=40,Breast Cancer,Cancer illness
-271,02,Aisne,FR,39,<40,>=40,VIH,Cancer illness
-272,1004,VD,CH,46,>=40,>=40,Breast Cancer,Cancer illness
-273,01,Ain,FR,47,>=40,>=40,VIH,Cancer illness
-274,1002,VD,CH,13,<20,<30,Bladder cancer,Cancer illness
-275,01,Ain,FR,41,>=40,>=40,VIH,Cancer illness
-276,02,Aisne,FR,42,>=40,>=40,HIV,std
-277,01,Ain,FR,33,<40,>=40,AIDS,std
-278,1203,GE,CH,43,>=40,>=40,Colorectal cancer,Cancer illness
-279,1004,VD,CH,35,<40,>=40,Colorectal cancer,Cancer illness
-280,02,Aisne,FR,36,<40,>=40,VIH,Cancer illness
-281,1003,VD,CH,19,<20,<30,Breast Cancer,Cancer illness
-282,1001,VD,CH,19,<20,<30,Colorectal cancer,Cancer illness
-283,01,Ain,FR,49,>=40,>=40,Bladder cancer,Cancer illness
-284,1004,VD,CH,46,>=40,>=40,Syphilis,std
-285,1203,GE,CH,18,<20,<30,VIH,Cancer illness
-286,1001,VD,CH,34,<40,>=40,Chlamyida,std
-287,01,Ain,FR,21,<30,<30,Kidney cancer,Cancer illness
-288,1203,GE,CH,49,>=40,>=40,Colorectal cancer,Cancer illness
-289,02,Aisne,FR,33,<40,>=40,Syphilis,std
-290,1002,VD,CH,42,>=40,>=40,HIV,std
-291,1001,VD,CH,24,<30,<30,Syphilis,std
-292,02,Aisne,FR,40,>=40,>=40,VIH,Cancer illness
-293,1203,GE,CH,27,<30,<30,Syphilis,std
-294,01,Ain,FR,25,<30,<30,VIH,Cancer illness
-295,02,Aisne,FR,24,<30,<30,Breast Cancer,Cancer illness
-296,1203,GE,CH,28,<30,<30,Breast Cancer,Cancer illness
-297,01,Ain,FR,14,<20,<30,Chlamyida,std
-298,02,Aisne,FR,30,<40,>=40,AIDS,std
-299,02,Aisne,FR,26,<30,<30,Chlamyida,std
-300,02,Aisne,FR,24,<30,<30,VIH,Cancer illness
-301,02,Aisne,FR,35,<40,>=40,Chlamyida,std
-302,02,Aisne,FR,36,<40,>=40,Bladder cancer,Cancer illness
-303,1001,VD,CH,32,<40,>=40,Colorectal cancer,Cancer illness
-304,1201,GE,CH,15,<20,<30,Lung cancer,Cancer illness
-305,1003,VD,CH,21,<30,<30,Colorectal cancer,Cancer illness
-306,1003,VD,CH,41,>=40,>=40,Chlamyida,std
-307,1204,GE,CH,38,<40,>=40,Colorectal cancer,Cancer illness
-308,01,Ain,FR,38,<40,>=40,Breast Cancer,Cancer illness
-309,1004,VD,CH,34,<40,>=40,HIV,std
-310,1004,VD,CH,30,<40,>=40,Kidney cancer,Cancer illness
-311,1004,VD,CH,47,>=40,>=40,VIH,Cancer illness
-312,1201,GE,CH,20,<30,<30,AIDS,std
-313,1002,VD,CH,19,<20,<30,AIDS,std
-314,01,Ain,FR,15,<20,<30,Breast Cancer,Cancer illness
-315,02,Aisne,FR,18,<20,<30,Lung cancer,Cancer illness
-316,01,Ain,FR,36,<40,>=40,AIDS,std
-317,1201,GE,CH,13,<20,<30,Bladder cancer,Cancer illness
-318,01,Ain,FR,11,<20,<30,AIDS,std
-319,1202,GE,CH,34,<40,>=40,Bladder cancer,Cancer illness
-320,1204,GE,CH,19,<20,<30,Breast Cancer,Cancer illness
-321,1203,GE,CH,46,>=40,>=40,Lung cancer,Cancer illness
-322,02,Aisne,FR,28,<30,<30,HIV,std
-323,01,Ain,FR,34,<40,>=40,Chlamyida,std
-324,1202,GE,CH,40,>=40,>=40,Kidney cancer,Cancer illness
-325,1001,VD,CH,15,<20,<30,Chlamyida,std
-326,1201,GE,CH,38,<40,>=40,Kidney cancer,Cancer illness
-327,1002,VD,CH,20,<30,<30,HIV,std
-328,02,Aisne,FR,11,<20,<30,HIV,std
-329,01,Ain,FR,32,<40,>=40,HIV,std
-330,1002,VD,CH,13,<20,<30,Colorectal cancer,Cancer illness
-331,1004,VD,CH,46,>=40,>=40,Lung cancer,Cancer illness
-332,1201,GE,CH,14,<20,<30,Chlamyida,std
-333,02,Aisne,FR,23,<30,<30,Colorectal cancer,Cancer illness
-334,1203,GE,CH,50,>=40,>=40,Bladder cancer,Cancer illness
-335,1202,GE,CH,34,<40,>=40,Kidney cancer,Cancer illness
-336,1203,GE,CH,36,<40,>=40,Chlamyida,std
-337,02,Aisne,FR,49,>=40,>=40,Syphilis,std
-338,01,Ain,FR,42,>=40,>=40,HIV,std
-339,1203,GE,CH,25,<30,<30,Kidney cancer,Cancer illness
-340,1203,GE,CH,30,<40,>=40,HIV,std
-341,1201,GE,CH,44,>=40,>=40,Lung cancer,Cancer illness
-342,1001,VD,CH,15,<20,<30,Syphilis,std
-343,02,Aisne,FR,30,<40,>=40,Chlamyida,std
-344,02,Aisne,FR,36,<40,>=40,Colorectal cancer,Cancer illness
-345,02,Aisne,FR,41,>=40,>=40,Bladder cancer,Cancer illness
-346,01,Ain,FR,12,<20,<30,Colorectal cancer,Cancer illness
-347,1004,VD,CH,30,<40,>=40,Breast Cancer,Cancer illness
-348,1004,VD,CH,23,<30,<30,Kidney cancer,Cancer illness
-349,01,Ain,FR,37,<40,>=40,HIV,std
-350,01,Ain,FR,35,<40,>=40,Colorectal cancer,Cancer illness
-351,02,Aisne,FR,33,<40,>=40,Lung cancer,Cancer illness
-352,01,Ain,FR,41,>=40,>=40,Colorectal cancer,Cancer illness
-353,02,Aisne,FR,27,<30,<30,Chlamyida,std
-354,1001,VD,CH,31,<40,>=40,Lung cancer,Cancer illness
-355,1201,GE,CH,20,<30,<30,AIDS,std
-356,1002,VD,CH,34,<40,>=40,Syphilis,std
-357,02,Aisne,FR,34,<40,>=40,Syphilis,std
-358,1001,VD,CH,26,<30,<30,Breast Cancer,Cancer illness
-359,1004,VD,CH,45,>=40,>=40,VIH,Cancer illness
-360,02,Aisne,FR,23,<30,<30,Syphilis,std
-361,02,Aisne,FR,47,>=40,>=40,AIDS,std
-362,1202,GE,CH,43,>=40,>=40,Breast Cancer,Cancer illness
-363,02,Aisne,FR,23,<30,<30,Kidney cancer,Cancer illness
-364,1003,VD,CH,38,<40,>=40,Chlamyida,std
-365,1204,GE,CH,48,>=40,>=40,Bladder cancer,Cancer illness
-366,1201,GE,CH,48,>=40,>=40,VIH,Cancer illness
-367,02,Aisne,FR,48,>=40,>=40,Kidney cancer,Cancer illness
-368,02,Aisne,FR,38,<40,>=40,HIV,std
-369,1201,GE,CH,17,<20,<30,Syphilis,std
-370,02,Aisne,FR,23,<30,<30,Bladder cancer,Cancer illness
-371,1204,GE,CH,49,>=40,>=40,Bladder cancer,Cancer illness
-372,1202,GE,CH,15,<20,<30,Breast Cancer,Cancer illness
-373,1204,GE,CH,25,<30,<30,VIH,Cancer illness
-374,1202,GE,CH,42,>=40,>=40,VIH,Cancer illness
-375,02,Aisne,FR,24,<30,<30,AIDS,std
-376,01,Ain,FR,37,<40,>=40,HIV,std
-377,01,Ain,FR,16,<20,<30,Breast Cancer,Cancer illness
-378,02,Aisne,FR,20,<30,<30,HIV,std
-379,1004,VD,CH,41,>=40,>=40,Breast Cancer,Cancer illness
-380,1202,GE,CH,17,<20,<30,Lung cancer,Cancer illness
-381,1203,GE,CH,15,<20,<30,Lung cancer,Cancer illness
-382,1203,GE,CH,24,<30,<30,Bladder cancer,Cancer illness
-383,1203,GE,CH,47,>=40,>=40,Bladder cancer,Cancer illness
-384,1204,GE,CH,45,>=40,>=40,Kidney cancer,Cancer illness
-385,1204,GE,CH,25,<30,<30,Bladder cancer,Cancer illness
-386,01,Ain,FR,46,>=40,>=40,VIH,Cancer illness
-387,02,Aisne,FR,47,>=40,>=40,Chlamyida,std
-388,1003,VD,CH,19,<20,<30,VIH,Cancer illness
-389,01,Ain,FR,37,<40,>=40,Colorectal cancer,Cancer illness
-390,1204,GE,CH,40,>=40,>=40,Chlamyida,std
-391,02,Aisne,FR,31,<40,>=40,HIV,std
-392,02,Aisne,FR,32,<40,>=40,Breast Cancer,Cancer illness
-393,1004,VD,CH,37,<40,>=40,Colorectal cancer,Cancer illness
-394,01,Ain,FR,48,>=40,>=40,Syphilis,std
-395,02,Aisne,FR,44,>=40,>=40,AIDS,std
-396,02,Aisne,FR,24,<30,<30,Chlamyida,std
-397,01,Ain,FR,36,<40,>=40,VIH,Cancer illness
-398,1204,GE,CH,29,<30,<30,Colorectal cancer,Cancer illness
-399,1201,GE,CH,45,>=40,>=40,VIH,Cancer illness
-400,1201,GE,CH,41,>=40,>=40,Lung cancer,Cancer illness
-401,02,Aisne,FR,11,<20,<30,Lung cancer,Cancer illness
-402,1004,VD,CH,12,<20,<30,VIH,Cancer illness
-403,1004,VD,CH,10,<20,<30,HIV,std
-404,02,Aisne,FR,22,<30,<30,Lung cancer,Cancer illness
-405,1202,GE,CH,12,<20,<30,AIDS,std
-406,1204,GE,CH,16,<20,<30,Kidney cancer,Cancer illness
-407,02,Aisne,FR,46,>=40,>=40,AIDS,std
-408,1201,GE,CH,15,<20,<30,Breast Cancer,Cancer illness
-409,1203,GE,CH,24,<30,<30,Lung cancer,Cancer illness
-410,1003,VD,CH,30,<40,>=40,VIH,Cancer illness
-411,02,Aisne,FR,30,<40,>=40,HIV,std
-412,1204,GE,CH,22,<30,<30,HIV,std
-413,1201,GE,CH,24,<30,<30,HIV,std
-414,1002,VD,CH,12,<20,<30,HIV,std
-415,01,Ain,FR,29,<30,<30,Syphilis,std
-416,1202,GE,CH,16,<20,<30,Kidney cancer,Cancer illness
-417,1202,GE,CH,40,>=40,>=40,Chlamyida,std
-418,1203,GE,CH,29,<30,<30,Syphilis,std
-419,1203,GE,CH,41,>=40,>=40,Kidney cancer,Cancer illness
-420,1204,GE,CH,25,<30,<30,HIV,std
-421,01,Ain,FR,39,<40,>=40,VIH,Cancer illness
-422,1204,GE,CH,31,<40,>=40,Chlamyida,std
-423,01,Ain,FR,11,<20,<30,Breast Cancer,Cancer illness
-424,1001,VD,CH,26,<30,<30,Colorectal cancer,Cancer illness
-425,1004,VD,CH,11,<20,<30,Chlamyida,std
-426,02,Aisne,FR,27,<30,<30,Syphilis,std
-427,1003,VD,CH,33,<40,>=40,VIH,Cancer illness
-428,1203,GE,CH,50,>=40,>=40,HIV,std
-429,02,Aisne,FR,42,>=40,>=40,AIDS,std
-430,01,Ain,FR,18,<20,<30,VIH,Cancer illness
-431,1203,GE,CH,16,<20,<30,HIV,std
-432,1002,VD,CH,37,<40,>=40,Lung cancer,Cancer illness
-433,01,Ain,FR,47,>=40,>=40,Lung cancer,Cancer illness
-434,02,Aisne,FR,21,<30,<30,Syphilis,std
-435,01,Ain,FR,46,>=40,>=40,Bladder cancer,Cancer illness
-436,1204,GE,CH,14,<20,<30,Lung cancer,Cancer illness
-437,1001,VD,CH,38,<40,>=40,Colorectal cancer,Cancer illness
-438,01,Ain,FR,24,<30,<30,Bladder cancer,Cancer illness
-439,1202,GE,CH,37,<40,>=40,Syphilis,std
-440,01,Ain,FR,13,<20,<30,Breast Cancer,Cancer illness
-441,01,Ain,FR,47,>=40,>=40,HIV,std
-442,01,Ain,FR,29,<30,<30,Breast Cancer,Cancer illness
-443,01,Ain,FR,30,<40,>=40,Kidney cancer,Cancer illness
-444,1202,GE,CH,30,<40,>=40,Lung cancer,Cancer illness
-445,02,Aisne,FR,14,<20,<30,Lung cancer,Cancer illness
-446,01,Ain,FR,50,>=40,>=40,Breast Cancer,Cancer illness
-447,1004,VD,CH,42,>=40,>=40,Colorectal cancer,Cancer illness
-448,01,Ain,FR,49,>=40,>=40,Breast Cancer,Cancer illness
-449,1203,GE,CH,47,>=40,>=40,Colorectal cancer,Cancer illness
-450,1001,VD,CH,20,<30,<30,Syphilis,std
-451,01,Ain,FR,45,>=40,>=40,Chlamyida,std
-452,1002,VD,CH,43,>=40,>=40,Syphilis,std
-453,1203,GE,CH,38,<40,>=40,Chlamyida,std
-454,1204,GE,CH,35,<40,>=40,HIV,std
-455,1002,VD,CH,27,<30,<30,Lung cancer,Cancer illness
-456,1203,GE,CH,14,<20,<30,Syphilis,std
-457,1202,GE,CH,50,>=40,>=40,Bladder cancer,Cancer illness
-458,02,Aisne,FR,34,<40,>=40,Breast Cancer,Cancer illness
-459,1202,GE,CH,12,<20,<30,Breast Cancer,Cancer illness
-460,01,Ain,FR,21,<30,<30,VIH,Cancer illness
-461,01,Ain,FR,35,<40,>=40,Lung cancer,Cancer illness
-462,1001,VD,CH,35,<40,>=40,Syphilis,std
-463,01,Ain,FR,34,<40,>=40,AIDS,std
-464,01,Ain,FR,12,<20,<30,AIDS,std
-465,1201,GE,CH,30,<40,>=40,Colorectal cancer,Cancer illness
-466,01,Ain,FR,40,>=40,>=40,Colorectal cancer,Cancer illness
-467,1004,VD,CH,39,<40,>=40,Syphilis,std
-468,1001,VD,CH,27,<30,<30,Bladder cancer,Cancer illness
-469,01,Ain,FR,18,<20,<30,Lung cancer,Cancer illness
-470,02,Aisne,FR,22,<30,<30,Kidney cancer,Cancer illness
-471,1204,GE,CH,19,<20,<30,Kidney cancer,Cancer illness
-472,01,Ain,FR,31,<40,>=40,Breast Cancer,Cancer illness
-473,1002,VD,CH,11,<20,<30,Breast Cancer,Cancer illness
-474,1203,GE,CH,48,>=40,>=40,Syphilis,std
-475,01,Ain,FR,22,<30,<30,AIDS,std
-476,02,Aisne,FR,11,<20,<30,Kidney cancer,Cancer illness
-477,02,Aisne,FR,37,<40,>=40,Lung cancer,Cancer illness
-478,02,Aisne,FR,35,<40,>=40,Breast Cancer,Cancer illness
-479,01,Ain,FR,17,<20,<30,Syphilis,std
-480,1003,VD,CH,50,>=40,>=40,Bladder cancer,Cancer illness
-481,01,Ain,FR,27,<30,<30,Chlamyida,std
-482,1002,VD,CH,18,<20,<30,Syphilis,std
-483,1003,VD,CH,26,<30,<30,Lung cancer,Cancer illness
-484,02,Aisne,FR,12,<20,<30,Bladder cancer,Cancer illness
-485,1004,VD,CH,40,>=40,>=40,Bladder cancer,Cancer illness
-486,01,Ain,FR,11,<20,<30,Bladder cancer,Cancer illness
-487,1004,VD,CH,30,<40,>=40,VIH,Cancer illness
-488,01,Ain,FR,22,<30,<30,Syphilis,std
-489,1001,VD,CH,44,>=40,>=40,Chlamyida,std
-490,1203,GE,CH,15,<20,<30,Chlamyida,std
-491,01,Ain,FR,34,<40,>=40,Syphilis,std
-492,02,Aisne,FR,25,<30,<30,Breast Cancer,Cancer illness
-493,02,Aisne,FR,38,<40,>=40,AIDS,std
-494,01,Ain,FR,47,>=40,>=40,VIH,Cancer illness
-495,01,Ain,FR,19,<20,<30,Kidney cancer,Cancer illness
-496,1201,GE,CH,38,<40,>=40,Breast Cancer,Cancer illness
-497,02,Aisne,FR,48,>=40,>=40,HIV,std
-498,1204,GE,CH,50,>=40,>=40,Lung cancer,Cancer illness
-499,1202,GE,CH,50,>=40,>=40,Lung cancer,Cancer illness
+,zip,canton,pays,age,age_dizaine,age_split,illness,general_illness
+0,01,Ain,FR,25,<30,<30,Kidney cancer,Cancer illness
+1,1201,GE,CH,43,>=40,>=30,Bladder cancer,Cancer illness
+2,01,Ain,FR,43,>=40,>=30,Colorectal cancer,Cancer illness
+3,02,Aisne,FR,10,<20,<30,Syphilis,Sexual illness
+4,1201,GE,CH,31,<40,>=30,Kidney cancer,Cancer illness
+5,01,Ain,FR,21,<30,<30,AIDS,Sexual illness
+6,01,Ain,FR,22,<30,<30,Breast Cancer,Cancer illness
+7,1201,GE,CH,46,>=40,>=30,Syphilis,Sexual illness
+8,1201,GE,CH,13,<20,<30,Chlamyida,Sexual illness
+9,1004,VD,CH,44,>=40,>=30,Colorectal cancer,Cancer illness
+10,1204,GE,CH,26,<30,<30,Breast Cancer,Cancer illness
+11,1204,GE,CH,19,<20,<30,Chlamyida,Sexual illness
+12,01,Ain,FR,23,<30,<30,Colorectal cancer,Cancer illness
+13,1201,GE,CH,12,<20,<30,Syphilis,Sexual illness
+14,1203,GE,CH,22,<30,<30,AIDS,Sexual illness
+15,01,Ain,FR,42,>=40,>=30,Chlamyida,Sexual illness
+16,02,Aisne,FR,30,<40,>=30,AIDS,Sexual illness
+17,1202,GE,CH,38,<40,>=30,VIH,Cancer illness
+18,02,Aisne,FR,14,<20,<30,Syphilis,Sexual illness
+19,1203,GE,CH,12,<20,<30,Bladder cancer,Cancer illness
+20,01,Ain,FR,16,<20,<30,VIH,Cancer illness
+21,1202,GE,CH,40,>=40,>=30,Colorectal cancer,Cancer illness
+22,01,Ain,FR,34,<40,>=30,VIH,Cancer illness
+23,02,Aisne,FR,18,<20,<30,HIV,Sexual illness
+24,02,Aisne,FR,26,<30,<30,AIDS,Sexual illness
+25,01,Ain,FR,19,<20,<30,Lung cancer,Cancer illness
+26,02,Aisne,FR,42,>=40,>=30,Kidney cancer,Cancer illness
+27,02,Aisne,FR,39,<40,>=30,VIH,Cancer illness
+28,1002,VD,CH,25,<30,<30,Breast Cancer,Cancer illness
+29,1002,VD,CH,35,<40,>=30,Kidney cancer,Cancer illness
+30,1203,GE,CH,42,>=40,>=30,Breast Cancer,Cancer illness
+31,1001,VD,CH,30,<40,>=30,Kidney cancer,Cancer illness
+32,1004,VD,CH,43,>=40,>=30,Colorectal cancer,Cancer illness
+33,1001,VD,CH,30,<40,>=30,VIH,Cancer illness
+34,1202,GE,CH,37,<40,>=30,HIV,Sexual illness
+35,1004,VD,CH,41,>=40,>=30,Bladder cancer,Cancer illness
+36,02,Aisne,FR,14,<20,<30,HIV,Sexual illness
+37,1001,VD,CH,19,<20,<30,Chlamyida,Sexual illness
+38,1003,VD,CH,35,<40,>=30,Lung cancer,Cancer illness
+39,02,Aisne,FR,13,<20,<30,Lung cancer,Cancer illness
+40,02,Aisne,FR,25,<30,<30,Lung cancer,Cancer illness
+41,01,Ain,FR,40,>=40,>=30,Chlamyida,Sexual illness
+42,1004,VD,CH,30,<40,>=30,VIH,Cancer illness
+43,1203,GE,CH,33,<40,>=30,Syphilis,Sexual illness
+44,1202,GE,CH,28,<30,<30,Colorectal cancer,Cancer illness
+45,02,Aisne,FR,14,<20,<30,Colorectal cancer,Cancer illness
+46,01,Ain,FR,21,<30,<30,Chlamyida,Sexual illness
+47,1002,VD,CH,23,<30,<30,Chlamyida,Sexual illness
+48,02,Aisne,FR,50,>=40,>=30,Colorectal cancer,Cancer illness
+49,01,Ain,FR,48,>=40,>=30,Chlamyida,Sexual illness
+50,02,Aisne,FR,29,<30,<30,Lung cancer,Cancer illness
+51,02,Aisne,FR,48,>=40,>=30,Colorectal cancer,Cancer illness
+52,01,Ain,FR,50,>=40,>=30,HIV,Sexual illness
+53,1003,VD,CH,22,<30,<30,AIDS,Sexual illness
+54,1003,VD,CH,14,<20,<30,Syphilis,Sexual illness
+55,1203,GE,CH,20,<30,<30,Syphilis,Sexual illness
+56,01,Ain,FR,44,>=40,>=30,Breast Cancer,Cancer illness
+57,01,Ain,FR,49,>=40,>=30,AIDS,Sexual illness
+58,02,Aisne,FR,32,<40,>=30,HIV,Sexual illness
+59,01,Ain,FR,32,<40,>=30,Syphilis,Sexual illness
+60,01,Ain,FR,10,<20,<30,Lung cancer,Cancer illness
+61,1201,GE,CH,15,<20,<30,Chlamyida,Sexual illness
+62,01,Ain,FR,46,>=40,>=30,VIH,Cancer illness
+63,1204,GE,CH,45,>=40,>=30,Kidney cancer,Cancer illness
+64,01,Ain,FR,23,<30,<30,VIH,Cancer illness
+65,1003,VD,CH,27,<30,<30,Kidney cancer,Cancer illness
+66,1001,VD,CH,25,<30,<30,VIH,Cancer illness
+67,02,Aisne,FR,19,<20,<30,Syphilis,Sexual illness
+68,02,Aisne,FR,41,>=40,>=30,Breast Cancer,Cancer illness
+69,1003,VD,CH,45,>=40,>=30,AIDS,Sexual illness
+70,1201,GE,CH,47,>=40,>=30,Colorectal cancer,Cancer illness
+71,02,Aisne,FR,32,<40,>=30,AIDS,Sexual illness
+72,1204,GE,CH,43,>=40,>=30,AIDS,Sexual illness
+73,1004,VD,CH,11,<20,<30,Syphilis,Sexual illness
+74,02,Aisne,FR,50,>=40,>=30,Colorectal cancer,Cancer illness
+75,1003,VD,CH,28,<30,<30,Lung cancer,Cancer illness
+76,1002,VD,CH,25,<30,<30,Colorectal cancer,Cancer illness
+77,01,Ain,FR,43,>=40,>=30,Chlamyida,Sexual illness
+78,1002,VD,CH,40,>=40,>=30,Chlamyida,Sexual illness
+79,1001,VD,CH,43,>=40,>=30,Kidney cancer,Cancer illness
+80,1002,VD,CH,37,<40,>=30,AIDS,Sexual illness
+81,01,Ain,FR,10,<20,<30,Colorectal cancer,Cancer illness
+82,01,Ain,FR,30,<40,>=30,Lung cancer,Cancer illness
+83,01,Ain,FR,41,>=40,>=30,Colorectal cancer,Cancer illness
+84,1002,VD,CH,48,>=40,>=30,AIDS,Sexual illness
+85,02,Aisne,FR,15,<20,<30,AIDS,Sexual illness
+86,02,Aisne,FR,50,>=40,>=30,Breast Cancer,Cancer illness
+87,02,Aisne,FR,25,<30,<30,HIV,Sexual illness
+88,1004,VD,CH,43,>=40,>=30,HIV,Sexual illness
+89,1004,VD,CH,39,<40,>=30,AIDS,Sexual illness
+90,1002,VD,CH,16,<20,<30,Breast Cancer,Cancer illness
+91,02,Aisne,FR,26,<30,<30,Colorectal cancer,Cancer illness
+92,1001,VD,CH,49,>=40,>=30,Chlamyida,Sexual illness
+93,1004,VD,CH,10,<20,<30,Lung cancer,Cancer illness
+94,1004,VD,CH,22,<30,<30,Colorectal cancer,Cancer illness
+95,1201,GE,CH,21,<30,<30,Kidney cancer,Cancer illness
+96,02,Aisne,FR,29,<30,<30,Syphilis,Sexual illness
+97,1203,GE,CH,29,<30,<30,HIV,Sexual illness
+98,02,Aisne,FR,35,<40,>=30,Colorectal cancer,Cancer illness
+99,02,Aisne,FR,21,<30,<30,Syphilis,Sexual illness
+100,01,Ain,FR,16,<20,<30,HIV,Sexual illness
+101,1001,VD,CH,22,<30,<30,Syphilis,Sexual illness
+102,02,Aisne,FR,32,<40,>=30,VIH,Cancer illness
+103,02,Aisne,FR,48,>=40,>=30,VIH,Cancer illness
+104,1001,VD,CH,34,<40,>=30,HIV,Sexual illness
+105,02,Aisne,FR,16,<20,<30,Breast Cancer,Cancer illness
+106,1002,VD,CH,20,<30,<30,VIH,Cancer illness
+107,02,Aisne,FR,21,<30,<30,Bladder cancer,Cancer illness
+108,1204,GE,CH,18,<20,<30,Syphilis,Sexual illness
+109,1202,GE,CH,35,<40,>=30,Colorectal cancer,Cancer illness
+110,02,Aisne,FR,17,<20,<30,Chlamyida,Sexual illness
+111,1002,VD,CH,21,<30,<30,Breast Cancer,Cancer illness
+112,1001,VD,CH,35,<40,>=30,Bladder cancer,Cancer illness
+113,02,Aisne,FR,14,<20,<30,Lung cancer,Cancer illness
+114,02,Aisne,FR,21,<30,<30,AIDS,Sexual illness
+115,1204,GE,CH,35,<40,>=30,Colorectal cancer,Cancer illness
+116,02,Aisne,FR,37,<40,>=30,Chlamyida,Sexual illness
+117,1201,GE,CH,34,<40,>=30,Colorectal cancer,Cancer illness
+118,01,Ain,FR,17,<20,<30,Bladder cancer,Cancer illness
+119,1204,GE,CH,25,<30,<30,HIV,Sexual illness
+120,1203,GE,CH,13,<20,<30,Lung cancer,Cancer illness
+121,1204,GE,CH,21,<30,<30,Kidney cancer,Cancer illness
+122,1201,GE,CH,45,>=40,>=30,Chlamyida,Sexual illness
+123,1201,GE,CH,34,<40,>=30,Syphilis,Sexual illness
+124,1204,GE,CH,49,>=40,>=30,Syphilis,Sexual illness
+125,1202,GE,CH,19,<20,<30,VIH,Cancer illness
+126,02,Aisne,FR,46,>=40,>=30,Kidney cancer,Cancer illness
+127,01,Ain,FR,10,<20,<30,Syphilis,Sexual illness
+128,01,Ain,FR,16,<20,<30,HIV,Sexual illness
+129,1002,VD,CH,31,<40,>=30,Lung cancer,Cancer illness
+130,1002,VD,CH,22,<30,<30,Bladder cancer,Cancer illness
+131,02,Aisne,FR,19,<20,<30,Lung cancer,Cancer illness
+132,1003,VD,CH,43,>=40,>=30,Kidney cancer,Cancer illness
+133,1203,GE,CH,46,>=40,>=30,HIV,Sexual illness
+134,02,Aisne,FR,37,<40,>=30,Colorectal cancer,Cancer illness
+135,1004,VD,CH,17,<20,<30,Colorectal cancer,Cancer illness
+136,1003,VD,CH,15,<20,<30,Chlamyida,Sexual illness
+137,01,Ain,FR,16,<20,<30,Bladder cancer,Cancer illness
+138,1204,GE,CH,13,<20,<30,Kidney cancer,Cancer illness
+139,02,Aisne,FR,43,>=40,>=30,Bladder cancer,Cancer illness
+140,1003,VD,CH,27,<30,<30,Bladder cancer,Cancer illness
+141,1001,VD,CH,50,>=40,>=30,Kidney cancer,Cancer illness
+142,1201,GE,CH,42,>=40,>=30,VIH,Cancer illness
+143,01,Ain,FR,10,<20,<30,Breast Cancer,Cancer illness
+144,1002,VD,CH,34,<40,>=30,Lung cancer,Cancer illness
+145,1202,GE,CH,18,<20,<30,Lung cancer,Cancer illness
+146,1003,VD,CH,21,<30,<30,Breast Cancer,Cancer illness
+147,1004,VD,CH,36,<40,>=30,HIV,Sexual illness
+148,01,Ain,FR,26,<30,<30,Kidney cancer,Cancer illness
+149,02,Aisne,FR,43,>=40,>=30,Bladder cancer,Cancer illness
+150,1202,GE,CH,21,<30,<30,Breast Cancer,Cancer illness
+151,1004,VD,CH,40,>=40,>=30,AIDS,Sexual illness
+152,1004,VD,CH,42,>=40,>=30,Kidney cancer,Cancer illness
+153,01,Ain,FR,37,<40,>=30,Kidney cancer,Cancer illness
+154,1003,VD,CH,26,<30,<30,AIDS,Sexual illness
+155,02,Aisne,FR,47,>=40,>=30,Breast Cancer,Cancer illness
+156,01,Ain,FR,45,>=40,>=30,HIV,Sexual illness
+157,01,Ain,FR,38,<40,>=30,VIH,Cancer illness
+158,1202,GE,CH,22,<30,<30,HIV,Sexual illness
+159,02,Aisne,FR,11,<20,<30,Bladder cancer,Cancer illness
+160,1003,VD,CH,36,<40,>=30,AIDS,Sexual illness
+161,01,Ain,FR,37,<40,>=30,AIDS,Sexual illness
+162,02,Aisne,FR,31,<40,>=30,Lung cancer,Cancer illness
+163,1003,VD,CH,10,<20,<30,Chlamyida,Sexual illness
+164,1001,VD,CH,23,<30,<30,Bladder cancer,Cancer illness
+165,02,Aisne,FR,47,>=40,>=30,Lung cancer,Cancer illness
+166,1004,VD,CH,43,>=40,>=30,Colorectal cancer,Cancer illness
+167,1002,VD,CH,40,>=40,>=30,Syphilis,Sexual illness
+168,01,Ain,FR,18,<20,<30,Chlamyida,Sexual illness
+169,1201,GE,CH,40,>=40,>=30,Syphilis,Sexual illness
+170,1203,GE,CH,37,<40,>=30,Kidney cancer,Cancer illness
+171,1003,VD,CH,36,<40,>=30,Kidney cancer,Cancer illness
+172,1203,GE,CH,21,<30,<30,Lung cancer,Cancer illness
+173,01,Ain,FR,27,<30,<30,HIV,Sexual illness
+174,02,Aisne,FR,46,>=40,>=30,HIV,Sexual illness
+175,1203,GE,CH,45,>=40,>=30,HIV,Sexual illness
+176,1004,VD,CH,43,>=40,>=30,Colorectal cancer,Cancer illness
+177,01,Ain,FR,15,<20,<30,Kidney cancer,Cancer illness
+178,01,Ain,FR,34,<40,>=30,Breast Cancer,Cancer illness
+179,01,Ain,FR,49,>=40,>=30,AIDS,Sexual illness
+180,1203,GE,CH,40,>=40,>=30,VIH,Cancer illness
+181,1202,GE,CH,39,<40,>=30,AIDS,Sexual illness
+182,02,Aisne,FR,14,<20,<30,AIDS,Sexual illness
+183,1201,GE,CH,36,<40,>=30,Kidney cancer,Cancer illness
+184,1204,GE,CH,33,<40,>=30,HIV,Sexual illness
+185,02,Aisne,FR,49,>=40,>=30,Lung cancer,Cancer illness
+186,02,Aisne,FR,26,<30,<30,AIDS,Sexual illness
+187,02,Aisne,FR,39,<40,>=30,AIDS,Sexual illness
+188,01,Ain,FR,27,<30,<30,Chlamyida,Sexual illness
+189,1002,VD,CH,45,>=40,>=30,AIDS,Sexual illness
+190,01,Ain,FR,29,<30,<30,Kidney cancer,Cancer illness
+191,1001,VD,CH,12,<20,<30,AIDS,Sexual illness
+192,01,Ain,FR,11,<20,<30,Breast Cancer,Cancer illness
+193,1203,GE,CH,37,<40,>=30,Breast Cancer,Cancer illness
+194,1002,VD,CH,12,<20,<30,Kidney cancer,Cancer illness
+195,1203,GE,CH,47,>=40,>=30,HIV,Sexual illness
+196,02,Aisne,FR,19,<20,<30,Colorectal cancer,Cancer illness
+197,1001,VD,CH,24,<30,<30,AIDS,Sexual illness
+198,1003,VD,CH,47,>=40,>=30,AIDS,Sexual illness
+199,1204,GE,CH,50,>=40,>=30,Breast Cancer,Cancer illness
+200,1003,VD,CH,38,<40,>=30,Bladder cancer,Cancer illness
+201,02,Aisne,FR,34,<40,>=30,Lung cancer,Cancer illness
+202,1204,GE,CH,22,<30,<30,VIH,Cancer illness
+203,01,Ain,FR,26,<30,<30,Colorectal cancer,Cancer illness
+204,1204,GE,CH,48,>=40,>=30,HIV,Sexual illness
+205,1003,VD,CH,25,<30,<30,Syphilis,Sexual illness
+206,01,Ain,FR,23,<30,<30,Syphilis,Sexual illness
+207,02,Aisne,FR,11,<20,<30,Lung cancer,Cancer illness
+208,02,Aisne,FR,49,>=40,>=30,HIV,Sexual illness
+209,1204,GE,CH,36,<40,>=30,VIH,Cancer illness
+210,02,Aisne,FR,32,<40,>=30,Lung cancer,Cancer illness
+211,02,Aisne,FR,24,<30,<30,Lung cancer,Cancer illness
+212,1204,GE,CH,39,<40,>=30,VIH,Cancer illness
+213,1202,GE,CH,19,<20,<30,Lung cancer,Cancer illness
+214,02,Aisne,FR,47,>=40,>=30,Kidney cancer,Cancer illness
+215,1202,GE,CH,22,<30,<30,Colorectal cancer,Cancer illness
+216,1002,VD,CH,11,<20,<30,VIH,Cancer illness
+217,02,Aisne,FR,15,<20,<30,HIV,Sexual illness
+218,1001,VD,CH,23,<30,<30,AIDS,Sexual illness
+219,1001,VD,CH,35,<40,>=30,AIDS,Sexual illness
+220,1004,VD,CH,18,<20,<30,VIH,Cancer illness
+221,01,Ain,FR,43,>=40,>=30,Colorectal cancer,Cancer illness
+222,1001,VD,CH,12,<20,<30,Bladder cancer,Cancer illness
+223,02,Aisne,FR,13,<20,<30,Syphilis,Sexual illness
+224,01,Ain,FR,22,<30,<30,Kidney cancer,Cancer illness
+225,1004,VD,CH,32,<40,>=30,Lung cancer,Cancer illness
+226,1002,VD,CH,18,<20,<30,Breast Cancer,Cancer illness
+227,1001,VD,CH,40,>=40,>=30,Lung cancer,Cancer illness
+228,01,Ain,FR,34,<40,>=30,Colorectal cancer,Cancer illness
+229,1202,GE,CH,47,>=40,>=30,Lung cancer,Cancer illness
+230,1203,GE,CH,28,<30,<30,Chlamyida,Sexual illness
+231,1001,VD,CH,44,>=40,>=30,Chlamyida,Sexual illness
+232,1202,GE,CH,15,<20,<30,HIV,Sexual illness
+233,02,Aisne,FR,14,<20,<30,AIDS,Sexual illness
+234,02,Aisne,FR,10,<20,<30,Bladder cancer,Cancer illness
+235,1204,GE,CH,12,<20,<30,Lung cancer,Cancer illness
+236,01,Ain,FR,25,<30,<30,Bladder cancer,Cancer illness
+237,1001,VD,CH,48,>=40,>=30,Lung cancer,Cancer illness
+238,02,Aisne,FR,28,<30,<30,Lung cancer,Cancer illness
+239,02,Aisne,FR,42,>=40,>=30,AIDS,Sexual illness
+240,02,Aisne,FR,14,<20,<30,Chlamyida,Sexual illness
+241,01,Ain,FR,23,<30,<30,VIH,Cancer illness
+242,1204,GE,CH,12,<20,<30,AIDS,Sexual illness
+243,1004,VD,CH,33,<40,>=30,Kidney cancer,Cancer illness
+244,1201,GE,CH,46,>=40,>=30,VIH,Cancer illness
+245,01,Ain,FR,40,>=40,>=30,Breast Cancer,Cancer illness
+246,02,Aisne,FR,18,<20,<30,Colorectal cancer,Cancer illness
+247,1001,VD,CH,30,<40,>=30,Colorectal cancer,Cancer illness
+248,1201,GE,CH,21,<30,<30,HIV,Sexual illness
+249,01,Ain,FR,40,>=40,>=30,Colorectal cancer,Cancer illness
+250,1201,GE,CH,33,<40,>=30,AIDS,Sexual illness
+251,01,Ain,FR,26,<30,<30,HIV,Sexual illness
+252,01,Ain,FR,27,<30,<30,Kidney cancer,Cancer illness
+253,1202,GE,CH,38,<40,>=30,Bladder cancer,Cancer illness
+254,02,Aisne,FR,46,>=40,>=30,Colorectal cancer,Cancer illness
+255,01,Ain,FR,50,>=40,>=30,Breast Cancer,Cancer illness
+256,1004,VD,CH,41,>=40,>=30,AIDS,Sexual illness
+257,1002,VD,CH,28,<30,<30,VIH,Cancer illness
+258,1203,GE,CH,22,<30,<30,AIDS,Sexual illness
+259,01,Ain,FR,37,<40,>=30,HIV,Sexual illness
+260,02,Aisne,FR,26,<30,<30,HIV,Sexual illness
+261,1203,GE,CH,32,<40,>=30,VIH,Cancer illness
+262,1204,GE,CH,23,<30,<30,Breast Cancer,Cancer illness
+263,1002,VD,CH,43,>=40,>=30,Chlamyida,Sexual illness
+264,02,Aisne,FR,21,<30,<30,HIV,Sexual illness
+265,1201,GE,CH,16,<20,<30,HIV,Sexual illness
+266,1003,VD,CH,23,<30,<30,Kidney cancer,Cancer illness
+267,01,Ain,FR,48,>=40,>=30,AIDS,Sexual illness
+268,02,Aisne,FR,45,>=40,>=30,Lung cancer,Cancer illness
+269,1201,GE,CH,33,<40,>=30,AIDS,Sexual illness
+270,1204,GE,CH,48,>=40,>=30,Colorectal cancer,Cancer illness
+271,1001,VD,CH,31,<40,>=30,Kidney cancer,Cancer illness
+272,1203,GE,CH,36,<40,>=30,Syphilis,Sexual illness
+273,01,Ain,FR,35,<40,>=30,Colorectal cancer,Cancer illness
+274,1204,GE,CH,29,<30,<30,Colorectal cancer,Cancer illness
+275,1201,GE,CH,24,<30,<30,AIDS,Sexual illness
+276,1002,VD,CH,24,<30,<30,HIV,Sexual illness
+277,1201,GE,CH,47,>=40,>=30,Lung cancer,Cancer illness
+278,01,Ain,FR,27,<30,<30,Lung cancer,Cancer illness
+279,1201,GE,CH,34,<40,>=30,Chlamyida,Sexual illness
+280,02,Aisne,FR,33,<40,>=30,Kidney cancer,Cancer illness
+281,01,Ain,FR,13,<20,<30,AIDS,Sexual illness
+282,01,Ain,FR,18,<20,<30,HIV,Sexual illness
+283,01,Ain,FR,13,<20,<30,Breast Cancer,Cancer illness
+284,1003,VD,CH,17,<20,<30,AIDS,Sexual illness
+285,1003,VD,CH,35,<40,>=30,Breast Cancer,Cancer illness
+286,02,Aisne,FR,27,<30,<30,Lung cancer,Cancer illness
+287,01,Ain,FR,42,>=40,>=30,Syphilis,Sexual illness
+288,1004,VD,CH,50,>=40,>=30,Syphilis,Sexual illness
+289,01,Ain,FR,26,<30,<30,VIH,Cancer illness
+290,1203,GE,CH,45,>=40,>=30,Bladder cancer,Cancer illness
+291,1001,VD,CH,11,<20,<30,VIH,Cancer illness
+292,01,Ain,FR,21,<30,<30,VIH,Cancer illness
+293,02,Aisne,FR,29,<30,<30,Kidney cancer,Cancer illness
+294,1204,GE,CH,14,<20,<30,Kidney cancer,Cancer illness
+295,1004,VD,CH,43,>=40,>=30,Chlamyida,Sexual illness
+296,02,Aisne,FR,11,<20,<30,Chlamyida,Sexual illness
+297,1001,VD,CH,37,<40,>=30,Chlamyida,Sexual illness
+298,01,Ain,FR,27,<30,<30,Bladder cancer,Cancer illness
+299,1201,GE,CH,33,<40,>=30,VIH,Cancer illness
+300,01,Ain,FR,12,<20,<30,VIH,Cancer illness
+301,1003,VD,CH,25,<30,<30,AIDS,Sexual illness
+302,1202,GE,CH,45,>=40,>=30,HIV,Sexual illness
+303,02,Aisne,FR,48,>=40,>=30,AIDS,Sexual illness
+304,1003,VD,CH,32,<40,>=30,AIDS,Sexual illness
+305,1204,GE,CH,42,>=40,>=30,VIH,Cancer illness
+306,1004,VD,CH,19,<20,<30,Syphilis,Sexual illness
+307,01,Ain,FR,43,>=40,>=30,Breast Cancer,Cancer illness
+308,01,Ain,FR,49,>=40,>=30,VIH,Cancer illness
+309,1002,VD,CH,44,>=40,>=30,AIDS,Sexual illness
+310,1204,GE,CH,14,<20,<30,Syphilis,Sexual illness
+311,01,Ain,FR,12,<20,<30,Breast Cancer,Cancer illness
+312,1001,VD,CH,50,>=40,>=30,Breast Cancer,Cancer illness
+313,1204,GE,CH,41,>=40,>=30,Kidney cancer,Cancer illness
+314,1002,VD,CH,21,<30,<30,HIV,Sexual illness
+315,1202,GE,CH,26,<30,<30,VIH,Cancer illness
+316,1203,GE,CH,16,<20,<30,Lung cancer,Cancer illness
+317,1201,GE,CH,47,>=40,>=30,Chlamyida,Sexual illness
+318,1203,GE,CH,30,<40,>=30,VIH,Cancer illness
+319,1004,VD,CH,22,<30,<30,Lung cancer,Cancer illness
+320,1202,GE,CH,48,>=40,>=30,Kidney cancer,Cancer illness
+321,1002,VD,CH,24,<30,<30,Colorectal cancer,Cancer illness
+322,02,Aisne,FR,20,<30,<30,Bladder cancer,Cancer illness
+323,1202,GE,CH,29,<30,<30,Bladder cancer,Cancer illness
+324,1201,GE,CH,43,>=40,>=30,Kidney cancer,Cancer illness
+325,1001,VD,CH,45,>=40,>=30,AIDS,Sexual illness
+326,1202,GE,CH,14,<20,<30,Syphilis,Sexual illness
+327,1202,GE,CH,28,<30,<30,Breast Cancer,Cancer illness
+328,01,Ain,FR,12,<20,<30,Colorectal cancer,Cancer illness
+329,1202,GE,CH,49,>=40,>=30,AIDS,Sexual illness
+330,1002,VD,CH,21,<30,<30,Lung cancer,Cancer illness
+331,1003,VD,CH,11,<20,<30,AIDS,Sexual illness
+332,1202,GE,CH,15,<20,<30,Breast Cancer,Cancer illness
+333,1003,VD,CH,16,<20,<30,Lung cancer,Cancer illness
+334,1002,VD,CH,40,>=40,>=30,Kidney cancer,Cancer illness
+335,01,Ain,FR,11,<20,<30,Breast Cancer,Cancer illness
+336,1202,GE,CH,50,>=40,>=30,VIH,Cancer illness
+337,01,Ain,FR,34,<40,>=30,Breast Cancer,Cancer illness
+338,02,Aisne,FR,34,<40,>=30,Syphilis,Sexual illness
+339,1204,GE,CH,19,<20,<30,HIV,Sexual illness
+340,1203,GE,CH,37,<40,>=30,Colorectal cancer,Cancer illness
+341,02,Aisne,FR,49,>=40,>=30,Kidney cancer,Cancer illness
+342,1001,VD,CH,21,<30,<30,Chlamyida,Sexual illness
+343,02,Aisne,FR,36,<40,>=30,VIH,Cancer illness
+344,01,Ain,FR,31,<40,>=30,Lung cancer,Cancer illness
+345,1204,GE,CH,45,>=40,>=30,Bladder cancer,Cancer illness
+346,01,Ain,FR,47,>=40,>=30,AIDS,Sexual illness
+347,1003,VD,CH,45,>=40,>=30,Breast Cancer,Cancer illness
+348,02,Aisne,FR,14,<20,<30,VIH,Cancer illness
+349,01,Ain,FR,50,>=40,>=30,Chlamyida,Sexual illness
+350,1002,VD,CH,37,<40,>=30,HIV,Sexual illness
+351,02,Aisne,FR,34,<40,>=30,Breast Cancer,Cancer illness
+352,1004,VD,CH,35,<40,>=30,VIH,Cancer illness
+353,1002,VD,CH,23,<30,<30,Lung cancer,Cancer illness
+354,01,Ain,FR,35,<40,>=30,HIV,Sexual illness
+355,1203,GE,CH,20,<30,<30,Lung cancer,Cancer illness
+356,01,Ain,FR,41,>=40,>=30,Bladder cancer,Cancer illness
+357,1201,GE,CH,29,<30,<30,Bladder cancer,Cancer illness
+358,1203,GE,CH,19,<20,<30,Bladder cancer,Cancer illness
+359,1201,GE,CH,45,>=40,>=30,HIV,Sexual illness
+360,01,Ain,FR,32,<40,>=30,Kidney cancer,Cancer illness
+361,01,Ain,FR,12,<20,<30,Breast Cancer,Cancer illness
+362,1204,GE,CH,11,<20,<30,Syphilis,Sexual illness
+363,01,Ain,FR,35,<40,>=30,VIH,Cancer illness
+364,01,Ain,FR,21,<30,<30,AIDS,Sexual illness
+365,02,Aisne,FR,30,<40,>=30,Lung cancer,Cancer illness
+366,01,Ain,FR,14,<20,<30,Syphilis,Sexual illness
+367,02,Aisne,FR,25,<30,<30,Lung cancer,Cancer illness
+368,1204,GE,CH,33,<40,>=30,Colorectal cancer,Cancer illness
+369,1004,VD,CH,11,<20,<30,Breast Cancer,Cancer illness
+370,01,Ain,FR,20,<30,<30,HIV,Sexual illness
+371,1004,VD,CH,40,>=40,>=30,Bladder cancer,Cancer illness
+372,1004,VD,CH,27,<30,<30,Kidney cancer,Cancer illness
+373,1004,VD,CH,40,>=40,>=30,Breast Cancer,Cancer illness
+374,1203,GE,CH,30,<40,>=30,Breast Cancer,Cancer illness
+375,1204,GE,CH,43,>=40,>=30,Colorectal cancer,Cancer illness
+376,01,Ain,FR,17,<20,<30,Chlamyida,Sexual illness
+377,1202,GE,CH,16,<20,<30,Syphilis,Sexual illness
+378,01,Ain,FR,29,<30,<30,Kidney cancer,Cancer illness
+379,02,Aisne,FR,47,>=40,>=30,HIV,Sexual illness
+380,1004,VD,CH,28,<30,<30,Colorectal cancer,Cancer illness
+381,1204,GE,CH,28,<30,<30,Chlamyida,Sexual illness
+382,1204,GE,CH,20,<30,<30,Syphilis,Sexual illness
+383,1002,VD,CH,49,>=40,>=30,Breast Cancer,Cancer illness
+384,1202,GE,CH,41,>=40,>=30,Lung cancer,Cancer illness
+385,1001,VD,CH,13,<20,<30,VIH,Cancer illness
+386,01,Ain,FR,36,<40,>=30,Colorectal cancer,Cancer illness
+387,1002,VD,CH,46,>=40,>=30,Lung cancer,Cancer illness
+388,02,Aisne,FR,26,<30,<30,VIH,Cancer illness
+389,02,Aisne,FR,20,<30,<30,Syphilis,Sexual illness
+390,1202,GE,CH,10,<20,<30,Chlamyida,Sexual illness
+391,1004,VD,CH,26,<30,<30,Lung cancer,Cancer illness
+392,02,Aisne,FR,50,>=40,>=30,HIV,Sexual illness
+393,01,Ain,FR,20,<30,<30,Colorectal cancer,Cancer illness
+394,1001,VD,CH,45,>=40,>=30,Colorectal cancer,Cancer illness
+395,02,Aisne,FR,26,<30,<30,Breast Cancer,Cancer illness
+396,1204,GE,CH,14,<20,<30,VIH,Cancer illness
+397,02,Aisne,FR,16,<20,<30,Breast Cancer,Cancer illness
+398,1203,GE,CH,46,>=40,>=30,Syphilis,Sexual illness
+399,01,Ain,FR,22,<30,<30,Syphilis,Sexual illness
+400,1001,VD,CH,11,<20,<30,Colorectal cancer,Cancer illness
+401,1201,GE,CH,44,>=40,>=30,Chlamyida,Sexual illness
+402,1202,GE,CH,19,<20,<30,Bladder cancer,Cancer illness
+403,02,Aisne,FR,27,<30,<30,Breast Cancer,Cancer illness
+404,02,Aisne,FR,12,<20,<30,Chlamyida,Sexual illness
+405,1004,VD,CH,27,<30,<30,Lung cancer,Cancer illness
+406,02,Aisne,FR,48,>=40,>=30,AIDS,Sexual illness
+407,1203,GE,CH,16,<20,<30,Breast Cancer,Cancer illness
+408,1201,GE,CH,31,<40,>=30,Colorectal cancer,Cancer illness
+409,1202,GE,CH,45,>=40,>=30,Lung cancer,Cancer illness
+410,01,Ain,FR,15,<20,<30,Chlamyida,Sexual illness
+411,01,Ain,FR,36,<40,>=30,Chlamyida,Sexual illness
+412,1203,GE,CH,33,<40,>=30,AIDS,Sexual illness
+413,1004,VD,CH,28,<30,<30,Kidney cancer,Cancer illness
+414,02,Aisne,FR,31,<40,>=30,Syphilis,Sexual illness
+415,1204,GE,CH,36,<40,>=30,VIH,Cancer illness
+416,02,Aisne,FR,24,<30,<30,Colorectal cancer,Cancer illness
+417,1003,VD,CH,21,<30,<30,AIDS,Sexual illness
+418,1004,VD,CH,32,<40,>=30,Syphilis,Sexual illness
+419,1002,VD,CH,48,>=40,>=30,Chlamyida,Sexual illness
+420,01,Ain,FR,24,<30,<30,AIDS,Sexual illness
+421,02,Aisne,FR,18,<20,<30,Breast Cancer,Cancer illness
+422,1004,VD,CH,35,<40,>=30,Chlamyida,Sexual illness
+423,1002,VD,CH,32,<40,>=30,Syphilis,Sexual illness
+424,1004,VD,CH,25,<30,<30,Breast Cancer,Cancer illness
+425,1201,GE,CH,12,<20,<30,Bladder cancer,Cancer illness
+426,1003,VD,CH,44,>=40,>=30,Chlamyida,Sexual illness
+427,1204,GE,CH,44,>=40,>=30,Syphilis,Sexual illness
+428,02,Aisne,FR,49,>=40,>=30,Breast Cancer,Cancer illness
+429,1003,VD,CH,27,<30,<30,Chlamyida,Sexual illness
+430,1201,GE,CH,42,>=40,>=30,Syphilis,Sexual illness
+431,1002,VD,CH,49,>=40,>=30,Chlamyida,Sexual illness
+432,1201,GE,CH,38,<40,>=30,Kidney cancer,Cancer illness
+433,1204,GE,CH,37,<40,>=30,Kidney cancer,Cancer illness
+434,01,Ain,FR,48,>=40,>=30,Bladder cancer,Cancer illness
+435,1004,VD,CH,33,<40,>=30,Chlamyida,Sexual illness
+436,02,Aisne,FR,27,<30,<30,Lung cancer,Cancer illness
+437,1001,VD,CH,12,<20,<30,HIV,Sexual illness
+438,1203,GE,CH,16,<20,<30,Colorectal cancer,Cancer illness
+439,01,Ain,FR,20,<30,<30,HIV,Sexual illness
+440,1002,VD,CH,36,<40,>=30,AIDS,Sexual illness
+441,1203,GE,CH,46,>=40,>=30,Bladder cancer,Cancer illness
+442,01,Ain,FR,17,<20,<30,Breast Cancer,Cancer illness
+443,1001,VD,CH,13,<20,<30,Syphilis,Sexual illness
+444,02,Aisne,FR,20,<30,<30,Syphilis,Sexual illness
+445,02,Aisne,FR,20,<30,<30,VIH,Cancer illness
+446,01,Ain,FR,18,<20,<30,HIV,Sexual illness
+447,01,Ain,FR,46,>=40,>=30,Chlamyida,Sexual illness
+448,01,Ain,FR,13,<20,<30,Chlamyida,Sexual illness
+449,1203,GE,CH,29,<30,<30,Kidney cancer,Cancer illness
+450,1202,GE,CH,26,<30,<30,Colorectal cancer,Cancer illness
+451,1204,GE,CH,14,<20,<30,Colorectal cancer,Cancer illness
+452,02,Aisne,FR,50,>=40,>=30,Lung cancer,Cancer illness
+453,02,Aisne,FR,28,<30,<30,Chlamyida,Sexual illness
+454,1004,VD,CH,38,<40,>=30,VIH,Cancer illness
+455,02,Aisne,FR,49,>=40,>=30,Syphilis,Sexual illness
+456,1004,VD,CH,28,<30,<30,AIDS,Sexual illness
+457,1202,GE,CH,21,<30,<30,Breast Cancer,Cancer illness
+458,1003,VD,CH,36,<40,>=30,Syphilis,Sexual illness
+459,01,Ain,FR,23,<30,<30,Chlamyida,Sexual illness
+460,1202,GE,CH,39,<40,>=30,AIDS,Sexual illness
+461,02,Aisne,FR,21,<30,<30,Bladder cancer,Cancer illness
+462,1202,GE,CH,27,<30,<30,Lung cancer,Cancer illness
+463,1001,VD,CH,40,>=40,>=30,AIDS,Sexual illness
+464,1204,GE,CH,25,<30,<30,Syphilis,Sexual illness
+465,01,Ain,FR,38,<40,>=30,Kidney cancer,Cancer illness
+466,1002,VD,CH,38,<40,>=30,Chlamyida,Sexual illness
+467,02,Aisne,FR,39,<40,>=30,Chlamyida,Sexual illness
+468,01,Ain,FR,11,<20,<30,Breast Cancer,Cancer illness
+469,1204,GE,CH,27,<30,<30,Kidney cancer,Cancer illness
+470,1204,GE,CH,36,<40,>=30,Lung cancer,Cancer illness
+471,1202,GE,CH,47,>=40,>=30,Chlamyida,Sexual illness
+472,1004,VD,CH,47,>=40,>=30,Chlamyida,Sexual illness
+473,1003,VD,CH,14,<20,<30,Kidney cancer,Cancer illness
+474,1201,GE,CH,31,<40,>=30,Chlamyida,Sexual illness
+475,02,Aisne,FR,16,<20,<30,Colorectal cancer,Cancer illness
+476,02,Aisne,FR,42,>=40,>=30,AIDS,Sexual illness
+477,02,Aisne,FR,22,<30,<30,Bladder cancer,Cancer illness
+478,01,Ain,FR,20,<30,<30,Lung cancer,Cancer illness
+479,01,Ain,FR,14,<20,<30,Syphilis,Sexual illness
+480,01,Ain,FR,44,>=40,>=30,Kidney cancer,Cancer illness
+481,02,Aisne,FR,38,<40,>=30,Chlamyida,Sexual illness
+482,01,Ain,FR,17,<20,<30,Kidney cancer,Cancer illness
+483,1003,VD,CH,44,>=40,>=30,Chlamyida,Sexual illness
+484,1003,VD,CH,46,>=40,>=30,AIDS,Sexual illness
+485,1202,GE,CH,41,>=40,>=30,Chlamyida,Sexual illness
+486,1001,VD,CH,36,<40,>=30,HIV,Sexual illness
+487,1202,GE,CH,28,<30,<30,HIV,Sexual illness
+488,01,Ain,FR,14,<20,<30,Bladder cancer,Cancer illness
+489,1204,GE,CH,30,<40,>=30,Breast Cancer,Cancer illness
+490,01,Ain,FR,11,<20,<30,Bladder cancer,Cancer illness
+491,1204,GE,CH,11,<20,<30,Syphilis,Sexual illness
+492,1004,VD,CH,20,<30,<30,Colorectal cancer,Cancer illness
+493,02,Aisne,FR,31,<40,>=30,Kidney cancer,Cancer illness
+494,1001,VD,CH,21,<30,<30,HIV,Sexual illness
+495,01,Ain,FR,40,>=40,>=30,Kidney cancer,Cancer illness
+496,01,Ain,FR,28,<30,<30,Chlamyida,Sexual illness
+497,01,Ain,FR,17,<20,<30,Lung cancer,Cancer illness
+498,02,Aisne,FR,47,>=40,>=30,Breast Cancer,Cancer illness
+499,01,Ain,FR,42,>=40,>=30,Kidney cancer,Cancer illness
