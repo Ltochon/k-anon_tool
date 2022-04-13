@@ -40,3 +40,15 @@ span{float:left}
 .checkboxes label span {
   vertical-align: middle;
 }
+
+button{
+  border-radius: 20%;
+  background-color: rgb(99, 148, 94);
+  font-weight: bold;
+  padding: 0.1em;
+}
+
+button:hover{
+  color: white;
+  background-color: red;
+}

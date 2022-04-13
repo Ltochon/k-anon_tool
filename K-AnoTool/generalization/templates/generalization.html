@@ -10,7 +10,6 @@ function* generateid(){
     yield i;
   } 
 }
-
 var treeData = [
   {
     "name": "Level 0 : *",
@@ -170,13 +169,47 @@ function update(source) {
 }
 
 // Toggle children on click.
+
+var pointerX = -1;
+var pointerY = -1;
+document.onmousemove = function(event) {
+	pointerX = event.pageX;
+	pointerY = event.pageY;
+}
+
+function add(){
+  if(d_copy["children"] == undefined){
+    d_copy["children"] = [{"name": "Level "+ (parseInt(d_copy.depth) + 1).toString() +" : [30;39]",
+            "parent": "Level 1: >= 30"}]
+  }
+  else{
+    d_copy.children.push({
+              "name": "Level "+ (parseInt(d_copy.depth) + 1).toString() +" : [30;39]",
+              "parent": "Level 1: >= 30"
+            });
+  }
+  update(d_copy);
+  document.getElementById("hiddenactions").hidden = true;
+}
+
+function remove(){
+  for(elem in d_copy.parent.children){
+    if(d_copy.parent.children[elem].name == d_copy.name){
+      d_copy.parent.children.splice(elem,1)
+    }
+  }
+  update(d_copy);
+  document.getElementById("hiddenactions").hidden = true;
+}
+
+let d_copy;
 function click(d) {
+  console.log(d);
+  d_copy = d;
   if(document.getElementById("edit").checked){
-    d.children.push({
-            "name": "Level 2 : [30;39]",
-            "parent": "Level 1: >= 30"
-          });
-    update(d)
+    document.getElementById("hiddenactions").hidden = false;
+    document.getElementById("hiddenactions").style.top = pointerY-70+"px";
+    document.getElementById("hiddenactions").style.left = pointerX+3+"px";
   }
   else{
     if (d.children) {
@@ -191,10 +224,14 @@ function click(d) {
 }
 
 </script>
+<div id="hiddenactions" style="padding: 0.2em; width : 3.4em; height:50px; position: absolute;" hidden>
+  <button style="width: 5em; height: 30px; margin-bottom: 0.1em;" onclick="add()">Add</button>
+  <button style="width: 5em; height: 30px;" onclick="remove()">Remove</button>
+</div>
 <div style="float : right; width: 20%; margin-top: 1em; margin-right: 1em;">
   <div style=" margin-bottom: 10px; margin-left: -5.5em; float: left; width: fit-content;">
     <div class="checkboxes">
-      <label><input id="edit" type="checkbox"> <span style="margin-right: 0.5em; font-weight: bold; color: red;">Edit tree</span></label>
+      <label><input id="edit" type="checkbox" onchange="checkb(this)"> <span style="margin-right: 0.5em; font-weight: bold; color: red;">Edit tree</span></label>
     </div>
   </div>
   <div style="text-align: center;">
@@ -216,6 +253,12 @@ function click(d) {
 
 <script>
   document.getElementById("qid").innerHTML = "QID : " + localStorage.getItem("qid").replace("hiera_",'');
-</script>
 
+  function checkb(evt){
+    if(!evt.checked){
+        document.getElementById("hiddenactions").hidden = true;
+    }
+  }
+
+</script>
 {%endblock%}

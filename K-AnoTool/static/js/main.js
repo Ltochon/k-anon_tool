@@ -114,4 +114,10 @@ function gotohiera(clicked_id){
     document.location.href = "http://127.0.0.1:5000/generalization/";
 }
 
+function checkb(evt){
+    if(!evt.checked){
+        document.getElementById("hiddenactions").hidden = true;
+    }
+}
+
 
