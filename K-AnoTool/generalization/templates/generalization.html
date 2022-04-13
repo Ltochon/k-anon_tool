@@ -11,7 +11,6 @@ function* generateid(){
   } 
 }
 
-
 var treeData = [
   {
     "name": "Level 0 : *",
@@ -71,7 +70,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  document.body.addEventListener("contextmenu",(e) =>{e.preventDefault()})
+document.body.addEventListener("contextmenu",(e) =>{e.preventDefault()})
 root = treeData[0];
 root.x0 = height / 2;
 root.y0 = 0;
@@ -101,10 +100,6 @@ function update(source) {
 	  .attr("class", "node")
 	  .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
 	  .on("click", click)
-    .on("contextmenu",(e) => {console.log(e.children); e.children.push({
-            "name": "Level 2 : [30;39]",
-            "parent": "Level 1: >= 30"
-          });update(e)})
 
   nodeEnter.append("circle")
 	  .attr("r", 1e-6)
@@ -176,25 +171,39 @@ function update(source) {
 
 // Toggle children on click.
 function click(d) {
-  console.log(d)
-  if (d.children) {
-	d._children = d.children;
-	d.children = null;
-  } else {
-	d.children = d._children;
-	d._children = null;
+  if(document.getElementById("edit").checked){
+    d.children.push({
+            "name": "Level 2 : [30;39]",
+            "parent": "Level 1: >= 30"
+          });
+    update(d)
   }
-  update(d);
+  else{
+    if (d.children) {
+    d._children = d.children;
+    d.children = null;
+    } else {
+    d.children = d._children;
+    d._children = null;
+    }
+    update(d);
+  }
 }
 
 </script>
 <div style="float : right; width: 20%; margin-top: 1em; margin-right: 1em;">
-  <div>
-    <span id="qid">a</span>
+  <div style=" margin-bottom: 10px; margin-left: -5.5em; float: left; width: fit-content;">
+    <div class="checkboxes">
+      <label><input id="edit" type="checkbox"> <span style="margin-right: 0.5em; font-weight: bold; color: red;">Edit tree</span></label>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <p id="qid" style="font-weight: bold; font-size: large; color : green;">a</p>
   </div>
   <div style="border: solid black 2px; padding: 1em;">
-    <div style="text-align: center; font-weight: bold; color: red;">
+    <div style="text-align: center; font-weight: bold; color: black;">
         <span>Level's weights</span>
+        <br>
     </div>
     <label for="" class="labellvl">Level 0 : </label>
     <input type="number" class="inputlvl">
@@ -206,8 +215,7 @@ function click(d) {
 </div>
 
 <script>
-  window.onload = alert(localStorage.getItem("storageName"));
-  document.getElementById("qid").innerHTML = localStorage.getItem("qid");
+  document.getElementById("qid").innerHTML = "QID : " + localStorage.getItem("qid").replace("hiera_",'');
 </script>
 
 {%endblock%}
