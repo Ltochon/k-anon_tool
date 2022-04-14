@@ -3,14 +3,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
 
 <script>
-function* generateid(){
-  let i = 0;
-  while(true){
-    i++;
-    yield i;
-  } 
-}
-
 let nblvl = 0;
 
 var treeData = [
@@ -47,7 +39,6 @@ root = treeData[0];
 root.x0 = height / 2;
 root.y0 = 0;
 
-var gen = generateid();
 update(root);
 
 d3.select(self.frameElement).style("height", "500px");
@@ -240,16 +231,33 @@ function click(d) {
         <br>
     </div>
   </div>
+  <div style="text-align: center;">
+    <form method="POST" action="" enctype="multipart/form-data" >
+      <input type="hidden" value="hiddenqid" name="hiddenqid" id="hiddenqid" />
+      <input type="submit" value="Save" onsubmit="submit()" class = "submit" style="margin-top : 10px">
+    </form>
+    <button onclick="cancel()" class = "cancel" style="margin-top : 10px">Cancel</button>
+  </div>
 </div>
 
 <script>
   document.getElementById("qid").innerHTML = "QID : " + localStorage.getItem("qid").replace("hiera_",'');
-
+  document.getElementById("hiddenqid").value = localStorage.getItem("qid").replace("hiera_",'');
   function checkb(evt){
     if(!evt.checked){
         document.getElementById("hiddenactions").hidden = true;
     }
   }
 
+  function submit(){
+    i = 0;
+    tabweight = []
+    while(i < nblvl){
+      let inptosave = document.getElementById("inp"+i.toString()).value;
+      tabweight.push(inptosave);
+      i++;
+    }
+    localStorage.setItem("weights_" + localStorage.getItem("qid").replace("hiera_",''),tabweight); 
+  }
 </script>
 {%endblock%}

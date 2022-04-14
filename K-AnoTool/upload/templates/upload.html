@@ -2,6 +2,10 @@
 {% block head %}
 {% endblock %}
 {% block body %}
+<script>
+    let sgen = '{{generalized}}'.replaceAll('&#39;','');
+    console.log(sgen);
+</script>
 {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     {% for category, message in messages %}

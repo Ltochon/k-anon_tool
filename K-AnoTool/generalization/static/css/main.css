@@ -52,3 +52,29 @@ button:hover{
   color: white;
   background-color: red;
 }
+
+.submit{
+  border-radius: 20%;
+  background-color: rgb(99, 148, 94);
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  padding: 5px 10px;
+}
+
+.submit:hover{
+  color: white;
+  background-color: red;
+}
+
+.cancel{
+  border-radius: 20%;
+  background-color: rgb(139, 139, 139);
+  font-weight: normal;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: small;
+  padding: 4px 7px;
+}
+
+.cancel:hover{
+  color: white;
+  background-color: red;
+}

@@ -69,6 +69,7 @@ def print_csv(path):
 
 def render_upload(data):
     app.config['data'] = data
+    app.config["generalized"] = []
     return redirect(url_for('upload.upload_page'))
 
 @app.route("/upload/", methods=['POST'])
@@ -100,6 +101,13 @@ def export_csv():
     resp.headers["Content-Disposition"] = "attachment; filename=" + txt_file + ".csv"
     resp.headers["Content-Type"] = "text/csv"
     return resp
+
+@app.route("/generalization/", methods=['POST'])
+def back_upload():
+    done = request.form.get('hiddenqid')
+    if(done not in app.config["generalized"]):
+        app.config["generalized"].append(done)
+    return redirect(url_for('upload.upload_page'))
 
 if (__name__ == "__main__"):
     print(app.url_map, sys.stderr)

@@ -1,3 +1,11 @@
+function* generateid(){
+    let i = 0;
+    while(true){
+      i++;
+      yield i;
+    } 
+  }
+var gen = generateid();
 function ischecked(evt){
     var visible = "";
     if(document.getElementById(evt.currentTarget.myParam).checked){
