@@ -51,7 +51,7 @@
             {% endfor %}
         </div>
         <div id = "third">
-            <p id="h3" class = "headerchoice entetecache" style="font-weight: bold; background: rgb(99, 148, 94);"><b>Select QIDs types</b></p>
+            <p id="h3" class = "headerchoice entete" style="background: rgb(99, 148, 94);"><b>Select QIDs types</b></p>
             {% for header in headers %}
                 {% if loop.index is divisibleby 2 == 1 %}
                     {% set color = "white" %}
@@ -82,7 +82,7 @@
             {% endfor %}
         </div>
         <div id = "forth">
-            <p id="h4" class="entetecache" style="text-align: center; margin-bottom: 0px; font-weight: bold; background: rgb(99, 148, 94);"><b>Hierarchy</b></p>
+            <p id="h4" class="headerchoice entete" style="text-align: center; margin-bottom: 0px; background: rgb(99, 148, 94);"><b>Hierarchy</b></p>
             {% for header in headers %}
                 {% if loop.index is divisibleby 2 == 1 %}
                     {% set color = "white" %}

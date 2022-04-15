@@ -35,12 +35,6 @@ var svg = d3.select("body").append("svg")
 
 document.body.addEventListener("contextmenu",(e) =>{e.preventDefault()})
 
-root = treeData[0];
-root.x0 = height / 2;
-root.y0 = 0;
-
-update(root);
-
 d3.select(self.frameElement).style("height", "500px");
 
 function update(source) {
@@ -66,8 +60,7 @@ function update(source) {
 
   // Update the nodes…
   var node = svg.selectAll("g.node")
-	  .data(nodes, function(d) { return d.id || (d.id = ++i); })
-
+	  .data(nodes, function(d) { return d.id || (d.id = ++firstid); })
   // Enter any new nodes at the parent's previous position.
   var nodeEnter = node.enter().append("g")
 	  .attr("class", "node")
@@ -165,19 +158,17 @@ function createinp(nblvl){
   document.getElementById("inplvl").appendChild(inp);
 }
 
-function add(){
+function add(child,parent){
   if(parseInt(d_copy.depth) + 1 > nblvl){
     nblvl++;
     createinp(nblvl);
   }
   if(d_copy["children"] == undefined){
-    d_copy["children"] = [{"name": "Level "+ (parseInt(d_copy.depth) + 1).toString(),
-            "parent": "Level 1: >= 30"}]
+    d_copy["children"] = [{"name": "Level "+ (parseInt(d_copy.depth) + 1).toString()}]
   }
   else{
     d_copy.children.push({
-              "name": "Level "+ (parseInt(d_copy.depth) + 1).toString(),
-              "parent": "Level 1: >= 30"
+              "name": "Level "+ (parseInt(d_copy.depth) + 1).toString()
             });
   }
   update(d_copy);
@@ -215,6 +206,31 @@ function click(d) {
   }
 }
 
+var sub = (function(){
+    var savenodes = tree.nodes(root).reverse(),links = tree.links(savenodes);
+    allnodes = savenodes.reverse()
+    tabtosave = [];
+    for(elem in allnodes){
+      if(elem == 0){
+        tabtosave.push([allnodes[elem].name,allnodes[elem].id,"0",allnodes[elem].depth])
+      }
+      else{
+        tabtosave.push([allnodes[elem].name,allnodes[elem].id,allnodes[elem].parent.id,allnodes[elem].depth])
+      }
+    }
+    localStorage.setItem("tree_" + localStorage.getItem("qid").replace("hiera_",''),JSON.stringify(tabtosave));
+    console.log(localStorage.getItem("tree_" + localStorage.getItem("qid").replace("hiera_",'')));
+    j = 0;
+    tabweight = []
+    while(j < nblvl){
+      let inptosave = document.getElementById("inp"+j.toString()).value;
+      tabweight.push(inptosave);
+      j++;
+    }
+    console.log(tabweight)
+    localStorage.setItem("weights_" + localStorage.getItem("qid").replace("hiera_",''),tabweight); 
+  });
+
 </script>
 <div id="hiddenactions" style="padding: 0.2em; width : 3.4em; height:50px; position: absolute;" hidden>
   <button style="width: 5em; height: 30px; margin-bottom: 0.1em;" onclick="add()">Add</button>
@@ -240,37 +256,78 @@ function click(d) {
       <input type="hidden" value="hiddenqid" name="hiddenqid" id="hiddenqid" />
       <input type="submit" value="Save" class = "submit" style="margin-top : 10px">
     </form>
-    <button onclick="submit()" class = "cancel" style="margin-top : 10px">Cancel</button>
+    <button onclick="sub()" class = "cancel" style="margin-top : 10px">Cancel</button>
   </div>
 </div>
 
 <script>
+
+  function list_to_tree(list) {
+    var map = {}, node, roots = [], i;
+    
+    for (i = 0; i < list.length; i += 1) {
+      map[list[i].id] = i; // initialize the map
+      list[i].children = []; // initialize the children
+    }
+    
+    for (i = 0; i < list.length; i += 1) {
+      node = list[i];
+      if (node.parentId !== "0") {
+        // if you have dangling branches check that map[node.parentId] exists
+        list[map[node.parentId]].children.push(node);
+      } else {
+        roots.push(node);
+      }
+    }
+    return roots;
+  }
+
   document.getElementById("qid").innerHTML = "QID : " + localStorage.getItem("qid").replace("hiera_",'');
   document.getElementById("hiddenqid").value = localStorage.getItem("qid").replace("hiera_",'');
-  if(localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",'')).split(',') != null){
+  let firstid = 0;
+  if(localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
     for(elem in localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",'')).split(',')){
       createinp(parseInt(elem)+1);
       document.getElementById("inp" + elem).value = localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",'')).split(',')[elem];
-      nblvl++;
+      nblvl++;      
     }
+    var treetodisplay = JSON.parse(localStorage.getItem("tree_"+ localStorage.getItem("qid").replace("hiera_",'')));
+    console.log(treetodisplay);
+    var toconvert = [];
+    for(elem in treetodisplay){
+      let dic = {
+        "id" : treetodisplay[elem][1],
+        "name" : treetodisplay[elem][0],
+        "depth" : treetodisplay[elem][3],
+        "children" : null,
+        "parentId" : treetodisplay[elem][2]
+      }
+      toconvert.push(dic);
+    }
+    console.log(toconvert);
+    firstid = toconvert.length;
+    treeData = list_to_tree(toconvert);
+    
   }
+  else{
+    var treeData = [
+      {
+        "name": "Level 0 : *",
+        "parent": "null",
+      }
+    ];
 
+    }
+  root = treeData[0];
+  root.x0 = height / 2;
+  root.y0 = 0;
+
+  update(root);
+  
   function checkb(evt){
     if(!evt.checked){
         document.getElementById("hiddenactions").hidden = true;
     }
   }
-
-  var sub = (function(){
-    i = 0;
-    tabweight = []
-    while(i < nblvl){
-      let inptosave = document.getElementById("inp"+i.toString()).value;
-      tabweight.push(inptosave);
-      i++;
-    }
-    console.log(tabweight)
-    localStorage.setItem("weights_" + localStorage.getItem("qid").replace("hiera_",''),tabweight); 
-  });
 </script>
 {%endblock%}
