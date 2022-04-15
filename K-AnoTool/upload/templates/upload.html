@@ -2,10 +2,6 @@
 {% block head %}
 {% endblock %}
 {% block body %}
-<script>
-    let sgen = '{{generalized}}'.replaceAll('&#39;','');
-    console.log(sgen);
-</script>
 {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
     {% for category, message in messages %}
@@ -55,7 +51,7 @@
             {% endfor %}
         </div>
         <div id = "third">
-            <p id="h3" class = "headerchoice entetecache"><b>a</b></p>
+            <p id="h3" class = "headerchoice entetecache" style="font-weight: bold; background: rgb(99, 148, 94);"><b>Select QIDs types</b></p>
             {% for header in headers %}
                 {% if loop.index is divisibleby 2 == 1 %}
                     {% set color = "white" %}
@@ -75,7 +71,7 @@
                 {% else %}
                     <div class="underlinedelem {{color}}" style="padding : 10px;">
                         <label id="l3_{{header}}" for={{header}} style="visibility: hidden;">Type : </label>
-                        <select name="type_{{header}}" id="selecttype_{{header}}" style="width: auto; visibility: hidden;">
+                        <select name="type_{{header}}" id="selecttype_{{header}}" onchange="gettype(this)" style="width: auto; visibility: hidden;">
                             <option value="">--Options--</option>
                             <option value="str">String</option>
                             <option value="int">Integer</option>
@@ -86,7 +82,7 @@
             {% endfor %}
         </div>
         <div id = "forth">
-            <p id="h4" class="entetecache" style="text-align: center; margin-bottom: 0px;"><b>a</b></p>
+            <p id="h4" class="entetecache" style="text-align: center; margin-bottom: 0px; font-weight: bold; background: rgb(99, 148, 94);"><b>Hierarchy</b></p>
             {% for header in headers %}
                 {% if loop.index is divisibleby 2 == 1 %}
                     {% set color = "white" %}
@@ -115,5 +111,29 @@
         <input type="submit" value="Anonymze This Dataset !" class = "submit" style="margin-top : 10px">
     </div>
 </form>
+<script>
+    let sgen = '{{generalized}}'.replaceAll('&#39;','').replaceAll(']','').replaceAll('[','').split(", ");
+    if(sgen[0] != ''){
+        for(elem in sgen){
+            document.getElementById(sgen[elem]).checked = true;
+            document.getElementById("hiera_" + sgen[elem]).style.visibility = "visible";
+            document.getElementById("l3_" + sgen[elem]).style.visibility = "visible";
+            document.getElementById("selecttype_" + sgen[elem]).style.visibility = "visible";
+            document.getElementById("selecttype_" + sgen[elem]).value = localStorage.getItem("weight_"+sgen[elem]);
+            console.log(document.getElementById("hiera_"+ sgen[elem]).style)
+            document.getElementById("hiera_"+ sgen[elem]).style.backgroundColor = "rgb(99, 148, 94)";
+        }
+    document.getElementById("h3").style.background = "rgb(99, 148, 94)";
+    document.getElementById("h3").style.color = "black";
+    document.getElementById("h3").style.fontWeight = "bold";
+    document.getElementById("h3").innerHTML = "Select QIDs types";
+    document.getElementById("h4").style.background = "rgb(99, 148, 94)";
+    document.getElementById("h4").style.color = "black";
+    document.getElementById("h4").style.fontWeight = "bold";
+    document.getElementById("h4").innerHTML = "Hierarchy";
+
+
+    }
+</script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}
