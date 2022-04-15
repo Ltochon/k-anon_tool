@@ -152,19 +152,23 @@ document.onmousemove = function(event) {
 	pointerY = event.pageY;
 }
 
+function createinp(nblvl){
+  let lab = document.createElement("label");
+  lab.classList.add("labellvl");
+  lab.setAttribute("id","lbl" + (nblvl-1).toString());
+  lab.innerHTML = "Level " + (nblvl-1).toString() + " to " + (nblvl).toString();
+  let inp = document.createElement("input");
+  inp.type = "number";
+  inp.classList.add("inputlvl");
+  inp.setAttribute("id","inp" + (nblvl-1).toString())
+  document.getElementById("inplvl").appendChild(lab);
+  document.getElementById("inplvl").appendChild(inp);
+}
+
 function add(){
   if(parseInt(d_copy.depth) + 1 > nblvl){
     nblvl++;
-    let lab = document.createElement("label");
-    lab.classList.add("labellvl");
-    lab.setAttribute("id","lbl" + (nblvl-1).toString());
-    lab.innerHTML = "Level " + (nblvl-1).toString() + " to " + (nblvl).toString();
-    let inp = document.createElement("input");
-    inp.type = "number";
-    inp.classList.add("inputlvl");
-    inp.setAttribute("id","inp" + (nblvl-1).toString())
-    document.getElementById("inplvl").appendChild(lab);
-    document.getElementById("inplvl").appendChild(inp);
+    createinp(nblvl);
   }
   if(d_copy["children"] == undefined){
     d_copy["children"] = [{"name": "Level "+ (parseInt(d_copy.depth) + 1).toString(),
@@ -232,24 +236,32 @@ function click(d) {
     </div>
   </div>
   <div style="text-align: center;">
-    <form method="POST" action="" enctype="multipart/form-data" >
+    <form method="POST" action="" onsubmit="sub()" enctype="multipart/form-data" >
       <input type="hidden" value="hiddenqid" name="hiddenqid" id="hiddenqid" />
-      <input type="submit" value="Save" onsubmit="submit()" class = "submit" style="margin-top : 10px">
+      <input type="submit" value="Save" class = "submit" style="margin-top : 10px">
     </form>
-    <button onclick="cancel()" class = "cancel" style="margin-top : 10px">Cancel</button>
+    <button onclick="submit()" class = "cancel" style="margin-top : 10px">Cancel</button>
   </div>
 </div>
 
 <script>
   document.getElementById("qid").innerHTML = "QID : " + localStorage.getItem("qid").replace("hiera_",'');
   document.getElementById("hiddenqid").value = localStorage.getItem("qid").replace("hiera_",'');
+  if(localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",'')).split(',') != null){
+    for(elem in localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",'')).split(',')){
+      createinp(parseInt(elem)+1);
+      document.getElementById("inp" + elem).value = localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",'')).split(',')[elem];
+      nblvl++;
+    }
+  }
+
   function checkb(evt){
     if(!evt.checked){
         document.getElementById("hiddenactions").hidden = true;
     }
   }
 
-  function submit(){
+  var sub = (function(){
     i = 0;
     tabweight = []
     while(i < nblvl){
@@ -257,7 +269,8 @@ function click(d) {
       tabweight.push(inptosave);
       i++;
     }
+    console.log(tabweight)
     localStorage.setItem("weights_" + localStorage.getItem("qid").replace("hiera_",''),tabweight); 
-  }
+  });
 </script>
 {%endblock%}
