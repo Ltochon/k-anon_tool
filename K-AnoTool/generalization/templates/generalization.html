@@ -171,21 +171,30 @@ function createinp(nblvl){
   document.getElementById("inplvl").appendChild(inp);
 }
 
-function add(child,parent){
+function add(){
+  let popup = document.getElementById("popuptxt");
+  document.getElementById("hiddenactions").hidden = true;
+  popup.style.visibility = "visible";
+  
+  
+}
+
+function addnode(){
+  let name = document.getElementById("textnewnode").value;
   if(parseInt(d_copy.depth) + 1 > nblvl){
     nblvl++;
     createinp(nblvl);
   }
   if(d_copy["children"] == undefined){
-    d_copy["children"] = [{"name": "Level "+ (parseInt(d_copy.depth) + 1).toString()}]
+    d_copy["children"] = [{"name": name}]
   }
   else{
     d_copy.children.push({
-              "name": "Level "+ (parseInt(d_copy.depth) + 1).toString()
+              "name": name
             });
   }
   update(d_copy);
-  document.getElementById("hiddenactions").hidden = true;
+  document.getElementById("popuptxt").style.visibility = "hidden";
 }
 
 function remove(){
@@ -270,10 +279,16 @@ var sub = (function(){
       <input type="hidden" value="hiddenqid" name="hiddenqid" id="hiddenqid" />
       <input type="submit" value="Save" class = "submit" style="margin-top : 10px">
     </form>
-    <button onclick="sub()" class = "cancel" style="margin-top : 10px">Cancel</button>
   </div>
 </div>
 
+<div id="popuptxt" class="popuptxt" style="text-align: center; visibility: hidden;">
+  <h5 style="font-weight: bold;">Enter name</h5>
+  <input id = "textnewnode" type="text">
+  <div>
+    <button style="margin-top: 15px;" onclick="addnode()">OK</button>
+  </div>
+</div>
 <script>
 
   function list_to_tree(list) {

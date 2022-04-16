@@ -78,3 +78,17 @@ button:hover{
   color: white;
   background-color: red;
 }
+
+.popuptxt {
+  color : rgb(159, 54, 54);
+  padding: 2%;;
+  border: solid rgb(159, 54, 54) 3px;
+  margin-left: auto;
+  width: 60%;
+  margin-right: auto;
+  margin-top: -440px;
+  height: auto;
+  position: relative;
+  z-index: 0;
+  background-color: #fafbe3
+}
