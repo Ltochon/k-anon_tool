@@ -173,10 +173,17 @@ function createinp(nblvl){
 
 function add(){
   let popup = document.getElementById("popuptxt");
+  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+
+  }
+  else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
+
+  }
+  else{
+    
+  }
   document.getElementById("hiddenactions").hidden = true;
   popup.style.visibility = "visible";
-  
-  
 }
 
 function addnode(){
@@ -310,7 +317,6 @@ var sub = (function(){
     }
     return roots;
   }
-
   document.getElementById("qid").innerHTML = "QID : " + localStorage.getItem("qid").replace("hiera_",'');
   document.getElementById("hiddenqid").value = localStorage.getItem("qid").replace("hiera_",'');
   let firstid = 0;
