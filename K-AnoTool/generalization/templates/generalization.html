@@ -44,7 +44,6 @@ function update(source) {
   // Normalize for fixed-depth.
   let tabdepth = [];
   nodes.forEach(function(d) { d.y = d.depth * 100; tabdepth.push(d.depth);});
-
   //remove labal and inputs
   if(Math.max(...tabdepth) < nblvl){
     while(nblvl > Math.max(...tabdepth)){
@@ -55,7 +54,20 @@ function update(source) {
       d.removeChild(lbltoremove);
       d.removeChild(inptoremove);
     }
-    
+  }
+  else{
+    while(nblvl < Math.max(...tabdepth)){
+      nblvl++;
+      createinp(nblvl);
+    }
+  }
+  
+  if(localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
+    let l = 0;
+    while(l < nblvl){
+      document.getElementById("inp" + l.toString()).value = localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",'')).split(',')[l]; 
+      l++;     
+    }
   }
 
   // Update the nodes…
@@ -153,6 +165,7 @@ function createinp(nblvl){
   let inp = document.createElement("input");
   inp.type = "number";
   inp.classList.add("inputlvl");
+  inp.addEventListener("change",saveweights)
   inp.setAttribute("id","inp" + (nblvl-1).toString())
   document.getElementById("inplvl").appendChild(lab);
   document.getElementById("inplvl").appendChild(inp);
@@ -187,7 +200,6 @@ function remove(){
 
 let d_copy;
 function click(d) {
-  console.log(d);
   d_copy = d;
   if(document.getElementById("edit").checked){
     document.getElementById("hiddenactions").hidden = false;
@@ -206,6 +218,17 @@ function click(d) {
   }
 }
 
+function saveweights(){
+  j = 0;
+    tabweight = []
+    while(j < nblvl){
+      let inptosave = document.getElementById("inp"+j.toString()).value;
+      tabweight.push(inptosave);
+      j++;
+    }
+    localStorage.setItem("weights_" + localStorage.getItem("qid").replace("hiera_",''),tabweight);
+}
+
 var sub = (function(){
     var savenodes = tree.nodes(root).reverse(),links = tree.links(savenodes);
     allnodes = savenodes.reverse()
@@ -219,16 +242,7 @@ var sub = (function(){
       }
     }
     localStorage.setItem("tree_" + localStorage.getItem("qid").replace("hiera_",''),JSON.stringify(tabtosave));
-    console.log(localStorage.getItem("tree_" + localStorage.getItem("qid").replace("hiera_",'')));
-    j = 0;
-    tabweight = []
-    while(j < nblvl){
-      let inptosave = document.getElementById("inp"+j.toString()).value;
-      tabweight.push(inptosave);
-      j++;
-    }
-    console.log(tabweight)
-    localStorage.setItem("weights_" + localStorage.getItem("qid").replace("hiera_",''),tabweight); 
+    saveweights();
   });
 
 </script>
@@ -292,9 +306,11 @@ var sub = (function(){
       nblvl++;      
     }
     var treetodisplay = JSON.parse(localStorage.getItem("tree_"+ localStorage.getItem("qid").replace("hiera_",'')));
-    console.log(treetodisplay);
     var toconvert = [];
     for(elem in treetodisplay){
+      if(treetodisplay[elem][1] > firstid){
+        firstid = treetodisplay[elem][1];
+      }
       let dic = {
         "id" : treetodisplay[elem][1],
         "name" : treetodisplay[elem][0],
@@ -304,8 +320,6 @@ var sub = (function(){
       }
       toconvert.push(dic);
     }
-    console.log(toconvert);
-    firstid = toconvert.length;
     treeData = list_to_tree(toconvert);
     
   }
