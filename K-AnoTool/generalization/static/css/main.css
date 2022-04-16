@@ -92,3 +92,16 @@ button:hover{
   z-index: 0;
   background-color: #fafbe3
 }
+
+.occu{
+  display: inline-block;
+  width: 45%;
+  color: black;
+}
+
+.printoccu{
+  height: 5em;
+  padding: 2px;
+  border: solid rgb(159, 54, 54) 2px;
+  overflow-y: scroll;
+}

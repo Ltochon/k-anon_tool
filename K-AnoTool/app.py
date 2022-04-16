@@ -70,6 +70,9 @@ def print_csv(path):
 def render_upload(data):
     app.config['data'] = data
     app.config["generalized"] = []
+    for q in data.columns:
+        occu= data[q].value_counts(ascending = True).index.tolist()
+        app.config["occu_" + q] = occu
     return redirect(url_for('upload.upload_page'))
 
 @app.route("/upload/", methods=['POST'])

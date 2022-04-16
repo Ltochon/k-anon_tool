@@ -3,6 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
 
 <script>
+var dictotal = JSON.parse('{{dic | safe}}');  
 let nblvl = 0;
 
 var treeData = [
@@ -16,7 +17,7 @@ var treeData = [
 // ************** Generate the tree diagram	 *****************
 var margin = {top: 20, right: 120, bottom: 20, left: 120},
 	width = 960 - margin.right - margin.left,
-	height = 500 - margin.top - margin.bottom;
+	height = 540 - margin.top - margin.bottom;
 	
 var i = 0,
 	duration = 750,
@@ -182,8 +183,24 @@ function add(){
   else{
     
   }
-  document.getElementById("hiddenactions").hidden = true;
+  document.getElementById("affichpossible").innerHTML = "Possible values for depth = " + localStorage.getItem("depthencours");
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+  let div2 = document.getElementById("possible");
+  console.log(parseInt(localStorage.getItem("depthencours")))
+  while (div2.firstChild) {
+    div2.removeChild(div2.lastChild);
+  }
+  for(elem in nodes){
+    if(nodes[elem].depth === parseInt(localStorage.getItem("depthencours"))){
+      let p2 = document.createElement("p");
+      p2.innerHTML = nodes[elem].name;
+      p2.style.marginBottom = "2px";
+      div2.appendChild(p2);
+    }
+  }
   popup.style.visibility = "visible";
+  document.getElementById("hiddenactions").hidden = true;
 }
 
 function addnode(){
@@ -218,6 +235,7 @@ let d_copy;
 function click(d) {
   d_copy = d;
   if(document.getElementById("edit").checked){
+    localStorage.setItem("depthencours",d.depth+1);
     document.getElementById("hiddenactions").hidden = false;
     document.getElementById("hiddenactions").style.top = pointerY-70+"px";
     document.getElementById("hiddenactions").style.left = pointerX+3+"px";
@@ -290,7 +308,21 @@ var sub = (function(){
 </div>
 
 <div id="popuptxt" class="popuptxt" style="text-align: center; visibility: hidden;">
-  <h5 style="font-weight: bold;">Enter name</h5>
+  <h5 style="font-weight: bold;">New custom node</h5>
+  <div>
+    <div class="occu">
+      <p style="font-weight: bold;">Originial values</p>
+      <div id="original" class="printoccu">
+
+      </div>
+    </div>
+    <div class="occu">
+      <p id = "affichpossible" style="font-weight: bold;"></p>
+      <div id="possible" class="printoccu">
+
+      </div>
+    </div>
+  </div>
   <input id = "textnewnode" type="text">
   <div>
     <button style="margin-top: 15px;" onclick="addnode()">OK</button>
@@ -316,6 +348,15 @@ var sub = (function(){
       }
     }
     return roots;
+  }
+
+  let qid = localStorage.getItem("qid").replace("hiera_",'');
+  let div = document.getElementById("original");
+  for(elem in dictotal[qid]){
+    let p = document.createElement("p");
+    p.innerHTML = dictotal[qid][elem];
+    p.style.marginBottom = "2px";
+    div.appendChild(p);
   }
   document.getElementById("qid").innerHTML = "QID : " + localStorage.getItem("qid").replace("hiera_",'');
   document.getElementById("hiddenqid").value = localStorage.getItem("qid").replace("hiera_",'');
