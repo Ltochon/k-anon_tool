@@ -5,7 +5,7 @@
 <script>
 var dictotal = JSON.parse('{{dic | safe}}');  
 let nblvl = 0;
-
+let dicgenfinal = {};
 var treeData = [
   {
     "name": "Level 0 : *",
@@ -174,20 +174,12 @@ function createinp(nblvl){
 
 function add(){
   let popup = document.getElementById("popuptxt");
-  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
-
-  }
-  else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
-
-  }
-  else{
-    
-  }
   document.getElementById("affichpossible").innerHTML = "Possible values for depth = " + localStorage.getItem("depthencours");
   var nodes = tree.nodes(root).reverse(),
 	  links = tree.links(nodes);
   let div2 = document.getElementById("possible");
-  console.log(parseInt(localStorage.getItem("depthencours")))
+  let min;
+  let max;
   while (div2.firstChild) {
     div2.removeChild(div2.lastChild);
   }
@@ -199,12 +191,65 @@ function add(){
       div2.appendChild(p2);
     }
   }
-  popup.style.visibility = "visible";
+  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+    min = Math.min.apply(Math, dictotal[localStorage.getItem("qid").replace("hiera_",'')].map(Number));
+    max = Math.max.apply(Math, dictotal[localStorage.getItem("qid").replace("hiera_",'')].map(Number));
+    if(dicgenfinal[localStorage.getItem("depthencours")] != undefined){
+      let run = true;
+      while(run){
+        let find = false;
+        for(elem in dicgenfinal[localStorage.getItem("depthencours")]){
+          let splitted = dicgenfinal[localStorage.getItem("depthencours")][elem].split(" ");
+          if(parseInt(splitted[1]) === min){
+            find = true;
+            min = parseInt(splitted[3])+1;
+          }
+          if(parseInt(splitted[3]) === max){
+            find = true;
+            max = parseInt(splitted[1])-1;
+          }
+          if(find){
+            break;
+          }
+        }
+        if(!find){
+          run = false;
+        }
+      }
+    }
+    document.getElementById("intnewnode1").value = min;
+    document.getElementById("intnewnode2").value = max;
+  }
+  else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
+
+  }
+  else{
+    
+  }
+  if(min > max){
+      alert("Full range of generalization already define for depth : " + localStorage.getItem("depthencours"))
+  }
+  else{
+    popup.style.visibility = "visible";
+  }
   document.getElementById("hiddenactions").hidden = true;
 }
 
 function addnode(){
-  let name = document.getElementById("textnewnode").value;
+  //let name = document.getElementById("textnewnode").value;
+  let name = "";
+  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+    let from = document.getElementById("intnewnode1").value;
+    let to = document.getElementById("intnewnode2").value;
+    name = "[ " + from + " ; " + to + " ]";
+    if(dicgenfinal[localStorage.getItem("depthencours")] == undefined){
+      dicgenfinal[localStorage.getItem("depthencours")] = [name]
+    }
+    else{
+      dicgenfinal[localStorage.getItem("depthencours")].push(name);
+    }
+  }
+
   if(parseInt(d_copy.depth) + 1 > nblvl){
     nblvl++;
     createinp(nblvl);
@@ -295,7 +340,7 @@ var sub = (function(){
   </div>
   <div id = "inplvl" style="border: solid black 2px; padding: 1em;">
     <div style="text-align: center; font-weight: bold; color: black;">
-        <span>Level's weights</span>
+        <span style="float : left;">Level's weights</span>
         <br>
     </div>
   </div>
@@ -308,7 +353,7 @@ var sub = (function(){
 </div>
 
 <div id="popuptxt" class="popuptxt" style="text-align: center; visibility: hidden;">
-  <h5 style="font-weight: bold;">New custom node</h5>
+  <h5 style="font-weight: bold; margin-bottom: 1em;">New custom node</h5>
   <div>
     <div class="occu">
       <p style="font-weight: bold;">Originial values</p>
@@ -323,7 +368,14 @@ var sub = (function(){
       </div>
     </div>
   </div>
-  <input id = "textnewnode" type="text">
+  <h6 style="font-weight: bold; margin-top: 3px;">Enter new range</h6>
+  <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+    <input id = "textnewnode" type="text" hidden>
+    <span class="inttxt">From : </span>
+    <input type="number" name="" id="intnewnode1" class="inpnewnodeint">
+    <span class="inttxt" style="margin-left: 2em;">To : </span>
+    <input type="number" name="" id="intnewnode2" class="inpnewnodeint">
+  </div>
   <div>
     <button style="margin-top: 15px;" onclick="addnode()">OK</button>
   </div>
@@ -352,6 +404,9 @@ var sub = (function(){
 
   let qid = localStorage.getItem("qid").replace("hiera_",'');
   let div = document.getElementById("original");
+  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+    dictotal[localStorage.getItem("qid").replace("hiera_",'')].sort()
+  }
   for(elem in dictotal[qid]){
     let p = document.createElement("p");
     p.innerHTML = dictotal[qid][elem];

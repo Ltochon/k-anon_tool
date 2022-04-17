@@ -27,8 +27,6 @@
   stroke-width: 2px;
 }
 
-span{float:left}
-
 .checkboxes label {
   display: inline-block;
   padding-right: 10px;
@@ -104,4 +102,13 @@ button:hover{
   padding: 2px;
   border: solid rgb(159, 54, 54) 2px;
   overflow-y: scroll;
+}
+
+.inttxt{
+  width: fit-content;
+  font-weight: bold;
+}
+
+.inpnewnodeint{
+  width: 5em;
 }

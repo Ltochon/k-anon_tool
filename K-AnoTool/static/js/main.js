@@ -100,8 +100,16 @@ document.getElementById("previous").style.visibility = "hidden";
 document.getElementById("previoustxt").style.visibility = "hidden";
 
 function gotohiera(clicked_id){
-    localStorage.setItem("qid",clicked_id);
-    document.location.href = "http://127.0.0.1:5000/generalization/";
+    let inptype = document.getElementById("selecttype_"+clicked_id.split('hiera_')[1]);
+
+    if(inptype.value === ''){
+        alert("Please select a type for the QID : " + clicked_id.split('hiera_')[1])
+    }
+    else{
+        localStorage.setItem("qid",clicked_id);
+        document.location.href = "http://127.0.0.1:5000/generalization/";
+    }
+    
 }
 
 function checkb(evt){
