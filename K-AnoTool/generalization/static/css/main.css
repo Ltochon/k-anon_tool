@@ -112,3 +112,16 @@ button:hover{
 .inpnewnodeint{
   width: 5em;
 }
+
+.btngen{
+  margin-right: 0.5em;
+  border-radius: 20%;
+  background-color: rgb(172, 177, 172);
+  font-weight: bold;
+  padding: 0.1em;
+}
+
+.btngen:hover{
+  color: black;
+  background-color: rgb(129, 236, 138);
+}

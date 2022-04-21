@@ -6,6 +6,8 @@
 var dictotal = JSON.parse('{{dic | safe}}');  
 let nblvl = 0;
 let dicgenfinal = {};
+let tabfinalstr = [];
+let initstr = true;
 var treeData = [
   {
     "name": "Level 0 : *",
@@ -180,6 +182,7 @@ function add(){
   let div2 = document.getElementById("possible");
   let min;
   let max;
+  let okstr = false;
   while (div2.firstChild) {
     div2.removeChild(div2.lastChild);
   }
@@ -192,6 +195,12 @@ function add(){
     }
   }
   if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+    document.getElementById("affichpossible").hidden = false;
+    document.getElementById("txtnew").innerHTML = "Enter new range";
+    document.getElementById("txtintnewnode2").hidden = false;
+    document.getElementById("txtintnewnode1").hidden = false;
+    document.getElementById("intnewnode1").hidden = false;
+    document.getElementById("intnewnode2").hidden = false;
     min = Math.min.apply(Math, dictotal[localStorage.getItem("qid").replace("hiera_",'')].map(Number));
     max = Math.max.apply(Math, dictotal[localStorage.getItem("qid").replace("hiera_",'')].map(Number));
     if(dicgenfinal[localStorage.getItem("depthencours")] != undefined){
@@ -221,13 +230,63 @@ function add(){
     document.getElementById("intnewnode2").value = max;
   }
   else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
-
+    let last = true;
+    for(elem in tabfinalstr.at(-1)){
+      if(tabfinalstr.at(-1)[elem] == "*"){
+        last = false;
+      }
+    }
+    if(last === false || tabfinalstr.length < 1){
+      okstr = true;
+      document.getElementById("txtnew").innerHTML = "Click to remove the position of a character";
+      let wordinit = dictotal[qid][0];
+      let lengthstr = wordinit.length;
+      let divpanel = document.getElementById("custompanel");
+      let cmpt = 0
+      if(initstr == true){
+        initstr = false;
+        while(cmpt < lengthstr){
+          let btn = document.createElement("button");
+          btn.innerHTML = wordinit[cmpt];
+          btn.setAttribute("id","pos_"+cmpt)
+          btn.classList.add("btngen");
+          btn.onclick = function(event){
+            if(btn.innerHTML == "*") {
+              let pos = parseInt(btn.id.replace("pos_",''));
+              btn.innerHTML = wordinit[pos];
+            }
+            else{
+              btn.innerHTML = "*";
+            }
+          }
+          divpanel.appendChild(btn);
+          cmpt++;
+        }
+      }
+      else{
+        while(cmpt < lengthstr){
+          if(tabfinalstr.at(-1)[cmpt] === "X"){
+            document.getElementById("pos_"+cmpt).onclick = function(event){
+            return false;
+            }
+          }
+          document.getElementById("pos_"+cmpt).innerHTML = wordinit[cmpt];
+          cmpt++;
+        }
+      }
+    }
   }
   else{
     
   }
   if(min > max){
-      alert("Full range of generalization already define for depth : " + localStorage.getItem("depthencours"))
+      alert("Full range of generalization already defined for depth : " + localStorage.getItem("depthencours"))
+  }
+  else if(tabfinalstr.length >= localStorage.getItem("depthencours")){
+    alert("String generalization already defined for depth : " + localStorage.getItem("depthencours"));
+  }
+  else if(okstr === false){
+    alert("No more generalization possible !");
   }
   else{
     popup.style.visibility = "visible";
@@ -238,6 +297,8 @@ function add(){
 function addnode(){
   //let name = document.getElementById("textnewnode").value;
   let name = "";
+  let okstr2 = true;
+  let tabpos = [];
   if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
     let from = document.getElementById("intnewnode1").value;
     let to = document.getElementById("intnewnode2").value;
@@ -249,21 +310,40 @@ function addnode(){
       dicgenfinal[localStorage.getItem("depthencours")].push(name);
     }
   }
-
-  if(parseInt(d_copy.depth) + 1 > nblvl){
-    nblvl++;
-    createinp(nblvl);
+  else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
+    document.querySelectorAll('.btngen').forEach(function(button) {
+      if(button.innerHTML === "*"){
+        tabpos.push('*');
+      }
+      else{
+        tabpos.push('X');
+      }
+    });
+    name = tabpos.join('');
+    if(JSON.stringify(tabpos) === JSON.stringify(tabfinalstr.at(-1))){
+      okstr2 = false;
+    }
   }
-  if(d_copy["children"] == undefined){
-    d_copy["children"] = [{"name": name}]
+  if(okstr2){
+    tabfinalstr.push(tabpos);
+    if(parseInt(d_copy.depth) + 1 > nblvl){
+      nblvl++;
+      createinp(nblvl);
+    }
+    if(d_copy["children"] == undefined){
+      d_copy["children"] = [{"name": name}]
+    }
+    else{
+      d_copy.children.push({
+                "name": name
+              });
+    }
+    update(d_copy);
+    document.getElementById("popuptxt").style.visibility = "hidden";
   }
   else{
-    d_copy.children.push({
-              "name": name
-            });
+    alert("Generalization law already defined !")
   }
-  update(d_copy);
-  document.getElementById("popuptxt").style.visibility = "hidden";
 }
 
 function remove(){
@@ -273,6 +353,19 @@ function remove(){
     }
   }
   update(d_copy);
+  var nodes = tree.nodes(root).reverse(),
+	  links = tree.links(nodes);
+  nodes.reverse();
+
+  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
+    let d = 0
+    while(tabfinalstr.length > d_copy.depth-1){
+      tabfinalstr.pop();
+      d++
+    }
+    console.log(tabfinalstr)
+  }
+
   document.getElementById("hiddenactions").hidden = true;
 }
 
@@ -356,25 +449,25 @@ var sub = (function(){
   <h5 style="font-weight: bold; margin-bottom: 1em;">New custom node</h5>
   <div>
     <div class="occu">
-      <p style="font-weight: bold;">Originial values</p>
+      <p style="font-weight: bold;">Original values</p>
       <div id="original" class="printoccu">
 
       </div>
     </div>
-    <div class="occu">
+    <div id="divpossible" class="occu" hidden>
       <p id = "affichpossible" style="font-weight: bold;"></p>
       <div id="possible" class="printoccu">
 
       </div>
     </div>
   </div>
-  <h6 style="font-weight: bold; margin-top: 3px;">Enter new range</h6>
-  <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+  <h6 id="txtnew" style="font-weight: bold; margin-top: 3px;"></h6>
+  <div id="custompanel" style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
     <input id = "textnewnode" type="text" hidden>
-    <span class="inttxt">From : </span>
-    <input type="number" name="" id="intnewnode1" class="inpnewnodeint">
-    <span class="inttxt" style="margin-left: 2em;">To : </span>
-    <input type="number" name="" id="intnewnode2" class="inpnewnodeint">
+    <span id="txtintnewnode1" class="inttxt" hidden>From : </span>
+    <input type="number" name="" id="intnewnode1" class="inpnewnodeint" hidden>
+    <span id="txtintnewnode2" class="inttxt" style="margin-left: 2em;" hidden>To : </span>
+    <input type="number" name="" id="intnewnode2" class="inpnewnodeint" hidden>
   </div>
   <div>
     <button style="margin-top: 15px;" onclick="addnode()">OK</button>
@@ -441,14 +534,25 @@ var sub = (function(){
     
   }
   else{
-    var treeData = [
+    if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
+      var treeData = [
       {
-        "name": "Level 0 : *",
+        "name": "*".repeat(dictotal[qid][0].length),
         "parent": "null",
       }
-    ];
-
+      ];
     }
+    else{
+      var treeData = [
+      {
+        "name": "*",
+        "parent": "null",
+      }
+      ];
+    }
+    
+
+  }
   root = treeData[0];
   root.x0 = height / 2;
   root.y0 = 0;
