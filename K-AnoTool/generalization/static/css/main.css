@@ -43,7 +43,6 @@ button{
   border-radius: 20%;
   background-color: rgb(99, 148, 94);
   font-weight: bold;
-  padding: 0.1em;
 }
 
 button:hover{
@@ -98,7 +97,7 @@ button:hover{
 }
 
 .printoccu{
-  height: 5em;
+  height: 9em;
   padding: 2px;
   border: solid rgb(159, 54, 54) 2px;
   overflow-y: scroll;
@@ -124,4 +123,18 @@ button:hover{
 .btngen:hover{
   color: black;
   background-color: rgb(129, 236, 138);
+}
+
+.createlaw{
+  background-color: lightgrey;
+  border-radius: 1%;
+}
+
+.createlaw:hover{
+  background-color: rgb(150, 174, 150);
+  color: black;
+}
+
+.inplaw{
+  margin-bottom: 0.5em;
 }

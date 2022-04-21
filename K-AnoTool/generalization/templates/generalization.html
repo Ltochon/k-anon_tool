@@ -182,7 +182,7 @@ function add(){
   let div2 = document.getElementById("possible");
   let min;
   let max;
-  let okstr = false;
+  let okstr = true;
   while (div2.firstChild) {
     div2.removeChild(div2.lastChild);
   }
@@ -237,7 +237,6 @@ function add(){
       }
     }
     if(last === false || tabfinalstr.length < 1){
-      okstr = true;
       document.getElementById("txtnew").innerHTML = "Click to remove the position of a character";
       let wordinit = dictotal[qid][0];
       let lengthstr = wordinit.length;
@@ -274,6 +273,9 @@ function add(){
           cmpt++;
         }
       }
+    }
+    else{
+      okstr = false;
     }
   }
   else{
@@ -342,7 +344,7 @@ function addnode(){
     document.getElementById("popuptxt").style.visibility = "hidden";
   }
   else{
-    alert("Generalization law already defined !")
+    alert("Generalization's law already defined !")
   }
 }
 
@@ -417,6 +419,31 @@ var sub = (function(){
     saveweights();
   });
 
+function namelaw(){
+  let allselected = document.querySelectorAll(".plaw");
+  if(allselected.length < 1){
+    alert("Select at least 1 value from the left box");
+  }
+  else{
+    let namel = document.getElementById("inputlaw").value;
+    let tabselect = [];
+    let stringlaw = "";
+    allselected.forEach(function(pselected){
+      pselected.classList.remove("plaw");
+      tabselect.push(pselected.innerHTML);
+      pselected.hidden = true;
+    });
+    stringlaw = "'" + namel + "' : [";
+    for(elem in tabselect){
+      stringlaw += tabselect[elem] + ", "
+    }
+    let div3 = document.getElementById("printlaw");
+    div3.innerHTML += stringlaw.slice(0, -2) + "]<br>";
+  }
+  
+}
+
+
 </script>
 <div id="hiddenactions" style="padding: 0.2em; width : 3.4em; height:50px; position: absolute;" hidden>
   <button style="width: 5em; height: 30px; margin-bottom: 0.1em;" onclick="add()">Add</button>
@@ -449,16 +476,16 @@ var sub = (function(){
   <h5 style="font-weight: bold; margin-bottom: 1em;">New custom node</h5>
   <div>
     <div class="occu">
-      <p style="font-weight: bold;">Original values</p>
+      <p id="enteteoriginal" style="font-weight: bold;">Original values</p>
       <div id="original" class="printoccu">
-
       </div>
     </div>
     <div id="divpossible" class="occu" hidden>
       <p id = "affichpossible" style="font-weight: bold;"></p>
       <div id="possible" class="printoccu">
-
       </div>
+    </div>
+    <div id = "printlaw" class="printoccu occu" style="overflow-x: scroll; white-space: nowrap;">
     </div>
   </div>
   <h6 id="txtnew" style="font-weight: bold; margin-top: 3px;"></h6>
@@ -470,6 +497,12 @@ var sub = (function(){
     <input type="number" name="" id="intnewnode2" class="inpnewnodeint" hidden>
   </div>
   <div>
+    <div id = "namelaw" hidden>
+      <span id="spanlaw" class="inttxt" >Category's name : </span>
+      <input type="text" name="" id="inputlaw" class="inplaw" >
+    </div>
+    <button id="btnlaw" class="createlaw" onclick="namelaw()" hidden>Create category for selection</button>
+    <br>
     <button style="margin-top: 15px;" onclick="addnode()">OK</button>
   </div>
 </div>
@@ -500,10 +533,23 @@ var sub = (function(){
   if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
     dictotal[localStorage.getItem("qid").replace("hiera_",'')].sort()
   }
+  else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+    document.getElementById("namelaw").hidden = false;
+    document.getElementById("btnlaw").hidden = false;
+    document.getElementById("enteteoriginal").innerHTML = "Select values to categorize";
+  }
   for(elem in dictotal[qid]){
     let p = document.createElement("p");
     p.innerHTML = dictotal[qid][elem];
     p.style.marginBottom = "2px";
+    if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+      p.style.cursor = "pointer";
+      p.onclick = function(event){
+        p.classList.add("plaw");
+        p.style.color = "red";
+        p.style.fontStyle  = "italic";
+      }
+    }
     div.appendChild(p);
   }
   document.getElementById("qid").innerHTML = "QID : " + localStorage.getItem("qid").replace("hiera_",'');
