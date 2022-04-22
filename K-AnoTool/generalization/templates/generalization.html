@@ -283,7 +283,16 @@ function add(){
   }
   else{
     let div3 = document.getElementById("printlaw");
-    if(tabname.length > 0){
+    if(localStorage.getItem("diccategories_" + qid) != null){
+      console.log(localStorage.getItem("diccategories_" + qid).split("|").at(-1).split("<br>"))
+      tabname = [];
+      let w2 = 0;
+      let arr = localStorage.getItem("diccategories_" + qid).split("|").at(-1).split("<br>");
+      while(w2 < arr.length -1){
+        tabname.push(arr[w2].split("'")[1])
+        w2++;
+      }
+      console.log(tabname)
       if(tabname.length === 1){
         alone = true;
       }
@@ -321,7 +330,7 @@ function add(){
   if(min > max){
       alert("Full range of generalization already defined for depth : " + localStorage.getItem("depthencours"))
   }
-  else if(tabfinalstr.length >= localStorage.getItem("depthencours")){
+  else if(tabfinalstr.length >= localStorage.getItem("depthencours") && localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
     alert("String generalization already defined for depth : " + localStorage.getItem("depthencours"));
   }
   else if(okstr === false){
@@ -377,6 +386,13 @@ function addnode(){
       }
     }
     if(okcat) {
+      if(localStorage.getItem("diccategories_" + qid) === null){
+        localStorage.setItem("diccategories_" + qid,document.getElementById("printlaw").innerHTML)
+      }
+      else{
+        localStorage.setItem("diccategories_" + qid,localStorage.getItem("diccategories_" + qid) + "|" + document.getElementById("printlaw").innerHTML)
+      }
+      console.log(localStorage.getItem("diccategories_" + qid))
       let line = document.getElementById("printlaw").innerHTML.split("<br>");
       let l = 0;
       tabname = [];
