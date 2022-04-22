@@ -6,7 +6,9 @@
 var dictotal = JSON.parse('{{dic | safe}}');  
 let nblvl = 0;
 let dicgenfinal = {};
+let diccatfinal = {};
 let tabfinalstr = [];
+let tabname = [];
 let initstr = true;
 var treeData = [
   {
@@ -182,6 +184,7 @@ function add(){
   let div2 = document.getElementById("possible");
   let min;
   let max;
+  let alone = false;
   let okstr = true;
   while (div2.firstChild) {
     div2.removeChild(div2.lastChild);
@@ -279,6 +282,40 @@ function add(){
     }
   }
   else{
+    let div3 = document.getElementById("printlaw");
+    if(tabname.length > 0){
+      if(tabname.length === 1){
+        alone = true;
+      }
+      while(div.firstChild) {
+        div.removeChild(div.lastChild);
+      }
+      while(div3.firstChild) {
+        div3.removeChild(div3.lastChild);
+      }
+      for(w in tabname){
+        let p = document.createElement("p");
+        p.innerHTML = tabname[w];
+        p.style.marginBottom = "2px";
+        if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+          p.style.cursor = "pointer";
+          p.onclick = function(event){
+            if(p.classList.value == ''){
+              p.classList.add("plaw");
+              p.style.color = "red";
+              p.style.fontStyle  = "italic";
+            }
+            else{
+              p.classList.remove("plaw");
+              p.style.color = "black";
+              p.style.fontStyle = "normal";
+            }
+          }
+        }
+        div.appendChild(p);
+      }
+
+    }
     
   }
   if(min > max){
@@ -290,6 +327,9 @@ function add(){
   else if(okstr === false){
     alert("No more generalization possible !");
   }
+  else if(alone){
+    alert("Single value cannot be categorize !");
+  }
   else{
     popup.style.visibility = "visible";
   }
@@ -300,6 +340,7 @@ function addnode(){
   //let name = document.getElementById("textnewnode").value;
   let name = "";
   let okstr2 = true;
+  let okcat = true;
   let tabpos = [];
   if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
     let from = document.getElementById("intnewnode1").value;
@@ -326,22 +367,49 @@ function addnode(){
       okstr2 = false;
     }
   }
+  else{
+    let allchildren = document.getElementById("original").children;
+    for(child in allchildren){
+      if(allchildren[child].hidden === false){
+        okcat = false;
+        alert("You need to define a category for all possible values !");
+        break;
+      }
+    }
+    if(okcat) {
+      let line = document.getElementById("printlaw").innerHTML.split("<br>");
+      let l = 0;
+      tabname = [];
+      while(l < line.length -1){
+        tabname.push(line[l].split("'")[1])
+        l++;
+      }
+      name = tabname.join("; ");
+      console.log(name.length)
+      if(name.length > 13){
+        name = name.substring(0,11);
+        name += "...";
+      }
+    }
+  }
   if(okstr2){
-    tabfinalstr.push(tabpos);
-    if(parseInt(d_copy.depth) + 1 > nblvl){
-      nblvl++;
-      createinp(nblvl);
+    if(okcat){
+      tabfinalstr.push(tabpos);
+      if(parseInt(d_copy.depth) + 1 > nblvl){
+        nblvl++;
+        createinp(nblvl);
+      }
+      if(d_copy["children"] == undefined){
+        d_copy["children"] = [{"name": name}]
+      }
+      else{
+        d_copy.children.push({
+                  "name": name
+                });
+      }
+      update(d_copy);
+      document.getElementById("popuptxt").style.visibility = "hidden";
     }
-    if(d_copy["children"] == undefined){
-      d_copy["children"] = [{"name": name}]
-    }
-    else{
-      d_copy.children.push({
-                "name": name
-              });
-    }
-    update(d_copy);
-    document.getElementById("popuptxt").style.visibility = "hidden";
   }
   else{
     alert("Generalization's law already defined !")
@@ -426,19 +494,25 @@ function namelaw(){
   }
   else{
     let namel = document.getElementById("inputlaw").value;
-    let tabselect = [];
-    let stringlaw = "";
-    allselected.forEach(function(pselected){
-      pselected.classList.remove("plaw");
-      tabselect.push(pselected.innerHTML);
-      pselected.hidden = true;
-    });
-    stringlaw = "'" + namel + "' : [";
-    for(elem in tabselect){
-      stringlaw += tabselect[elem] + ", "
+    if(diccatfinal[namel] === undefined){
+      let tabselect = [];
+      let stringlaw = "";
+      allselected.forEach(function(pselected){
+        pselected.classList.remove("plaw");
+        tabselect.push(pselected.innerHTML);
+        pselected.hidden = true;
+      });
+      diccatfinal[namel] = tabselect;
+      stringlaw = "'" + namel + "' : [";
+      for(elem in tabselect){
+        stringlaw += tabselect[elem] + ", "
+      }
+      let div3 = document.getElementById("printlaw");
+      div3.innerHTML += stringlaw.slice(0, -2) + "]<br>";
     }
-    let div3 = document.getElementById("printlaw");
-    div3.innerHTML += stringlaw.slice(0, -2) + "]<br>";
+    else{
+      alert("This category has already been defined !")
+    }
   }
   
 }
@@ -545,9 +619,16 @@ function namelaw(){
     if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
       p.style.cursor = "pointer";
       p.onclick = function(event){
-        p.classList.add("plaw");
-        p.style.color = "red";
-        p.style.fontStyle  = "italic";
+        if(p.classList.value == ''){
+          p.classList.add("plaw");
+          p.style.color = "red";
+          p.style.fontStyle  = "italic";
+        }
+        else{
+          p.classList.remove("plaw");
+          p.style.color = "black";
+          p.style.fontStyle = "normal";
+        }
       }
     }
     div.appendChild(p);
@@ -584,6 +665,14 @@ function namelaw(){
       var treeData = [
       {
         "name": "*".repeat(dictotal[qid][0].length),
+        "parent": "null",
+      }
+      ];
+    }
+    else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+      var treeData = [
+      {
+        "name": "All values",
         "parent": "null",
       }
       ];
