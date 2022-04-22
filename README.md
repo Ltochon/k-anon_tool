@@ -89,6 +89,33 @@ This project will focus on the medical domain to handle a single use case and go
   <img src="test_algo/yed/supp_weight+Samarati.svg" alt="SSW Algorithm"/>
 </p>
 
+### Complexity comparison
+
+#### SW
+
+maximum generalization level = *n*   
+number of qid = *k*   
+number of combination of generalization's level = *n<sup>k</sup>*   
+one-level generalization = *O(n)*
+max-level generalization = *O(k * n<sup>2</sup>)*
+anonimity level check = *O(n)*
+supression check = *O(n)*
+
+Final complexity level : *O(n<sup>k</sup> * (k * n<sup>2</sup> + n + n + n))* = *O(n<sup>k</sup> * (k * n<sup>2</sup> + 3n))* = *O(n<sup>k</sup> * n<sup>2</sup>)*
+
+#### SSW
+
+maximum generalization level = *n*   
+number of qid = *k*   
+number of combination of generalization's level = *n<sup>k</sup>*   
+one-level generalization = *O(n)*
+max-level generalization = *O(k * n<sup>2</sup>)*
+anonimity level check = *O(n)*
+supression check = *O(n)*
+
+Final complexity level : *O(log<sub>2</sub>(n<sup>k</sup>) * (k * n<sup>2</sup> + n + n + n))* = *O(log<sub>2</sub>(n<sup>k</sup>) * (k * n<sup>2</sup> + 3n))* = *O(log<sub>2</sub>(n<sup>k</sup>) * n<sup>2</sup>)*
+
+
 ## Milestones
 
 (:heavy_check_mark: : Done | :hourglass_flowing_sand: : In Progress | :x: : Canceled)
