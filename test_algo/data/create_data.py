@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 #zip = ["1001","1002","1003","1004","1201","1202","1203","1204","01","01","01","02","02","02"]
 zip = ["1001","1002","1003","1004","1201","1202","1203","1204"]
-cancer_illness = ["Lung cancer","Breast Cancer", "Colorectal cancer", "Kidney cancer","Bladder cancer"]
+cancer_illness = ["Lung cancer","Breast cancer", "Colorectal cancer", "Kidney cancer","Bladder cancer"]
 sexual_illness = ["Chlamydia", "HIV","Syphilis", "AIDS"]
 illness = cancer_illness + sexual_illness
 ill, ill2, ill3 = [],[],[]
