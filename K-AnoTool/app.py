@@ -110,6 +110,8 @@ def back_upload():
     done = request.form.get('hiddenqid')
     if(done not in app.config["generalized"]):
         app.config["generalized"].append(done)
+    print(request.form.get('sendweights'),sys.stderr)
+    print(request.form.get('sendlattice'),sys.stderr)
     return redirect(url_for('upload.upload_page'))
 
 if (__name__ == "__main__"):

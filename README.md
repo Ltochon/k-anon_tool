@@ -16,8 +16,11 @@
   - [Goal](#goal)
   - [Description of the project](#description-of-the-project)
   - [The algorithms](#the-algorithms)
-    - [Datafly](#datafly)
-    - [Datafly-weighted (Proposal)](#datafly-weighted-proposal)
+    - [SW (Proposal)](#sw-proposal)
+    - [SSW (Proposal)](#ssw-proposal)
+    - [Complexity comparison](#complexity-comparison)
+      - [SW](#sw)
+      - [SSW](#ssw)
   - [Milestones](#milestones)
   - [Run commands](#run-commands)
   - [Sources](#sources)
@@ -96,10 +99,10 @@ This project will focus on the medical domain to handle a single use case and go
 maximum generalization level = *n*   
 number of qid = *k*   
 number of combination of generalization's level = *n<sup>k</sup>*   
-one-level generalization = *O(n)*
-max-level generalization = *O(k * n<sup>2</sup>)*
-anonimity level check = *O(n)*
-supression check = *O(n)*
+one-level generalization = *O(n)*   
+max-level generalization = *O(k * n<sup>2</sup>)*   
+anonimity level check = *O(n)*   
+supression check = *O(n)*   
 
 Final complexity level : *O(n<sup>k</sup> * (k * n<sup>2</sup> + n + n + n))* = *O(n<sup>k</sup> * (k * n<sup>2</sup> + 3n))* = *O(n<sup>k</sup> * n<sup>2</sup>)*
 
@@ -108,10 +111,10 @@ Final complexity level : *O(n<sup>k</sup> * (k * n<sup>2</sup> + n + n + n))* = 
 maximum generalization level = *n*   
 number of qid = *k*   
 number of combination of generalization's level = *n<sup>k</sup>*   
-one-level generalization = *O(n)*
-max-level generalization = *O(k * n<sup>2</sup>)*
-anonimity level check = *O(n)*
-supression check = *O(n)*
+one-level generalization = *O(n)*   
+max-level generalization = *O(k * n<sup>2</sup>)*   
+anonimity level check = *O(n)*   
+supression check = *O(n)*   
 
 Final complexity level : *O(log<sub>2</sub>(n<sup>k</sup>) * (k * n<sup>2</sup> + n + n + n))* = *O(log<sub>2</sub>(n<sup>k</sup>) * (k * n<sup>2</sup> + 3n))* = *O(log<sub>2</sub>(n<sup>k</sup>) * n<sup>2</sup>)*
 

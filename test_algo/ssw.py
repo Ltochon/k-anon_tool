@@ -57,7 +57,6 @@ def occu(df,qid):
     return tab_dict
 
 def algo(df_init,qid,max_gen,weigths,k,max_supp):
-    print(max_supp)
     list_comb = create_lattice(max_gen)
     list_cost = []
     current_level = [round(len(list_comb)/2)-1]

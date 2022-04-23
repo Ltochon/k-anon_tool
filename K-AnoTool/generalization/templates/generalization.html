@@ -361,6 +361,7 @@ function addnode(){
     else{
       dicgenfinal[localStorage.getItem("depthencours")].push(name);
     }
+    localStorage.setItem("dictint_" + localStorage.getItem("qid").replace("hiera_",''), JSON.stringify(dicgenfinal));
   }
   else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
     document.querySelectorAll('.btngen').forEach(function(button) {
@@ -375,6 +376,7 @@ function addnode(){
     if(JSON.stringify(tabpos) === JSON.stringify(tabfinalstr.at(-1))){
       okstr2 = false;
     }
+    localStorage.setItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''),tabfinalstr);
   }
   else{
     let allchildren = document.getElementById("original").children;
@@ -392,7 +394,6 @@ function addnode(){
       else{
         localStorage.setItem("diccategories_" + qid,localStorage.getItem("diccategories_" + qid) + "|" + document.getElementById("printlaw").innerHTML)
       }
-      console.log(localStorage.getItem("diccategories_" + qid))
       let line = document.getElementById("printlaw").innerHTML.split("<br>");
       let l = 0;
       tabname = [];
@@ -501,6 +502,17 @@ var sub = (function(){
     }
     localStorage.setItem("tree_" + localStorage.getItem("qid").replace("hiera_",''),JSON.stringify(tabtosave));
     saveweights();
+    document.getElementById("sendweights").value = localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",''));
+    if(localStorage.getItem("diccategories_" + qid) != null){
+      document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + qid);
+    }
+    else if(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
+      document.getElementById("sendlattice").value = localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''));
+    }
+    else{
+      document.getElementById("sendlattice").value = localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",''));
+    }
+    
   });
 
 function namelaw(){
@@ -557,6 +569,8 @@ function namelaw(){
   <div style="text-align: center;">
     <form method="POST" action="" onsubmit="sub()" enctype="multipart/form-data" >
       <input type="hidden" value="hiddenqid" name="hiddenqid" id="hiddenqid" />
+      <input type="hidden" id="sendlattice" name="sendlattice" type="text" />
+      <input type="hidden" id="sendweights" name="sendweights" type="text" />
       <input type="submit" value="Save" class = "submit" style="margin-top : 10px">
     </form>
   </div>
@@ -616,6 +630,17 @@ function namelaw(){
       }
     }
     return roots;
+  }
+
+  console.log(localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",'')))
+  if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
+    document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + qid);
+  }
+  else if(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
+    document.getElementById("sendlattice").value = localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''));
+  }
+  else if(localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
+    dicgenfinal = JSON.parse(localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",'')));
   }
 
   let qid = localStorage.getItem("qid").replace("hiera_",'');
