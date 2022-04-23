@@ -379,6 +379,10 @@ function addnode(){
     if(JSON.stringify(tabpos) === JSON.stringify(tabfinalstr.at(-1))){
       okstr2 = false;
     }
+    if(okstr2){
+      tabfinalstr.push(tabpos);
+      localStorage.setItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''), JSON.stringify(tabfinalstr));
+    }
   }
   else{
     let allchildren = document.getElementById("original").children;
@@ -412,8 +416,6 @@ function addnode(){
   }
   if(okstr2){
     if(okcat){
-      tabfinalstr.push(tabpos);
-      localStorage.setItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''), JSON.stringify(tabfinalstr));
       if(parseInt(d_copy.depth) + 1 > nblvl){
         nblvl++;
         createinp(nblvl);
@@ -508,9 +510,11 @@ var sub = (function(){
       document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + qid);
     }
     else if(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
+      console.log(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')))
       document.getElementById("sendlattice").value = localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''));
     }
     else{
+      console.log(localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",'')))
       document.getElementById("sendlattice").value = localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",''));
     }
     
@@ -633,7 +637,6 @@ function namelaw(){
     return roots;
   }
 
-  console.log(localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",'')))
   if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
     document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + qid);
   }
