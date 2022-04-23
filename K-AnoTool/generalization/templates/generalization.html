@@ -269,6 +269,7 @@ function add(){
         while(cmpt < lengthstr){
           if(tabfinalstr.at(-1)[cmpt] === "X"){
             document.getElementById("pos_"+cmpt).onclick = function(event){
+            alert("Specified position cannot be generalized back !")
             return false;
             }
           }
@@ -307,6 +308,7 @@ function add(){
         p.innerHTML = tabname[w];
         p.style.marginBottom = "2px";
         if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+          document.getElementById("printlaw").hidden = false;
           p.style.cursor = "pointer";
           p.onclick = function(event){
             if(p.classList.value == ''){
@@ -327,10 +329,11 @@ function add(){
     }
     
   }
+
   if(min > max){
       alert("Full range of generalization already defined for depth : " + localStorage.getItem("depthencours"))
   }
-  else if(tabfinalstr.length >= localStorage.getItem("depthencours") && localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
+  else if(tabfinalstr.length >= nodes.length && localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
     alert("String generalization already defined for depth : " + localStorage.getItem("depthencours"));
   }
   else if(okstr === false){
@@ -376,7 +379,6 @@ function addnode(){
     if(JSON.stringify(tabpos) === JSON.stringify(tabfinalstr.at(-1))){
       okstr2 = false;
     }
-    localStorage.setItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''),tabfinalstr);
   }
   else{
     let allchildren = document.getElementById("original").children;
@@ -402,7 +404,6 @@ function addnode(){
         l++;
       }
       name = tabname.join("; ");
-      console.log(name.length)
       if(name.length > 13){
         name = name.substring(0,11);
         name += "...";
@@ -412,6 +413,7 @@ function addnode(){
   if(okstr2){
     if(okcat){
       tabfinalstr.push(tabpos);
+      localStorage.setItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''), JSON.stringify(tabfinalstr));
       if(parseInt(d_copy.depth) + 1 > nblvl){
         nblvl++;
         createinp(nblvl);
@@ -450,7 +452,6 @@ function remove(){
       tabfinalstr.pop();
       d++
     }
-    console.log(tabfinalstr)
   }
 
   document.getElementById("hiddenactions").hidden = true;
@@ -589,7 +590,7 @@ function namelaw(){
       <div id="possible" class="printoccu">
       </div>
     </div>
-    <div id = "printlaw" class="printoccu occu" style="overflow-x: scroll; white-space: nowrap;">
+    <div id = "printlaw" class="printoccu occu" style="overflow-x: scroll; white-space: nowrap;" hidden>
     </div>
   </div>
   <h6 id="txtnew" style="font-weight: bold; margin-top: 3px;"></h6>
@@ -637,7 +638,7 @@ function namelaw(){
     document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + qid);
   }
   else if(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
-    document.getElementById("sendlattice").value = localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''));
+    tabfinalstr = JSON.parse(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')));
   }
   else if(localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
     dicgenfinal = JSON.parse(localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",'')));
