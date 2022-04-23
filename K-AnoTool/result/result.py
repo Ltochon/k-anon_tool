@@ -10,7 +10,7 @@ result = Blueprint("result", __name__, static_folder="static", template_folder="
 def result_page():
     data = current_app.config['data']
     inputs = ["checkbox_","type_"]
-    tab_check = []
+    tab_check = [] 
     tab_type = []
     for header in data.columns:
         for i in range(0,len(inputs)):
