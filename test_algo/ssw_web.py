@@ -56,7 +56,7 @@ def occu(df,qid):
         tab_dict.append(dict(zip(index_tab,occu_tab)))
     return tab_dict
 
-def algo(df_init,qid,max_gen,weigths,k,max_supp):
+def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types):
     list_comb = create_lattice(max_gen)
     list_cost = []
     current_level = [round(len(list_comb)/2)-1]
