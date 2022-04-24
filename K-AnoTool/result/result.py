@@ -9,6 +9,9 @@ result = Blueprint("result", __name__, static_folder="static", template_folder="
 @result.route("/")
 def result_page():
     data = current_app.config['data']
+    #dictotallattsalgo = current_app.config['dictotallattsalgo'] 
+    #dictotalweightsalgo = current_app.config['dictotalweightsalgo'] 
+    #dictotaldepthsalgo = current_app.config['dictotaldepthsalgo']
     inputs = ["checkbox_","type_"]
     tab_check = [] 
     tab_type = []
@@ -22,6 +25,8 @@ def result_page():
     index_qid = [i for i, x in enumerate(tab_check) if x == "on"]
     if(len(index_qid) >= 1):
         qid = itemgetter(*index_qid)(data.columns)
+        if(isinstance(qid, str)):
+            qid = (qid,)
         qid_str = []
         for q in qid: #need to transform from 
             qid_str.append(q.replace("'",'"'))
@@ -29,6 +34,7 @@ def result_page():
         max_supp = int(current_app.config['inputmaxsupp'])
         types = itemgetter(*index_qid)(tab_type)
         compute_ano = algo(data,qid_str,[2,2],[[3,4],[5,6]],k,max_supp)
+        #compute_ano = algo(data,qid_str,[2],[[3,4]],k,max_supp)
         list_cost = []
         for i in compute_ano:
             for j in i:
@@ -39,8 +45,9 @@ def result_page():
         else:
             lastitem = 5
         df,dfjson,ano,comb,cost,suppr = [],[],[],[],[],[]
-        for j in compute_ano:
-            for c in list_cost[0:lastitem]:
+        print(compute_ano,sys.stderr)
+        for c in list_cost[0:lastitem]:
+            for j in compute_ano:
                 for i in j:
                     if(i[2] == c):
                         df.append(i[0])
