@@ -50,6 +50,7 @@ function update(source) {
   let tabdepth = [];
   nodes.forEach(function(d) { d.y = d.depth * 100; tabdepth.push(d.depth);});
   //remove labal and inputs
+  document.getElementById("senddepth").value = nblvl;
   if(Math.max(...tabdepth) < nblvl){
     while(nblvl > Math.max(...tabdepth)){
       nblvl--;
@@ -206,27 +207,29 @@ function add(){
     document.getElementById("intnewnode2").hidden = false;
     min = Math.min.apply(Math, dictotal[localStorage.getItem("qid").replace("hiera_",'')].map(Number));
     max = Math.max.apply(Math, dictotal[localStorage.getItem("qid").replace("hiera_",'')].map(Number));
-    if(dicgenfinal[localStorage.getItem("depthencours")] != undefined){
-      let run = true;
-      while(run){
-        let find = false;
-        for(elem in dicgenfinal[localStorage.getItem("depthencours")]){
-          let splitted = dicgenfinal[localStorage.getItem("depthencours")][elem].split(" ");
-          if(parseInt(splitted[1]) === min){
-            find = true;
-            min = parseInt(splitted[3])+1;
-          }
-          if(parseInt(splitted[3]) === max){
-            find = true;
-            max = parseInt(splitted[1])-1;
-          }
-          if(find){
-            break;
-          }
+    if(d_copy.name != "*"){
+      min = parseInt(d_copy.name.split(" ")[1]);
+      max = parseInt(d_copy.name.split(" ")[3]);
+    }
+    let run = true;
+    while(run){
+      let find = false;
+      for(elem in dicgenfinal[localStorage.getItem("depthencours")]){
+        let splitted = dicgenfinal[localStorage.getItem("depthencours")][elem].split(" ");
+        if(parseInt(splitted[1]) === min){
+          find = true;
+          min = parseInt(splitted[3])+1;
         }
-        if(!find){
-          run = false;
+        if(parseInt(splitted[3]) === max){
+          find = true;
+          max = parseInt(splitted[1])-1;
         }
+        if(find){
+          break;
+        }
+      }
+      if(!find){
+        run = false;
       }
     }
     document.getElementById("intnewnode1").value = min;
@@ -284,11 +287,12 @@ function add(){
   }
   else{
     let div3 = document.getElementById("printlaw");
-    if(localStorage.getItem("diccategories_" + qid) != null){
-      console.log(localStorage.getItem("diccategories_" + qid).split("|").at(-1).split("<br>"))
+    div3.hidden = false;
+    if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
+      console.log(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')).split("|").at(-1).split("<br>"))
       tabname = [];
       let w2 = 0;
-      let arr = localStorage.getItem("diccategories_" + qid).split("|").at(-1).split("<br>");
+      let arr = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')).split("|").at(-1).split("<br>");
       while(w2 < arr.length -1){
         tabname.push(arr[w2].split("'")[1])
         w2++;
@@ -394,11 +398,11 @@ function addnode(){
       }
     }
     if(okcat) {
-      if(localStorage.getItem("diccategories_" + qid) === null){
-        localStorage.setItem("diccategories_" + qid,document.getElementById("printlaw").innerHTML)
+      if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) === null){
+        localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),document.getElementById("printlaw").innerHTML)
       }
       else{
-        localStorage.setItem("diccategories_" + qid,localStorage.getItem("diccategories_" + qid) + "|" + document.getElementById("printlaw").innerHTML)
+        localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) + "|" + document.getElementById("printlaw").innerHTML)
       }
       let line = document.getElementById("printlaw").innerHTML.split("<br>");
       let l = 0;
@@ -506,8 +510,8 @@ var sub = (function(){
     localStorage.setItem("tree_" + localStorage.getItem("qid").replace("hiera_",''),JSON.stringify(tabtosave));
     saveweights();
     document.getElementById("sendweights").value = localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",''));
-    if(localStorage.getItem("diccategories_" + qid) != null){
-      document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + qid);
+    if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
+      document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''));
     }
     else if(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
       console.log(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')))
@@ -576,6 +580,7 @@ function namelaw(){
       <input type="hidden" value="hiddenqid" name="hiddenqid" id="hiddenqid" />
       <input type="hidden" id="sendlattice" name="sendlattice" type="text" />
       <input type="hidden" id="sendweights" name="sendweights" type="text" />
+      <input type="hidden" id="senddepth" name="senddepth" type="text" />
       <input type="submit" value="Save" class = "submit" style="margin-top : 10px">
     </form>
   </div>
@@ -638,7 +643,7 @@ function namelaw(){
   }
 
   if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
-    document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + qid);
+    document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''));
   }
   else if(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
     tabfinalstr = JSON.parse(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')));

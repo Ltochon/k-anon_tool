@@ -25,6 +25,9 @@ app.config["DEBUG"] = True
 UPLOAD_FOLDER = 'static/files'
 app.config['UPLOAD_FOLDER'] =  UPLOAD_FOLDER
 
+dictotalweightsalgo = {}
+dictotallattsalgo = {}
+dictotaldepthsalgo = {}
 
 # Root URL
 @app.route('/')
@@ -45,7 +48,6 @@ def generalization():
 # Get the uploaded files
 @app.route("/", methods=['POST'])
 def uploadFiles():
-
     # get the uploaded file
     print(request.files['file'],sys.stderr)
     if(request.files['file'].filename != ''):
@@ -56,6 +58,7 @@ def uploadFiles():
         uploaded_file.save(file_path)
         print_csv(file_path)
         # save the file
+        dictotalalgo = {}
         return print_csv(file_path)
     else:
         flash("Please enter a valid file")
@@ -108,10 +111,14 @@ def export_csv():
 @app.route("/generalization/", methods=['POST'])
 def back_upload():
     done = request.form.get('hiddenqid')
+    weights = request.form.get('sendweights')
+    lattice = request.form.get('sendlattice')
+    depth = request.form.get('senddepth')
     if(done not in app.config["generalized"]):
         app.config["generalized"].append(done)
-    print(request.form.get('sendweights'),sys.stderr)
-    print(request.form.get('sendlattice'),sys.stderr)
+    dictotallattsalgo[done] = lattice
+    dictotalweightsalgo[done] = weights
+    dictotaldepthsalgo[done] = depth
     return redirect(url_for('upload.upload_page'))
 
 if (__name__ == "__main__"):
