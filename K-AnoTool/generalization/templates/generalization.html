@@ -207,7 +207,7 @@ function add(){
     document.getElementById("intnewnode2").hidden = false;
     min = Math.min.apply(Math, dictotal[localStorage.getItem("qid").replace("hiera_",'')].map(Number));
     max = Math.max.apply(Math, dictotal[localStorage.getItem("qid").replace("hiera_",'')].map(Number));
-    if(d_copy.name != "*"){
+    if(d_copy.name != "All values"){
       min = parseInt(d_copy.name.split(" ")[1]);
       max = parseInt(d_copy.name.split(" ")[3]);
     }
@@ -270,13 +270,17 @@ function add(){
       }
       else{
         while(cmpt < lengthstr){
-          if(tabfinalstr.at(-1)[cmpt] === "X"){
+          if(tabfinalstr.at(-1)[cmpt] === "*"){
+            document.getElementById("pos_"+cmpt).innerHTML = "*";
+            console.log(document.getElementById("pos_"+cmpt).innerHTML)
             document.getElementById("pos_"+cmpt).onclick = function(event){
-            alert("Specified position cannot be generalized back !")
+            alert("Generalized position cannot be specified back !")
             return false;
             }
           }
-          document.getElementById("pos_"+cmpt).innerHTML = wordinit[cmpt];
+          else{
+            document.getElementById("pos_"+cmpt).innerHTML = wordinit[cmpt];
+          }
           cmpt++;
         }
       }
@@ -714,12 +718,12 @@ function namelaw(){
     if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
       var treeData = [
       {
-        "name": "*".repeat(dictotal[qid][0].length),
+        "name": "X".repeat(dictotal[qid][0].length),
         "parent": "null",
       }
       ];
     }
-    else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+    else {
       var treeData = [
       {
         "name": "All values",
@@ -727,16 +731,6 @@ function namelaw(){
       }
       ];
     }
-    else{
-      var treeData = [
-      {
-        "name": "*",
-        "parent": "null",
-      }
-      ];
-    }
-    
-
   }
   root = treeData[0];
   root.x0 = height / 2;

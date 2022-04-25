@@ -42,11 +42,12 @@ function next(){
     current_sol++;
     i = 0;
     var table = document.getElementById('table');
+    all_df = eval("[" + localStorage.getItem("all_df") + "]");
+    arr = all_df[current_sol]
     while(i < 50){
         j = 0;
-        arr = all_df_split[current_sol].split('[')[5+i].replace("],","").split(",")
-        for(elem in arr){
-            table.rows[1+i].cells[j].innerHTML = arr[elem].replace('"','').replace('"','');
+        for(col in Object.keys(arr[i])){
+            table.rows[1+i].cells[j].innerHTML = arr[i][Object.keys(arr[i])[col]];
             j++;
         }
         i++;
@@ -70,11 +71,12 @@ function previous(){
     current_sol--;
     i = 0;
     var table = document.getElementById('table');
+    all_df = eval("[" + localStorage.getItem("all_df") + "]");
+    arr = all_df[current_sol]
     while(i < 50){
         j = 0;
-        arr = all_df_split[current_sol].split('[')[5+i].replace("],","").split(",")
-        for(elem in arr){
-            table.rows[1+i].cells[j].innerHTML = arr[elem].replace('"','').replace('"','');
+        for(col in Object.keys(arr[i])){
+            table.rows[1+i].cells[j].innerHTML = arr[i][Object.keys(arr[i])[col]];
             j++;
         }
         i++;
@@ -95,7 +97,6 @@ function previous(){
     
 }
 var current_sol = 0
-all_df_split = all_df.split(", ")
 document.getElementById("previous").style.visibility = "hidden";
 document.getElementById("previoustxt").style.visibility = "hidden";
 

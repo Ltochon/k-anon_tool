@@ -6,7 +6,11 @@
 
 {% block body %}
 <script>
-    var all_df = '{{dfjson|tojson}}'
+    var regex = /&#39;/g;
+    var regex2 = /&#34;/g;
+    var val = "{{dfjson}}".replace(regex, "'").replace(regex2, '"');
+    var all_df = eval("[" + val + "]");
+    localStorage.setItem("all_df",all_df);
     var all_comb = '{{comb|tojson}}';
     all_comb = all_comb.replace(']]','').replace('[[','').split('], [')
     var all_ano = '{{k|tojson}}';

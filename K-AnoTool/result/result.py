@@ -34,7 +34,7 @@ def result_page():
         for q_elem in qid:
             tab_weight.append(list(map(int, dictotalweightsalgo[q_elem].split(','))))
             tab_lattice.append(dictotallattsalgo[q_elem])
-            tab_depth.append(int(dictotaldepthsalgo[q_elem]))
+            tab_depth.append(int(dictotaldepthsalgo[q_elem])+1)
 
         qid_str = []
         for q in qid: #need to transform from 
@@ -42,11 +42,13 @@ def result_page():
         k = int(current_app.config['inputk'])
         max_supp = int(current_app.config['inputmaxsupp'])
         types = itemgetter(*index_qid)(tab_type)
-        print(types,sys.stderr)
-        print(tab_depth,sys.stderr)
-        print(tab_lattice,sys.stderr)
-        print(tab_weight,sys.stderr)
-        compute_ano = algo_web(data,qid_str,tab_depth,tab_weight,k,max_supp,types)
+        if(isinstance(types, str)):
+            types = (types,)
+        #print(types,sys.stderr)
+        #print(tab_depth,sys.stderr)
+        #print(tab_lattice,sys.stderr)
+        #print(tab_weight,sys.stderr)
+        compute_ano = algo_web(data,qid_str,tab_depth,tab_weight,k,max_supp,types,tab_lattice)
         #compute_ano = algo(data,qid_str,[2,2],[[3,4],[5,6]],k,max_supp)
         list_cost = []
         for i in compute_ano:
@@ -63,7 +65,7 @@ def result_page():
                 for i in j:
                     if(i[2] == c):
                         df.append(i[0])
-                        dfjson.append(i[0].to_json(orient = "split"))
+                        dfjson.append(i[0].to_json(orient='records'))
                         ano.append(i[3])
                         comb.append(i[1])
                         cost.append(i[2])
