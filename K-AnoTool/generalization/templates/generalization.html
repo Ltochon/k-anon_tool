@@ -177,14 +177,15 @@ function createinp(nblvl){
   document.getElementById("inplvl").appendChild(inp);
 }
 
+
+let min;
+let max;
 function add(){
   let popup = document.getElementById("popuptxt");
   document.getElementById("affichpossible").innerHTML = "Possible values for depth = " + localStorage.getItem("depthencours");
   var nodes = tree.nodes(root).reverse(),
 	  links = tree.links(nodes);
   let div2 = document.getElementById("possible");
-  let min;
-  let max;
   let alone = false;
   let okstr = true;
   while (div2.firstChild) {
@@ -301,7 +302,6 @@ function add(){
         tabname.push(arr[w2].split("'")[1])
         w2++;
       }
-      console.log(tabname)
       if(tabname.length === 1){
         alone = true;
       }
@@ -361,13 +361,17 @@ function addnode(){
   let name = "";
   let okstr2 = true;
   let okcat = true;
+  let other = true;
   let tabpos = [];
   if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
     let from = document.getElementById("intnewnode1").value;
     let to = document.getElementById("intnewnode2").value;
+    if(parseInt(from) <= min && parseInt(to) >= max){
+      other = false;
+    }
     name = "[ " + from + " ; " + to + " ]";
     if(dicgenfinal[localStorage.getItem("depthencours")] == undefined){
-      dicgenfinal[localStorage.getItem("depthencours")] = [name]
+      dicgenfinal[localStorage.getItem("depthencours")] = [name];
     }
     else{
       dicgenfinal[localStorage.getItem("depthencours")].push(name);
@@ -430,11 +434,21 @@ function addnode(){
       }
       if(d_copy["children"] == undefined){
         d_copy["children"] = [{"name": name}]
+        if(other && localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+          d_copy.children.push({"name": "Other"});
+        }
       }
       else{
         d_copy.children.push({
                   "name": name
                 });
+        if(!other && localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+          for(child in d_copy.children){
+            if(d_copy.children[child].name == "Other"){
+              d_copy.children.splice(child, 1);
+            }
+          }
+        }
       }
       update(d_copy);
       document.getElementById("popuptxt").style.visibility = "hidden";
