@@ -587,7 +587,7 @@ function namelaw(){
   <div style="text-align: center;">
     <p id="qid" style="font-weight: bold; font-size: large; color : green;">a</p>
   </div>
-  <div id = "inplvl" style="border: solid black 2px; padding: 1em;">
+  <div id = "inplvl" style="border: solid black 2px; padding: 1em; margin-bottom: 20px;">
     <div style="text-align: center; font-weight: bold; color: black;">
         <span style="float : left;">Level's weights</span>
         <br>
@@ -599,6 +599,11 @@ function namelaw(){
       <input type="hidden" id="sendlattice" name="sendlattice" type="text" />
       <input type="hidden" id="sendweights" name="sendweights" type="text" />
       <input type="hidden" id="senddepth" name="senddepth" type="text" />
+      <div class="fileupload" style="margin-left: auto;margin-right: auto;">
+        <input type="file"/>
+        Import lattice
+      </div>
+      <div style="color: red; cursor: pointer; margin-top: 1px; margin-bottom: 5px;" onclick="alert('Import function takes a JSON file with the following scheme : #todefine')"> <u>Informations about imports</u></div>
       <input type="submit" value="Save" class = "submit" style="margin-top : 10px">
     </form>
   </div>
