@@ -167,7 +167,7 @@ function createinp(nblvl){
   let lab = document.createElement("label");
   lab.classList.add("labellvl");
   lab.setAttribute("id","lbl" + (nblvl-1).toString());
-  lab.innerHTML = "Level " + (nblvl-1).toString() + " to " + (nblvl).toString();
+  lab.innerHTML = "Step " + (nblvl-1).toString() + " to " + (nblvl).toString();
   let inp = document.createElement("input");
   inp.type = "number";
   inp.classList.add("inputlvl");
@@ -589,7 +589,7 @@ function namelaw(){
   </div>
   <div id = "inplvl" style="border: solid black 2px; padding: 1em; margin-bottom: 20px;">
     <div style="text-align: center; font-weight: bold; color: black;">
-        <span style="float : left;">Level's weights</span>
+        <span style="float : left;">Generalization steps weights</span>
         <br>
     </div>
   </div>

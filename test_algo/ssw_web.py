@@ -35,21 +35,26 @@ def get_class(df,qid): #create equivalence classes
     return dups_shape
 
 def generalize(df,qid,lvl,type_inp,lattice,max_gen):
-    scaled = max_gen - lvl #to change !
-    if(scaled < max_gen): #if a generalization is necessary
+    print(df)
+    if(lvl != 0): #if a generalization is necessary
         if type_inp == 'int': 
-            if(scaled != 0): #not max generalization
+            if(lvl != max_gen): #not max generalization
                 i = 0
-                rule = json.loads(lattice)[str(scaled)] #load the 2D array of integer generalization law
+                rule = json.loads(lattice)[str(max_gen - lvl)] #load the 2D array of integer generalization law
                 tab_rule = []
                 for r in rule: #split string into ranges
                     temp_s = r.split(" ")
                     tab_rule.append([temp_s[1],temp_s[3]]) #append lower and upper limit
                 while(i < len(df)): #foreach value
+                    findrule = False
                     for r2 in tab_rule: #test each rule
                         if(int(df.at[i,qid]) >= int(r2[0]) and int(df.at[i,qid]) <= int(r2[1])):
                             df.at[i,qid] = "[ " +  r2[0] + " ; " + r2[1] + " ]"
+                            findrule = True
                             break
+                    if(not findrule):
+                        df.at[i,qid] = "Other"
+                    print(df.at[i,qid])
                     i = i + 1
             else: #max generalization (= '*')
                 i = 0
