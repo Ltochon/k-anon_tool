@@ -54,7 +54,6 @@ def generalize(df,qid,lvl,type_inp,lattice,max_gen):
                             break
                     if(not findrule):
                         df.at[i,qid] = "Other"
-                    print(df.at[i,qid])
                     i = i + 1
             else: #max generalization (= '*')
                 i = 0

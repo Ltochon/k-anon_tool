@@ -42,6 +42,93 @@ document.body.addEventListener("contextmenu",(e) =>{e.preventDefault()})
 
 d3.select(self.frameElement).style("height", "500px");
 
+function createTree(txt){
+  let json = JSON.parse(txt);
+  var importtreeData = [["All values",1,"0",0]]
+  const keys = Object.keys(json);
+  let dicteasy = {};
+  let cmptnode = 1;
+  for(key in keys){
+    for(val in json[keys[key]]){
+      cmptnode++
+      if(key === "0"){
+        dicteasy[json[keys[key]][val]] = cmptnode;
+        importtreeData.push([json[keys[key]][val],cmptnode,1,parseInt(key)+1])
+      }
+      else{
+        for(val2 in json[keys[key-1]]){
+          let element = json[keys[key-1]][val2];
+          let elementtotest = json[keys[key]][val];
+          if(element != "Other"){
+            min = parseInt(element.split(" ")[1]);
+            max = parseInt(element.split(" ")[3]);
+            mintotest = parseInt(elementtotest.split(" ")[1]);
+            maxtotest = parseInt(elementtotest.split(" ")[3]);
+            if(mintotest >= min && maxtotest <= max){
+              dicteasy[json[keys[key]][val]] = cmptnode;
+              importtreeData.push([json[keys[key]][val],cmptnode,dicteasy[element],parseInt(key)+1])
+            }
+          }
+        }
+      }
+    }
+    for(val2 in json[keys[key-1]]){
+      let element = json[keys[key-1]][val2];
+      if(element != "Other"){
+        min = parseInt(element.split(" ")[1]);
+        max = parseInt(element.split(" ")[3]);
+      }
+      else{
+        min = 0;
+        max = 0;
+      }
+      let change = true;
+      while(change){
+        change = false;
+        for(val in json[keys[key-1]]){
+          mintotest = parseInt(json[keys[key]][val].split(" ")[1]);
+          if(mintotest === min){
+            change = true;
+            min = parseInt(json[keys[key]][val].split(" ")[3]);
+          }
+        }
+      }
+      if(min < max){
+        cmptnode++;
+        importtreeData.push(["Other",cmptnode,dicteasy[element],parseInt(key)+1])
+      }
+    }
+  }
+  console.log(importtreeData)
+  var toconvert = [];
+  for(elem in importtreeData){
+    if(importtreeData[elem][1] > firstid){
+      firstid = importtreeData[elem][1];
+    }
+    let dic = {
+      "id" : importtreeData[elem][1],
+      "name" : importtreeData[elem][0],
+      "depth" : importtreeData[elem][3],
+      "children" : null,
+      "parentId" : importtreeData[elem][2]
+    }
+    toconvert.push(dic);
+  }
+  treeData = list_to_tree(toconvert);
+  console.log(treeData)
+  root = treeData[0];
+  root.x0 = height / 2;
+  root.y0 = 0;
+  update(root)
+}
+
+async function readText(event) {
+  const file = event.target.files.item(0)
+  const text = await file.text();
+  createTree(text);
+}
+
+
 function update(source) {
   // Compute the new tree layout.
   var nodes = tree.nodes(root).reverse(),
@@ -600,7 +687,7 @@ function namelaw(){
       <input type="hidden" id="sendweights" name="sendweights" type="text" />
       <input type="hidden" id="senddepth" name="senddepth" type="text" />
       <div class="fileupload" style="margin-left: auto;margin-right: auto;">
-        <input type="file"/>
+        <input type="file" id="importedfile" onchange="readText(event)"/>
         Import lattice
       </div>
       <div style="color: red; cursor: pointer; margin-top: 1px; margin-bottom: 5px;" onclick="alert('Import function takes a JSON file with the following scheme : #todefine')"> <u>Informations about imports</u></div>
@@ -730,6 +817,7 @@ function namelaw(){
       }
       toconvert.push(dic);
     }
+    console.log(localStorage.getItem("tree_"+ localStorage.getItem("qid").replace("hiera_",'')))
     treeData = list_to_tree(toconvert);
     
   }
