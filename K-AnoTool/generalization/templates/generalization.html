@@ -65,8 +65,8 @@ function createTree(txt){
             mintotest = parseInt(elementtotest.split(" ")[1]);
             maxtotest = parseInt(elementtotest.split(" ")[3]);
             if(mintotest >= min && maxtotest <= max){
+              importtreeData.push([json[keys[key]][val],cmptnode,dicteasy[element],parseInt(key)+1]);
               dicteasy[json[keys[key]][val]] = cmptnode;
-              importtreeData.push([json[keys[key]][val],cmptnode,dicteasy[element],parseInt(key)+1])
             }
           }
         }
@@ -78,16 +78,12 @@ function createTree(txt){
         min = parseInt(element.split(" ")[1]);
         max = parseInt(element.split(" ")[3]);
       }
-      else{
-        min = 0;
-        max = 0;
-      }
       let change = true;
       while(change){
         change = false;
-        for(val in json[keys[key-1]]){
+        for(val in json[keys[key]]){
           mintotest = parseInt(json[keys[key]][val].split(" ")[1]);
-          if(mintotest === min){
+          if(mintotest === min || mintotest === (min+1)){
             change = true;
             min = parseInt(json[keys[key]][val].split(" ")[3]);
           }
@@ -99,12 +95,8 @@ function createTree(txt){
       }
     }
   }
-  console.log(importtreeData)
   var toconvert = [];
   for(elem in importtreeData){
-    if(importtreeData[elem][1] > firstid){
-      firstid = importtreeData[elem][1];
-    }
     let dic = {
       "id" : importtreeData[elem][1],
       "name" : importtreeData[elem][0],
@@ -115,7 +107,6 @@ function createTree(txt){
     toconvert.push(dic);
   }
   treeData = list_to_tree(toconvert);
-  console.log(treeData)
   root = treeData[0];
   root.x0 = height / 2;
   root.y0 = 0;
@@ -360,7 +351,6 @@ function add(){
         while(cmpt < lengthstr){
           if(tabfinalstr.at(-1)[cmpt] === "*"){
             document.getElementById("pos_"+cmpt).innerHTML = "*";
-            console.log(document.getElementById("pos_"+cmpt).innerHTML)
             document.getElementById("pos_"+cmpt).onclick = function(event){
             alert("Generalized position cannot be specified back !")
             return false;
@@ -381,7 +371,6 @@ function add(){
     let div3 = document.getElementById("printlaw");
     div3.hidden = false;
     if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
-      console.log(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')).split("|").at(-1).split("<br>"))
       tabname = [];
       let w2 = 0;
       let arr = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')).split("|").at(-1).split("<br>");
@@ -619,11 +608,9 @@ var sub = (function(){
       document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''));
     }
     else if(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
-      console.log(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')))
       document.getElementById("sendlattice").value = localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''));
     }
     else{
-      console.log(localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",'')))
       document.getElementById("sendlattice").value = localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",''));
     }
     
@@ -659,6 +646,12 @@ function namelaw(){
   
 }
 
+function printinfo(){
+  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+    alert('Import function takes a JSON file with the following scheme :\n {\n   "1" : ["[ 10 ; 45 ]","Other"], #most generalized level - 1\n   "2" : ["[ 10 ; 24 ]","[ 24 ; 45 ]"],\n   "3" : ["[ 10 ; 12 ]","[ 12 ; 24 ]","[ 24 ; 45 ]"] #most specified level + 1\n}')
+  }
+}
+
 
 </script>
 <div id="hiddenactions" style="padding: 0.2em; width : 3.4em; height:50px; position: absolute;" hidden>
@@ -690,7 +683,7 @@ function namelaw(){
         <input type="file" id="importedfile" onchange="readText(event)"/>
         Import lattice
       </div>
-      <div style="color: red; cursor: pointer; margin-top: 1px; margin-bottom: 5px;" onclick="alert('Import function takes a JSON file with the following scheme : #todefine')"> <u>Informations about imports</u></div>
+      <div style="color: red; cursor: pointer; margin-top: 1px; margin-bottom: 5px;" onclick="printinfo()"> <u>Informations about imports</u></div>
       <input type="submit" value="Save" class = "submit" style="margin-top : 10px">
     </form>
   </div>
@@ -817,7 +810,6 @@ function namelaw(){
       }
       toconvert.push(dic);
     }
-    console.log(localStorage.getItem("tree_"+ localStorage.getItem("qid").replace("hiera_",'')))
     treeData = list_to_tree(toconvert);
     
   }
