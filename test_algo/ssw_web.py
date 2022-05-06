@@ -35,7 +35,6 @@ def get_class(df,qid): #create equivalence classes
     return dups_shape
 
 def generalize(df,qid,lvl,type_inp,lattice,max_gen):
-    print(df)
     if(lvl != 0): #if a generalization is necessary
         if type_inp == 'int': 
             if(lvl != max_gen): #not max generalization
@@ -72,8 +71,9 @@ def occu(df,qid):
 
 def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
     list_comb = create_lattice(max_gen)
+    print(list_comb)
     list_cost = []
-    current_level = [round(len(list_comb)/2)-1] #start of binary search
+    current_level = [round(len(list_comb)/2)] #start of binary search
     stop = False
     while not stop:
         found_no_supp = False

@@ -45,11 +45,7 @@ def result_page():
         if(isinstance(types, str)):
             types = (types,)
         #print(types,sys.stderr)
-        #print(tab_depth,sys.stderr)
-        #print(tab_lattice,sys.stderr)
-        #print(tab_weight,sys.stderr)
         compute_ano = algo_web(data,qid_str,tab_depth,tab_weight,k,max_supp,types,tab_lattice)
-        #compute_ano = algo(data,qid_str,[2,2],[[3,4],[5,6]],k,max_supp)
         list_cost = []
         for i in compute_ano:
             for j in i:

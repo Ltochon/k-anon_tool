@@ -43,74 +43,86 @@ document.body.addEventListener("contextmenu",(e) =>{e.preventDefault()})
 d3.select(self.frameElement).style("height", "500px");
 
 function createTree(txt){
-  let json = JSON.parse(txt);
-  var importtreeData = [["All values",1,"0",0]]
-  const keys = Object.keys(json);
-  let dicteasy = {};
-  let cmptnode = 1;
-  for(key in keys){
-    for(val in json[keys[key]]){
-      cmptnode++
-      if(key === "0"){
-        dicteasy[json[keys[key]][val]] = cmptnode;
-        importtreeData.push([json[keys[key]][val],cmptnode,1,parseInt(key)+1])
-      }
-      else{
-        for(val2 in json[keys[key-1]]){
-          let element = json[keys[key-1]][val2];
-          let elementtotest = json[keys[key]][val];
-          if(element != "Other"){
-            min = parseInt(element.split(" ")[1]);
-            max = parseInt(element.split(" ")[3]);
-            mintotest = parseInt(elementtotest.split(" ")[1]);
-            maxtotest = parseInt(elementtotest.split(" ")[3]);
-            if(mintotest >= min && maxtotest <= max){
-              importtreeData.push([json[keys[key]][val],cmptnode,dicteasy[element],parseInt(key)+1]);
-              dicteasy[json[keys[key]][val]] = cmptnode;
+  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+    let json = JSON.parse(txt);
+    var importtreeData = [["*",1,"0",0]]
+    const keys = Object.keys(json);
+    let dicteasy = {};
+    let cmptnode = 1;
+    for(key in keys){
+      for(val in json[keys[key]]){
+        cmptnode++
+        if(key === "0"){
+          dicteasy[json[keys[key]][val]] = cmptnode;
+          importtreeData.push([json[keys[key]][val],cmptnode,1,parseInt(key)+1])
+        }
+        else{
+          for(val2 in json[keys[key-1]]){
+            let element = json[keys[key-1]][val2];
+            let elementtotest = json[keys[key]][val];
+            if(element != "Other"){
+              min = parseInt(element.split(" ")[1]);
+              max = parseInt(element.split(" ")[3]);
+              mintotest = parseInt(elementtotest.split(" ")[1]);
+              maxtotest = parseInt(elementtotest.split(" ")[3]);
+              if(mintotest >= min && maxtotest <= max){
+                importtreeData.push([json[keys[key]][val],cmptnode,dicteasy[element],parseInt(key)+1]);
+                dicteasy[json[keys[key]][val]] = cmptnode;
+              }
             }
           }
         }
       }
-    }
-    for(val2 in json[keys[key-1]]){
-      let element = json[keys[key-1]][val2];
-      if(element != "Other"){
-        min = parseInt(element.split(" ")[1]);
-        max = parseInt(element.split(" ")[3]);
-      }
-      let change = true;
-      while(change){
-        change = false;
-        for(val in json[keys[key]]){
-          mintotest = parseInt(json[keys[key]][val].split(" ")[1]);
-          if(mintotest === min || mintotest === (min+1)){
-            change = true;
-            min = parseInt(json[keys[key]][val].split(" ")[3]);
+      for(val2 in json[keys[key-1]]){
+        let element = json[keys[key-1]][val2];
+        if(element != "Other"){
+          min = parseInt(element.split(" ")[1]);
+          max = parseInt(element.split(" ")[3]);
+        }
+        let change = true;
+        while(change){
+          change = false;
+          for(val in json[keys[key]]){
+            mintotest = parseInt(json[keys[key]][val].split(" ")[1]);
+            if(mintotest === min || mintotest === (min+1)){
+              change = true;
+              min = parseInt(json[keys[key]][val].split(" ")[3]);
+            }
           }
         }
-      }
-      if(min < max){
-        cmptnode++;
-        importtreeData.push(["Other",cmptnode,dicteasy[element],parseInt(key)+1])
+        if(min < max){
+          cmptnode++;
+          importtreeData.push(["Other",cmptnode,dicteasy[element],parseInt(key)+1])
+        }
       }
     }
-  }
-  var toconvert = [];
-  for(elem in importtreeData){
-    let dic = {
-      "id" : importtreeData[elem][1],
-      "name" : importtreeData[elem][0],
-      "depth" : importtreeData[elem][3],
-      "children" : null,
-      "parentId" : importtreeData[elem][2]
+    var toconvert = [];
+    for(elem in importtreeData){
+      let dic = {
+        "id" : importtreeData[elem][1],
+        "name" : importtreeData[elem][0],
+        "depth" : importtreeData[elem][3],
+        "children" : null,
+        "parentId" : importtreeData[elem][2]
+      }
+      toconvert.push(dic);
+      if(importtreeData[elem][0] != "Other" && importtreeData[elem][0] != "*"){
+        if(dicgenfinal[importtreeData[elem][3]] == undefined){
+          dicgenfinal[importtreeData[elem][3]] = [importtreeData[elem][0]];
+        }
+        else{
+          dicgenfinal[importtreeData[elem][3]].push(importtreeData[elem][0]);
+        }
+      }
     }
-    toconvert.push(dic);
+    localStorage.setItem("dictint_" + localStorage.getItem("qid").replace("hiera_",''), JSON.stringify(dicgenfinal));
+    treeData = list_to_tree(toconvert);
+    root = treeData[0];
+    root.x0 = height / 2;
+    root.y0 = 0;
+    update(root)
+    document.getElementById("senddepth").value = nblvl;
   }
-  treeData = list_to_tree(toconvert);
-  root = treeData[0];
-  root.x0 = height / 2;
-  root.y0 = 0;
-  update(root)
 }
 
 async function readText(event) {
@@ -286,7 +298,7 @@ function add(){
     document.getElementById("intnewnode2").hidden = false;
     min = Math.min.apply(Math, dictotal[localStorage.getItem("qid").replace("hiera_",'')].map(Number));
     max = Math.max.apply(Math, dictotal[localStorage.getItem("qid").replace("hiera_",'')].map(Number));
-    if(d_copy.name != "All values"){
+    if(d_copy.name != "*"){
       min = parseInt(d_copy.name.split(" ")[1]);
       max = parseInt(d_copy.name.split(" ")[3]);
     }
@@ -415,7 +427,7 @@ function add(){
   }
 
   if(min > max){
-      alert("Full range of generalization already defined for depth : " + localStorage.getItem("depthencours"))
+      alert("Full range of specification already defined for depth : " + localStorage.getItem("depthencours"))
   }
   else if(tabfinalstr.length >= nodes.length && localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "str"){
     alert("String generalization already defined for depth : " + localStorage.getItem("depthencours"));
@@ -669,7 +681,7 @@ function printinfo(){
   </div>
   <div id = "inplvl" style="border: solid black 2px; padding: 1em; margin-bottom: 20px;">
     <div style="text-align: center; font-weight: bold; color: black;">
-        <span style="float : left;">Generalization steps weights</span>
+        <span style="float : left;">Specification steps weights</span>
         <br>
     </div>
   </div>
@@ -818,6 +830,14 @@ function printinfo(){
       var treeData = [
       {
         "name": "X".repeat(dictotal[qid][0].length),
+        "parent": "null",
+      }
+      ];
+    }
+    else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+      var treeData = [
+      {
+        "name": "*",
         "parent": "null",
       }
       ];

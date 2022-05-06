@@ -122,9 +122,6 @@ def back_upload():
     app.config['dictotallattsalgo'] = dictotallattsalgo
     app.config['dictotalweightsalgo'] = dictotalweightsalgo
     app.config['dictotaldepthsalgo'] = dictotaldepthsalgo
-    print(dictotallattsalgo,sys.stderr)
-    print(dictotalweightsalgo,sys.stderr)
-    print(dictotaldepthsalgo,sys.stderr)
     return redirect(url_for('upload.upload_page'))
 
 if (__name__ == "__main__"):
