@@ -59,6 +59,8 @@ def generalize(df,qid,lvl,type_inp,lattice,max_gen):
                 while(i < len(df)): #foreach value
                     df.at[i,qid] = '*'
                     i += 1
+        elif type_inp == 'cat':
+            rule = json.loads("[[{" + str(lattice.replace("|","],["))[7:len(str(lattice.split("|")))]+ "]]")
     return df
 
 def occu(df,qid):
@@ -71,7 +73,6 @@ def occu(df,qid):
 
 def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
     list_comb = create_lattice(max_gen)
-    print(list_comb)
     list_cost = []
     current_level = [round(len(list_comb)/2)] #start of binary search
     stop = False

@@ -385,9 +385,9 @@ function add(){
     if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
       tabname = [];
       let w2 = 0;
-      let arr = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')).split("|").at(-1).split("<br>");
-      while(w2 < arr.length -1){
-        tabname.push(arr[w2].split("'")[1])
+      let arr = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')).split("|").at(-1).split("},{");
+      while(w2 < arr.length){
+        tabname.push(arr[w2].split('"')[1])
         w2++;
       }
       if(tabname.length === 1){
@@ -401,7 +401,7 @@ function add(){
       }
       for(w in tabname){
         let p = document.createElement("p");
-        p.innerHTML = tabname[w];
+        p.innerHTML = '"' + tabname[w] + '"';
         p.style.marginBottom = "2px";
         if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
           document.getElementById("printlaw").hidden = false;
@@ -495,10 +495,10 @@ function addnode(){
     }
     if(okcat) {
       if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) === null){
-        localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),document.getElementById("printlaw").innerHTML)
+        localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),'{' + document.getElementById("printlaw").innerHTML.replaceAll("<br>",'},{').replaceAll("'",'"').slice(0, -2))
       }
       else{
-        localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) + "|" + document.getElementById("printlaw").innerHTML)
+        localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) + "|" + '{' + document.getElementById("printlaw").innerHTML.replaceAll("<br>",'},{').replaceAll("'",'"').slice(0, -2))
       }
       let line = document.getElementById("printlaw").innerHTML.split("<br>");
       let l = 0;
@@ -779,7 +779,7 @@ function printinfo(){
   }
   for(elem in dictotal[qid]){
     let p = document.createElement("p");
-    p.innerHTML = dictotal[qid][elem];
+    p.innerHTML = '"' + dictotal[qid][elem] + '"';
     p.style.marginBottom = "2px";
     if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
       p.style.cursor = "pointer";
