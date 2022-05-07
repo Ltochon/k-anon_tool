@@ -259,11 +259,13 @@ document.onmousemove = function(event) {
 }
 
 function createinp(nblvl){
-  let lastlabel = document.getElementById("lastlbl");
-  let lastinp = document.getElementById("lastinp");
-  let d = document.getElementById("inplvl");
-  d.removeChild(lastlabel);
-  d.removeChild(lastinp);
+  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+    let lastlabel = document.getElementById("lastlbl");
+    let lastinp = document.getElementById("lastinp");
+    let d = document.getElementById("inplvl");
+    d.removeChild(lastlabel);
+    d.removeChild(lastinp);
+  }
 
   let lab = document.createElement("label");
   lab.classList.add("labellvl");
@@ -276,8 +278,9 @@ function createinp(nblvl){
   inp.setAttribute("id","inp" + (nblvl-1).toString())
   document.getElementById("inplvl").appendChild(lab);
   document.getElementById("inplvl").appendChild(inp);
-
-  createinptodistinct();
+  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+    createinptodistinct();
+  }
 }
 
 
@@ -398,7 +401,7 @@ function add(){
     if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
       tabname = [];
       let w2 = 0;
-      console.log(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')))
+      
       let arr = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')).split("|").at(-1).split(";");
       while(w2 < arr.length){
         tabname.push(arr[w2].split('"')[1])
@@ -413,29 +416,23 @@ function add(){
       while(div3.firstChild) {
         div3.removeChild(div3.lastChild);
       }
+      console.log(tabname)
       for(w in tabname){
         let p = document.createElement("p");
-        if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
-          p.innerHTML = '"' + dictotal[qid][elem] + '"';
-        }
-        else{
-          p.innerHTML = dictotal[qid][elem];
-        }
+        p.innerHTML = '"' + tabname[w] + '"';
         p.style.marginBottom = "2px";
-        if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
-          document.getElementById("printlaw").hidden = false;
-          p.style.cursor = "pointer";
-          p.onclick = function(event){
-            if(p.classList.value == ''){
-              p.classList.add("plaw");
-              p.style.color = "red";
-              p.style.fontStyle  = "italic";
-            }
-            else{
-              p.classList.remove("plaw");
-              p.style.color = "black";
-              p.style.fontStyle = "normal";
-            }
+        document.getElementById("printlaw").hidden = false;
+        p.style.cursor = "pointer";
+        p.onclick = function(event){
+          if(p.classList.value == ''){
+            p.classList.add("plaw");
+            p.style.color = "red";
+            p.style.fontStyle  = "italic";
+          }
+          else{
+            p.classList.remove("plaw");
+            p.style.color = "black";
+            p.style.fontStyle = "normal";
           }
         }
         div.appendChild(p);
@@ -616,6 +613,9 @@ function saveweights(){
       let inptosave = document.getElementById("inp"+j.toString()).value;
       tabweight.push(inptosave);
       j++;
+    }
+    if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+      tabweight.push(document.getElementById("lastinp").value);
     }
     localStorage.setItem("weights_" + localStorage.getItem("qid").replace("hiera_",''),tabweight);
 }
