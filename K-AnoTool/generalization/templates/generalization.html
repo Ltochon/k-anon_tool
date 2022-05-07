@@ -259,6 +259,12 @@ document.onmousemove = function(event) {
 }
 
 function createinp(nblvl){
+  let lastlabel = document.getElementById("lastlbl");
+  let lastinp = document.getElementById("lastinp");
+  let d = document.getElementById("inplvl");
+  d.removeChild(lastlabel);
+  d.removeChild(lastinp);
+
   let lab = document.createElement("label");
   lab.classList.add("labellvl");
   lab.setAttribute("id","lbl" + (nblvl-1).toString());
@@ -270,6 +276,8 @@ function createinp(nblvl){
   inp.setAttribute("id","inp" + (nblvl-1).toString())
   document.getElementById("inplvl").appendChild(lab);
   document.getElementById("inplvl").appendChild(inp);
+
+  createinptodistinct();
 }
 
 
@@ -407,7 +415,12 @@ function add(){
       }
       for(w in tabname){
         let p = document.createElement("p");
-        p.innerHTML = '"' + tabname[w] + '"';
+        if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+          p.innerHTML = '"' + dictotal[qid][elem] + '"';
+        }
+        else{
+          p.innerHTML = dictotal[qid][elem];
+        }
         p.style.marginBottom = "2px";
         if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
           document.getElementById("printlaw").hidden = false;
@@ -743,6 +756,20 @@ function printinfo(){
 </div>
 <script>
 
+  function createinptodistinct(){
+    let lab = document.createElement("label");
+    lab.classList.add("labellvl");
+    lab.setAttribute("id","lastlbl");
+    lab.innerHTML = "Step " + (nblvl).toString() + " to distinct values";
+    let inp = document.createElement("input");
+    inp.type = "number";
+    inp.classList.add("inputlvl");
+    inp.addEventListener("change",saveweights)
+    inp.setAttribute("id","lastinp")
+    document.getElementById("inplvl").appendChild(lab);
+    document.getElementById("inplvl").appendChild(inp);
+  }
+
   function list_to_tree(list) {
     var map = {}, node, roots = [], i;
     
@@ -776,6 +803,7 @@ function printinfo(){
   let qid = localStorage.getItem("qid").replace("hiera_",'');
   let div = document.getElementById("original");
   if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
+    createinptodistinct()
     dictotal[localStorage.getItem("qid").replace("hiera_",'')].sort()
   }
   else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
@@ -785,7 +813,12 @@ function printinfo(){
   }
   for(elem in dictotal[qid]){
     let p = document.createElement("p");
-    p.innerHTML = '"' + dictotal[qid][elem] + '"';
+    if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+      p.innerHTML = '"' + dictotal[qid][elem] + '"';
+    }
+    else{
+      p.innerHTML = dictotal[qid][elem];
+    }
     p.style.marginBottom = "2px";
     if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
       p.style.cursor = "pointer";

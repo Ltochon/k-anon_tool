@@ -37,7 +37,8 @@ def get_class(df,qid): #create equivalence classes
 
 def generalize(df,qid,lvl,type_inp,lattice,max_gen,dictcatdone):
     if(lvl != 0): #if a generalization is necessary
-        if type_inp == 'int': 
+        if type_inp == 'int':
+            print(max_gen)
             if(lvl != max_gen): #not max generalization
                 i = 0
                 rule = json.loads(lattice)[str(max_gen - lvl)] #load the 2D array of integer generalization law
@@ -95,6 +96,7 @@ def occu(df,qid):
 def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
     dictcatdone = {}
     list_comb = create_lattice(max_gen)
+    print(list_comb)
     list_cost = []
     current_level = [math.floor(len(list_comb)/2)] #start of binary search
     stop = False
@@ -118,7 +120,7 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
             sum_w = 0
             for q2 in range(0,len(qid)): #calculate total cost with custom weights
                 sum_w += sum(weigths[q2][0:c[q2]])
-            print(f"\nQID : {qid}, lattice : {current_level[len(current_level)-1]}, lvl of generalization : {c}, supp : {count_supp/len(df)*100}%, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k before suppression = {check_ano(df,qid)}")
+            #print(f"\nQID : {qid}, lattice : {current_level[len(current_level)-1]}, lvl of generalization : {c}, supp : {count_supp/len(df)*100}%, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k before suppression = {check_ano(df,qid)}")
             if(found_no_supp):
                 cost.append([df,c,round(count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w,2),ano,round(count_supp/len(df)*100,2)]) #cost storage
         if(found_no_supp): #if solution is OK
@@ -138,5 +140,4 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
                     current_level.append((current_level[len(current_level)-1] + current_level[len(current_level)-1])/2)
                 else: #test if no more new lattice level available
                     stop = True
-    print(list_cost)
     return list_cost
