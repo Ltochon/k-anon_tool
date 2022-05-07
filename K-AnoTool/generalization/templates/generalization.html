@@ -123,6 +123,50 @@ function createTree(txt){
     update(root)
     document.getElementById("senddepth").value = nblvl;
   }
+  else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+    let json = JSON.parse(txt);
+    var importtreeData = [["All values",1,"0",0]]
+    const keys = Object.keys(json);
+    let dicteasy = {};
+    let cmptnode = 1;
+    let savecatstr = "{"
+    for(key in keys){
+      cmptnode++;
+      let nameimport = "";
+      let catkeys = Object.keys(json[keys[key]][0]);
+      for(val in catkeys){
+        console.log()
+        savecatstr += '"' + catkeys[val] + '" : [' + json[keys[key]][0][catkeys[val]].map(d => `"${d}"`).join(',') + "] ; ";
+        nameimport += catkeys[val] + "; "
+      }
+      savecatstr = savecatstr.substring(0,savecatstr.length-2) + "}|{";
+      nameimport = nameimport.substring(0,nameimport.length-2);
+      if(nameimport.length > 13){
+        nameimport = nameimport.substring(0,11);
+        nameimport += "...";
+      }
+      importtreeData.push([nameimport,cmptnode,cmptnode-1,cmptnode-1])
+    }
+    savecatstr = savecatstr.substring(0,savecatstr.length-2);
+    localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),savecatstr);
+    var toconvert = [];
+    for(elem in importtreeData){
+      let dic = {
+        "id" : importtreeData[elem][1],
+        "name" : importtreeData[elem][0],
+        "depth" : importtreeData[elem][3],
+        "children" : null,
+        "parentId" : importtreeData[elem][2]
+      }
+      toconvert.push(dic);
+    }
+    treeData = list_to_tree(toconvert);
+    root = treeData[0];
+    root.x0 = height / 2;
+    root.y0 = 0;
+    update(root)
+    document.getElementById("senddepth").value = nblvl-1;
+  }
 }
 
 async function readText(event) {
@@ -182,12 +226,13 @@ function update(source) {
 
   nodeEnter.append("circle")
 	  .attr("r", 1e-6)
-	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; })
+    .style("stroke", "green") ;
 
   nodeEnter.append("text")
-	  .attr("x", function(d) { return d.children || d._children ? -13 : 13; })
-	  .attr("dy", ".35em")
-	  .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
+	  .attr("x", function(d) { return d.children || d._children ? 13 : 13; })
+	  .attr("dy", "-.3em")
+	  .attr("text-anchor", function(d) { return d.children || d._children ? "start" : "start"; })
 	  .text(function(d) { return d.name; })
 	  .style("fill-opacity", 1e-6);
 
@@ -198,7 +243,8 @@ function update(source) {
 
   nodeUpdate.select("circle")
 	  .attr("r", 10)
-	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; })
+    .style("stroke", "green") ;
 
   nodeUpdate.select("text")
 	  .style("fill-opacity", 1);
@@ -516,6 +562,7 @@ function addnode(){
       else{
         localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) + "|" + '{' + document.getElementById("printlaw").innerHTML.replaceAll("<br>",' ; ').replaceAll("'",'"').slice(0, -2)+ "}")
       }
+      console.log(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')))
       let line = document.getElementById("printlaw").innerHTML.split("<br>");
       let l = 0;
       tabname = [];
@@ -679,7 +726,10 @@ function namelaw(){
 
 function printinfo(){
   if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
-    alert('Import function takes a JSON file with the following scheme :\n {\n   "1" : ["[ 10 ; 45 ]","Other"], #most generalized level - 1\n   "2" : ["[ 10 ; 24 ]","[ 24 ; 45 ]"],\n   "3" : ["[ 10 ; 12 ]","[ 12 ; 24 ]","[ 24 ; 45 ]"] #most specified level + 1\n}')
+    alert('Import function takes a JSON file with the following scheme :\n {\n   "1" : ["[ 10 ; 45 ]","Other"], #most generalized level - 1\n   "2" : ["[ 10 ; 24 ]","[ 24 ; 45 ]"],\n   "3" : ["[ 10 ; 12 ]","[ 12 ; 24 ]","[ 24 ; 45 ]"] #most specified level + 1\n }')
+  }
+  else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+    alert('Import function takes a JSON file with the following scheme :\n {\n   "1" : [{"1200" : ["1001", "1002"] , "1000" : ["1201", "1202"]}],\n   "2" : [{"CH" : ["1200", "1000"]}] #most generalized level\n }')
   }
 }
 

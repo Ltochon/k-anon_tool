@@ -49,7 +49,6 @@ def generalization():
 @app.route("/", methods=['POST'])
 def uploadFiles():
     # get the uploaded file
-    print(request.files['file'],sys.stderr)
     if(request.files['file'].filename != ''):
         uploaded_file = request.files['file']
         basedir = os.path.abspath(os.path.dirname(__file__))

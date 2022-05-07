@@ -95,9 +95,8 @@ def occu(df,qid):
 def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
     dictcatdone = {}
     list_comb = create_lattice(max_gen)
-    print(list_comb)
     list_cost = []
-    current_level = [math.floor(len(list_comb)/2)-1] #start of binary search
+    current_level = [math.floor(len(list_comb)/2)] #start of binary search
     stop = False
     while not stop:
         found_no_supp = False
@@ -124,7 +123,7 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
                 cost.append([df,c,round(count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w,2),ano,round(count_supp/len(df)*100,2)]) #cost storage
         if(found_no_supp): #if solution is OK
             if(len(current_level) == 1):
-                current_level.append(math.floor(len(list_comb)/4)-1) #go to lower generalization level
+                current_level.append(math.floor(len(list_comb)/4)) #go to lower generalization level
             else:
                 if(current_level[-2] < current_level[-1]):
                     if(math.floor(abs(current_level[-2] - current_level[-1])/2) != 0):
@@ -132,14 +131,14 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
                     else:
                         stop = True
                 else:
-                    if(current_level[-1]/2 != current_level[-1]):
-                        current_level.append(current_level[-1]/2)
+                    if(math.floor(current_level[-1]/2) != current_level[-1]):
+                        current_level.append(math.floor(current_level[-1]/2))
                     else:
                         stop = True                
             list_cost.append(cost)
         else: #solution is not OK
             if(len(current_level) == 1):
-                current_level.append(math.floor(3*len(list_comb)/4)-1)#go to greater generalization level
+                current_level.append(math.floor(3*len(list_comb)/4))#go to greater generalization level
             else:
                 if(current_level[-2] > current_level[-1]):
                     if(math.floor(abs(current_level[-2] - current_level[-1])/2) - 1 != current_level[-1]):

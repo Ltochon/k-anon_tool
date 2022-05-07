@@ -46,7 +46,7 @@ def result_page():
             types = (types,)
         #print(types,sys.stderr)
         print(tab_depth,sys.stderr)
-        #print(tab_lattice,sys.stderr)
+        print(tab_lattice,sys.stderr)
         print(tab_weight,sys.stderr)
         compute_ano = algo_web(data,qid_str,tab_depth,tab_weight,k,max_supp,types,tab_lattice)
         list_cost = []
