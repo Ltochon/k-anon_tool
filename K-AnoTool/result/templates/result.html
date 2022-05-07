@@ -61,5 +61,11 @@
         <input type="submit" value="Download CSV Anonymized" class = "submit" style="margin-top: 1%">
     </div>
 </form>
+<script>
+    if(all_cost.length < 2){
+        document.getElementById("next").hidden = true;
+        document.getElementById("nexttxt").hidden = true;
+    }
+</script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}

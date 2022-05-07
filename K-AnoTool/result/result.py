@@ -75,7 +75,10 @@ def result_page():
         current_app.config['comb'] = str(comb)
         current_app.config['cost'] = str(cost)
         current_app.config['suppr'] = str(suppr)
-        return render_template("result.html", df = df[0], qid = qid, dfjson = dfjson, k = ano, comb = comb, cost = cost, suppr = suppr)
+        if(len(df) > 0):
+            return render_template("result.html", df = df[0], qid = qid, dfjson = dfjson, k = ano, comb = comb, cost = cost, suppr = suppr)
+        else:
+            return render_template("noresult.html")
     else:
         flash("Select at least one QID")
         return redirect(url_for('upload.upload_page'))

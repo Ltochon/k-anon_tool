@@ -140,7 +140,12 @@ function update(source) {
   let tabdepth = [];
   nodes.forEach(function(d) { d.y = d.depth * 100; tabdepth.push(d.depth);});
   //remove labal and inputs
-  document.getElementById("senddepth").value = nblvl;
+  if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
+    document.getElementById("senddepth").value = nblvl-1;
+  }
+  else{
+    document.getElementById("senddepth").value = nblvl;
+  }
   if(Math.max(...tabdepth) < nblvl){
     while(nblvl > Math.max(...tabdepth)){
       nblvl--;
@@ -385,7 +390,8 @@ function add(){
     if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
       tabname = [];
       let w2 = 0;
-      let arr = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')).split("|").at(-1).split("},{");
+      console.log(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')))
+      let arr = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')).split("|").at(-1).split(";");
       while(w2 < arr.length){
         tabname.push(arr[w2].split('"')[1])
         w2++;
@@ -495,10 +501,10 @@ function addnode(){
     }
     if(okcat) {
       if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) === null){
-        localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),'{' + document.getElementById("printlaw").innerHTML.replaceAll("<br>",'},{').replaceAll("'",'"').slice(0, -2))
+        localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),'{' + document.getElementById("printlaw").innerHTML.replaceAll("<br>",' ; ').replaceAll("'",'"').slice(0, -2)+ "}")
       }
       else{
-        localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) + "|" + '{' + document.getElementById("printlaw").innerHTML.replaceAll("<br>",'},{').replaceAll("'",'"').slice(0, -2))
+        localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) + "|" + '{' + document.getElementById("printlaw").innerHTML.replaceAll("<br>",' ; ').replaceAll("'",'"').slice(0, -2)+ "}")
       }
       let line = document.getElementById("printlaw").innerHTML.split("<br>");
       let l = 0;
