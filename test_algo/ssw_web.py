@@ -38,7 +38,6 @@ def get_class(df,qid): #create equivalence classes
 def generalize(df,qid,lvl,type_inp,lattice,max_gen,dictcatdone):
     if(lvl != 0): #if a generalization is necessary
         if type_inp == 'int':
-            print(max_gen)
             if(lvl != max_gen): #not max generalization
                 i = 0
                 rule = json.loads(lattice)[str(max_gen - lvl)] #load the 2D array of integer generalization law
@@ -98,7 +97,7 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
     list_comb = create_lattice(max_gen)
     print(list_comb)
     list_cost = []
-    current_level = [math.floor(len(list_comb)/2)] #start of binary search
+    current_level = [math.floor(len(list_comb)/2)-1] #start of binary search
     stop = False
     while not stop:
         found_no_supp = False
@@ -125,19 +124,31 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
                 cost.append([df,c,round(count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w,2),ano,round(count_supp/len(df)*100,2)]) #cost storage
         if(found_no_supp): #if solution is OK
             if(len(current_level) == 1):
-                current_level.append(round(len(list_comb)/4)-1) #go to lower generalization level
+                current_level.append(math.floor(len(list_comb)/4)-1) #go to lower generalization level
             else:
-                if((current_level[len(current_level)-1] + current_level[len(current_level)-1])/2 not in current_level): #go to lower generalization level
-                    current_level.append((current_level[len(current_level)-1] + current_level[len(current_level)-1])/2)
-                else: #test if no more new lattice level available
-                    stop = True
+                if(current_level[-2] < current_level[-1]):
+                    if(math.floor(abs(current_level[-2] - current_level[-1])/2) != 0):
+                        current_level.append(current_level[-1] - math.floor((current_level[-2] - current_level[-1])/2))
+                    else:
+                        stop = True
+                else:
+                    if(current_level[-1]/2 != current_level[-1]):
+                        current_level.append(current_level[-1]/2)
+                    else:
+                        stop = True                
             list_cost.append(cost)
         else: #solution is not OK
             if(len(current_level) == 1):
-                current_level.append(3*round(len(list_comb)/4)-1)#go to greater generalization level
+                current_level.append(math.floor(3*len(list_comb)/4)-1)#go to greater generalization level
             else:
-                if((current_level[len(current_level)-1] + current_level[len(current_level)-1])/2 not in current_level): #go to greater generalization level
-                    current_level.append((current_level[len(current_level)-1] + current_level[len(current_level)-1])/2)
-                else: #test if no more new lattice level available
-                    stop = True
+                if(current_level[-2] > current_level[-1]):
+                    if(math.floor(abs(current_level[-2] - current_level[-1])/2) - 1 != current_level[-1]):
+                        current_level.append(math.floor((current_level[-2] - current_level[-1])/2) - 1)
+                    else:
+                        stop = True
+                else:
+                    if(current_level[-1] + math.floor((len(list_comb) - current_level[-1])/2) != current_level[-1]):
+                        current_level.append(current_level[-1] + math.floor((len(list_comb) - current_level[-1])/2))
+                    else:
+                        stop = True
     return list_cost
