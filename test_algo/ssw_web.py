@@ -83,7 +83,19 @@ def generalize(df,qid,lvl,type_inp,lattice,max_gen,dictcatdone):
                         cmpt += 1
                     i += 1
                 dictcatdone[qid][str(min+1)] = df[qid].copy()
-                min += 1            
+                min += 1
+        else:
+            rule = json.loads(lattice)[lvl-1]
+            i = 0
+            while(i < len(df)): #foreach value
+                cmptpos = 0
+                for r in rule:
+                    if(r != 'X'):
+                        temp = list(df.at[i,qid])
+                        temp[cmptpos] = "*"
+                        df.at[i,qid] = ''.join(temp)
+                    cmptpos += 1
+                i += 1
     return df
 
 def occu(df,qid):
