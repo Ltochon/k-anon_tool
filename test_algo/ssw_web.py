@@ -61,13 +61,15 @@ def generalize(df,qid,lvl,type_inp,lattice,max_gen,dictcatdone):
                     df.at[i,qid] = '*'
                     i += 1
         elif type_inp == 'cat':
-            keys = dictcatdone.keys() #check if previous gen has been done to save time
+            if(qid not in dictcatdone.keys()):
+                dictcatdone[qid] = {}
+            keys = dictcatdone[qid].keys() #check if previous gen has been done to save time
             min = 0
             for key in keys:
                 if(int(key) > min and int(key) <= lvl):
                     min = int(key)
             if(min != 0):
-                df = dictcatdone[str(min)]
+                df[qid] = dictcatdone[qid][str(min)]
             while min < lvl:
                 rule = json.loads(str(lattice.replace(";",',').split("|")[min]))
                 keyslvl = list(rule.keys())
@@ -80,7 +82,7 @@ def generalize(df,qid,lvl,type_inp,lattice,max_gen,dictcatdone):
                             break
                         cmpt += 1
                     i += 1
-                dictcatdone[str(min+1)] = df.copy()
+                dictcatdone[qid][str(min+1)] = df[qid].copy()
                 min += 1            
     return df
 
@@ -95,7 +97,6 @@ def occu(df,qid):
 def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
     dictcatdone = {}
     list_comb = create_lattice(max_gen)
-    print(list_comb)
     list_cost = []
     current_level = [math.floor(len(list_comb)/2)] #start of binary search
     stop = False
@@ -107,7 +108,6 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
             df = df_init.copy() #create copy to work with it
             for q in range(0,len(qid)): #foreach qid
                 df = generalize(df,qid[q],c[q],types[q],lattice[q],max_gen[q],dictcatdone) #apply generalization level
-            print(df)
             count_supp = 0
             ano = check_ano(df,qid) #get global k-anonymity
             if(ano < k): 
@@ -125,7 +125,6 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
             if(found_no_supp):
                 cost.append([df,c,round(count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w,2),ano,round(count_supp/len(df)*100,2)]) #cost storage
         if(found_no_supp): #if solution is OK
-            print(found_no_supp)
             if(len(current_level) == 1):
                 current_level.append(math.floor(len(list_comb)/4)) #go to lower generalization level
             else:
