@@ -761,7 +761,7 @@ function printinfo(){
       <input type="hidden" id="sendweights" name="sendweights" type="text" />
       <input type="hidden" id="senddepth" name="senddepth" type="text" />
       <div class="fileupload" style="margin-left: auto;margin-right: auto;">
-        <input type="file" id="importedfile" onchange="readText(event)"/>
+        <input type="file" id="importedfile" accept=".json" onchange="readText(event)"/>
         Import lattice
       </div>
       <div style="color: red; cursor: pointer; margin-top: 1px; margin-bottom: 5px;" onclick="printinfo()"> <u>Informations about imports</u></div>

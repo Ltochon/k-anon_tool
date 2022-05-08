@@ -95,6 +95,7 @@ def occu(df,qid):
 def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
     dictcatdone = {}
     list_comb = create_lattice(max_gen)
+    print(list_comb)
     list_cost = []
     current_level = [math.floor(len(list_comb)/2)] #start of binary search
     stop = False
@@ -102,9 +103,11 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
         found_no_supp = False
         cost = []
         for c in list_comb[current_level[len(current_level)-1]]: #for all node in lattice's current level
+            print(c)
             df = df_init.copy() #create copy to work with it
             for q in range(0,len(qid)): #foreach qid
                 df = generalize(df,qid[q],c[q],types[q],lattice[q],max_gen[q],dictcatdone) #apply generalization level
+            print(df)
             count_supp = 0
             ano = check_ano(df,qid) #get global k-anonymity
             if(ano < k): 
@@ -118,10 +121,11 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
             sum_w = 0
             for q2 in range(0,len(qid)): #calculate total cost with custom weights
                 sum_w += sum(weigths[q2][0:c[q2]])
-            #print(f"\nQID : {qid}, lattice : {current_level[len(current_level)-1]}, lvl of generalization : {c}, supp : {count_supp/len(df)*100}%, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k before suppression = {check_ano(df,qid)}")
+            print(f"\nQID : {qid}, lattice : {current_level[len(current_level)-1]}, lvl of generalization : {c}, supp : {count_supp/len(df)*100}%, total cost : {count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w}, k before suppression = {check_ano(df,qid)}")
             if(found_no_supp):
                 cost.append([df,c,round(count_supp * sum(sum(weigths,[])) + (len(df)-count_supp) * sum_w,2),ano,round(count_supp/len(df)*100,2)]) #cost storage
         if(found_no_supp): #if solution is OK
+            print(found_no_supp)
             if(len(current_level) == 1):
                 current_level.append(math.floor(len(list_comb)/4)) #go to lower generalization level
             else:
@@ -141,8 +145,8 @@ def algo_web(df_init,qid,max_gen,weigths,k,max_supp,types,lattice):
                 current_level.append(math.floor(3*len(list_comb)/4))#go to greater generalization level
             else:
                 if(current_level[-2] > current_level[-1]):
-                    if(math.floor(abs(current_level[-2] - current_level[-1])/2) - 1 != current_level[-1]):
-                        current_level.append(math.floor((current_level[-2] - current_level[-1])/2) - 1)
+                    if(math.floor(abs(current_level[-2] - current_level[-1])/2) != current_level[-1]):
+                        current_level.append(math.floor((current_level[-2] - current_level[-1])/2))
                     else:
                         stop = True
                 else:

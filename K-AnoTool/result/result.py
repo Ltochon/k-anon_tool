@@ -45,24 +45,31 @@ def result_page():
         if(isinstance(types, str)):
             types = (types,)
         #print(types,sys.stderr)
-        print(tab_depth,sys.stderr)
-        print(tab_lattice,sys.stderr)
-        print(tab_weight,sys.stderr)
+        #print(tab_depth,sys.stderr)
+        #print(tab_lattice,sys.stderr)
+        #print(tab_weight,sys.stderr)
         compute_ano = algo_web(data,qid_str,tab_depth,tab_weight,k,max_supp,types,tab_lattice)
         list_cost = []
+        list_tuple = []
         for i in compute_ano:
             for j in i:
                 list_cost.append(j[2])
-        list_cost.sort()
+                list_tuple.append(j[1])
+        
+        #sort both array the same way
+        zipped_lists = zip(list_cost, list_tuple)
+        sorted_pairs = sorted(zipped_lists)
+        tuples = zip(*sorted_pairs)
+        list_cost, list_tuple = [ list(tuple) for tuple in  tuples]
         if(len(list_cost) < 5):
             lastitem = len(list_cost)
         else:
             lastitem = 5
         df,dfjson,ano,comb,cost,suppr = [],[],[],[],[],[]
-        for c in list_cost[0:lastitem]:
+        for c in list_tuple[0:lastitem]:
             for j in compute_ano:
                 for i in j:
-                    if(i[2] == c):
+                    if(i[1] == c):
                         df.append(i[0])
                         dfjson.append(i[0].to_json(orient='records'))
                         ano.append(i[3])
