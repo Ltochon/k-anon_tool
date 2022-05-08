@@ -475,10 +475,10 @@ function add(){
   else{
     let div3 = document.getElementById("printlaw");
     div3.hidden = false;
+    console.log(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')))
     if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
       tabname = [];
       let w2 = 0;
-      
       let arr = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')).split("|").at(-1).split(";");
       while(w2 < arr.length){
         tabname.push(arr[w2].split('"')[1])
@@ -516,7 +516,6 @@ function add(){
       }
 
     }
-    
   }
 
   if(min > max){
