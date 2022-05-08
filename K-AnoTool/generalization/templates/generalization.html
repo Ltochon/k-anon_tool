@@ -135,7 +135,6 @@ function createTree(txt){
       let nameimport = "";
       let catkeys = Object.keys(json[keys[key]][0]);
       for(val in catkeys){
-        console.log()
         savecatstr += '"' + catkeys[val] + '" : [' + json[keys[key]][0][catkeys[val]].map(d => `"${d}"`).join(',') + "] ; ";
         nameimport += catkeys[val] + "; "
       }
@@ -149,6 +148,38 @@ function createTree(txt){
     }
     savecatstr = savecatstr.substring(0,savecatstr.length-2);
     localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),savecatstr);
+    var toconvert = [];
+    for(elem in importtreeData){
+      let dic = {
+        "id" : importtreeData[elem][1],
+        "name" : importtreeData[elem][0],
+        "depth" : importtreeData[elem][3],
+        "children" : null,
+        "parentId" : importtreeData[elem][2]
+      }
+      toconvert.push(dic);
+    }
+    treeData = list_to_tree(toconvert);
+    root = treeData[0];
+    root.x0 = height / 2;
+    root.y0 = 0;
+    update(root)
+    document.getElementById("senddepth").value = nblvl-1;
+  }
+  else{
+    let json = JSON.parse(txt);
+    var importtreeData = [["X".repeat(json["1"].length),1,"0",0]]
+    const keys = Object.keys(json);
+    let dicteasy = {};
+    let cmptnode = 1;
+    let savestr = []
+    for(key in keys){
+      cmptnode++;
+      savestr.push(json[keys[key]])
+      importtreeData.push([json[keys[key]].join(''),cmptnode,cmptnode-1,cmptnode-1])
+    }
+    localStorage.setItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''),JSON.stringify(savestr));
+    console.log(JSON.stringify(savestr))
     var toconvert = [];
     for(elem in importtreeData){
       let dic = {
@@ -544,6 +575,7 @@ function addnode(){
     if(okstr2){
       tabfinalstr.push(tabpos);
       localStorage.setItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''), JSON.stringify(tabfinalstr));
+      console.log(JSON.stringify(tabfinalstr))
     }
   }
   else{
@@ -730,6 +762,9 @@ function printinfo(){
   }
   else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
     alert('Import function takes a JSON file with the following scheme :\n {\n   "1" : [{"1200" : ["1001", "1002"] , "1000" : ["1201", "1202"]}],\n   "2" : [{"CH" : ["1200", "1000"]}] #most generalized level\n }')
+  }
+  else{
+    alert('Import function takes a JSON file with the following scheme :\n {\n   "1" : ["X","X","X","*"], #First level of generalization\n   "2" : ["X","X","*","*"],\n   "3" : ["*","*","*","*"]  #Max level of generalization\n }')
   }
 }
 
