@@ -61,7 +61,7 @@
                 {% if header == headers[headers|length -1]%}
                     <div class="{{color}}" style="padding : 10px;">
                         <label id="l3_{{header}}" for={{header}} style="visibility: hidden;">Type : </label>
-                        <select name="type_{{header}}" id="selecttype_{{header}}" style="width: auto; visibility: hidden;">
+                        <select name="type_{{header}}" id="selecttype_{{header}}" onchange="gettype(this)" style="width: auto; visibility: hidden;">
                             <option value="">--Options--</option>
                             <option value="str">String</option>
                             <option value="int">Integer</option>

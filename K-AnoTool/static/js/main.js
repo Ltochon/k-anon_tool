@@ -36,6 +36,7 @@ for (let i = 0; i < tab_headers.length; i++) {
 
 function gettype(evt){
     localStorage.setItem("type_" + evt.id.split("selecttype_")[1],evt.value);
+    console.log("type_" + evt.id.split("selecttype_")[1],evt.value)
 }
 
 function next(){
@@ -102,7 +103,6 @@ document.getElementById("previoustxt").style.visibility = "hidden";
 
 function gotohiera(clicked_id){
     let inptype = document.getElementById("selecttype_"+clicked_id.split('hiera_')[1]);
-
     if(inptype.value === ''){
         alert("Please select a type for the QID : " + clicked_id.split('hiera_')[1])
     }
