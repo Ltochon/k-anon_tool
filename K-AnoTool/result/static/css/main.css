@@ -20,7 +20,7 @@ body {
 .table-wrapper th{
   position: sticky;
   top: 0;
-  background-color: rgb(99, 148, 94);
+  background-color: rgb(87, 183, 215);
 }
 
 
@@ -48,4 +48,15 @@ footer {
 .submit:hover{
   color: white;
   background-color: red;
+}
+
+table.table-bordered{
+  border:1px solid darkgray;
+  margin-top:20px;
+}
+table.table-bordered > thead > tr > th{
+  border:1px solid darkgray;
+}
+table.table-bordered > tbody > tr > td{
+  border:1px solid darkgray;
 }

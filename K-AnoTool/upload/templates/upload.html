@@ -9,9 +9,9 @@
     {% endfor %}
   {% endif %}
 {% endwith %}
-<h1 style="text-align: center; font-family: sans-serif; margin-top : 20px;">My Datas</h1>
+<h1 style="text-align: center; font-family: sans-serif; margin-top : 20px;">My Data</h1>
 <div class = "table-wrapper" style="text-align: center;">
-    <table class="table table-hover table-bordered firsttable" style="border: solid 1px;">
+    <table class="table table-hover table-bordered">
         <tr>
             {% for header in headers %}
                 <th>{{header}}</th>
@@ -28,7 +28,7 @@
     
 </div>
 <form method="POST" action="" enctype="multipart/form-data">
-    <div style="border: solid 2px green; max-height: 20em; width: 60%; overflow-y:scroll; margin-top: 40px; margin-left: auto; margin-right: auto; margin-bottom: 10px; text-align: left;">
+    <div style="max-height: 20em; width: 60%; overflow-y:scroll; margin-top: 40px; margin-left: auto; margin-right: auto; margin-bottom: 10px; text-align: left;">
         <div id = "first">
             <p class = "headerchoice entete"><b>Select QIDs</b></p>
             {% for header in headers %}
@@ -38,12 +38,12 @@
                     {% set color = "lightgrey" %}
                 {%endif%}
                 {% if header == headers[headers|length -1]%}
-                    <div id="div_{{header}}" class="{{color}}" style="padding : 10px;">
+                    <div id="div_{{header}}" class="{{color}}" style="padding : 10px; height: 3em;">
                         <input type="checkbox" id={{header}} name="checkbox_{{header}}" class = "checkbox">
                         <label id="l_{{header}}" for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
                     </div>
                 {% else %}
-                    <div id="div_{{header}}" class="underlinedelem {{color}}" style="padding : 10px;">
+                    <div id="div_{{header}}" class="underlinedelem {{color}}" style="padding : 10px; height: 3em;">
                         <input type="checkbox" id={{header}} name="checkbox_{{header}}" class = "checkbox">
                         <label id="l_{{header}}" for={{header}} style="margin-left: 5px;"><b>{{header}}</b></label>
                     </div>
@@ -51,7 +51,7 @@
             {% endfor %}
         </div>
         <div id = "third">
-            <p id="h3" class = "headerchoice entete" style="background: rgb(99, 148, 94);"><b>Select QIDs types</b></p>
+            <p id="h3" class = "headerchoice entete" style="background: rgb(87, 183, 215);"><b>Select QIDs types</b></p>
             {% for header in headers %}
                 {% if loop.index is divisibleby 2 == 1 %}
                     {% set color = "white" %}
@@ -59,9 +59,9 @@
                     {% set color = "lightgrey" %}
                 {%endif%}
                 {% if header == headers[headers|length -1]%}
-                    <div class="{{color}}" style="padding : 10px;">
+                    <div class="{{color}}" style="padding : 5px; height: 3em;">
                         <label id="l3_{{header}}" for={{header}} style="visibility: hidden;">Type : </label>
-                        <select name="type_{{header}}" id="selecttype_{{header}}" onchange="gettype(this)" style="width: auto; visibility: hidden;">
+                        <select name="type_{{header}}" id="selecttype_{{header}}" class="form-select" onchange="gettype(this)" style="width: auto; visibility: hidden; display: inline; padding: .175rem 2.25rem .175rem .75rem !important;">
                             <option value="">--Options--</option>
                             <option value="str">String</option>
                             <option value="int">Integer</option>
@@ -69,9 +69,9 @@
                         </select>
                     </div>
                 {% else %}
-                    <div class="underlinedelem {{color}}" style="padding : 10px;">
+                    <div class="underlinedelem {{color}}" style="padding : 5px; height: 3em;">
                         <label id="l3_{{header}}" for={{header}} style="visibility: hidden;">Type : </label>
-                        <select name="type_{{header}}" id="selecttype_{{header}}" onchange="gettype(this)" style="width: auto; visibility: hidden;">
+                        <select name="type_{{header}}" id="selecttype_{{header}}" class = "form-select" onchange="gettype(this)" style="width: auto; visibility: hidden; display: inline; padding: .175rem 2.25rem .175rem .75rem !important;">
                             <option value="">--Options--</option>
                             <option value="str">String</option>
                             <option value="int">Integer</option>
@@ -82,7 +82,7 @@
             {% endfor %}
         </div>
         <div id = "forth">
-            <p id="h4" class="headerchoice entete" style="text-align: center; margin-bottom: 0px; background: rgb(99, 148, 94);"><b>Hierarchy</b></p>
+            <p id="h4" class="headerchoice entete" style="text-align: center; margin-bottom: 0px; background: rgb(87, 183, 215);"><b>Hierarchy</b></p>
             {% for header in headers %}
                 {% if loop.index is divisibleby 2 == 1 %}
                     {% set color = "white" %}
@@ -90,12 +90,12 @@
                     {% set color = "lightgrey" %}
                 {%endif%}
                 {% if header == headers[headers|length -1]%}
-                    <div class="{{color}}" style="padding : 10px; height: 45px; text-align: center;">
-                        <button id="hiera_{{header}}" type="button" class="btnhiera" onclick="gotohiera(this.id)" style="font-size: small; font-family: sans-serif; font-weight: bold; visibility: hidden;" >Edit Hierarchy</button>
+                    <div class="{{color}}" style="padding : 5px; height: 3em; text-align: center;">
+                        <button id="hiera_{{header}}" type="button" class="btn btn-danger" onclick="gotohiera(this.id)" style="font-size: small; font-family: sans-serif; font-weight: bold; visibility: hidden;" >Edit Hierarchy</button>
                     </div>
                 {% else %}
-                    <div class="underlinedelem {{color}}" style="padding : 10px; height: 45px; text-align: center;">
-                        <button id="hiera_{{header}}" type="button" class="btnhiera" onclick="gotohiera(this.id)" style="font-size: small; font-family: sans-serif; font-weight: bold; visibility: hidden;">Edit Hierarchy</button>  
+                    <div class="underlinedelem {{color}}" style="padding : 5px; height: 3em; text-align: center;">
+                        <button id="hiera_{{header}}" type="button" class="btn btn-danger" onclick="gotohiera(this.id)" style="font-size: small; font-family: sans-serif; font-weight: bold; visibility: hidden;">Edit Hierarchy</button>  
                     </div>
                 {% endif %}
             {% endfor %}
@@ -108,7 +108,7 @@
         <label for="inputmaxsupp" style="margin-top: 10px;"><b>Maximum suppression percentage :</b></label>
         <input id = "inputmaxsupp" name="inputmaxsupp" type="number" placeholder="ex : 10" style="width: 5em;">
         <br>
-        <input type="submit" value="Anonymize This Dataset !" class = "submit" style="margin-top : 10px">
+        <button type="submit" class="btn btn-primary" style="background-color : #337ab7; border-color: #2e6da4; margin-top : 20px">Anonymize This Dataset !</button>
     </div>
 </form>
 <script>
@@ -121,12 +121,13 @@
             document.getElementById("selecttype_" + sgen[elem]).style.visibility = "visible";
             document.getElementById("selecttype_" + sgen[elem]).value = localStorage.getItem("type_"+sgen[elem]);
             document.getElementById("hiera_"+ sgen[elem]).style.backgroundColor = "rgb(99, 148, 94)";
+            document.getElementById("hiera_"+ sgen[elem]).style.borderColor = "rgb(99, 148, 94)";
         }
-    document.getElementById("h3").style.background = "rgb(99, 148, 94)";
+    document.getElementById("h3").style.background = "rgb(87, 183, 215)";
     document.getElementById("h3").style.color = "black";
     document.getElementById("h3").style.fontWeight = "bold";
     document.getElementById("h3").innerHTML = "Select QIDs types";
-    document.getElementById("h4").style.background = "rgb(99, 148, 94)";
+    document.getElementById("h4").style.background = "rgb(87, 183, 215)";
     document.getElementById("h4").style.color = "black";
     document.getElementById("h4").style.fontWeight = "bold";
     document.getElementById("h4").innerHTML = "Hierarchy";

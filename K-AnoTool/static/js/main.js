@@ -57,7 +57,8 @@ function next(){
     document.getElementById("suppr").innerHTML = all_suppr[current_sol] + ' %'
     document.getElementById("cost").innerHTML = all_cost[current_sol]
     document.getElementById("ano").innerHTML = 'This dataset is ' + all_ano[current_sol] + '-anonyme'
-    document.getElementById("infosol").innerHTML = (current_sol+1).toString()
+    document.getElementById("infosol").innerHTML = (current_sol+1).toString();
+    document.getElementById("numdf").value = (current_sol+1).toString();
     if(current_sol+1 == all_comb.length){
         document.getElementById("next").style.visibility = "hidden";
         document.getElementById("nexttxt").style.visibility = "hidden";
@@ -83,6 +84,7 @@ function previous(){
         i++;
     }
     document.getElementById("infosol").innerHTML = (current_sol+1).toString()
+    document.getElementById("numdf").value = (current_sol+1).toString();
     document.getElementById("comb").innerHTML = '(' + all_comb[current_sol] + ')'
     document.getElementById("suppr").innerHTML = all_suppr[current_sol] + ' %'
     document.getElementById("cost").innerHTML = all_cost[current_sol]

@@ -1,0 +1,6 @@
+make shiny
+k-anon pas k-ano
+ajouter niveau sur arrete
+Other dans categorical
+
+test more qid > 2

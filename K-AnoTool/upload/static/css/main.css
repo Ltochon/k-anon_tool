@@ -14,7 +14,7 @@ body {
 .table-wrapper th{
     position: sticky;
     top: 0;
-    background-color: rgb(99, 148, 94);
+    background-color: rgb(87, 183, 215);;
 }
 
 
@@ -60,7 +60,7 @@ footer {
 .entete{
   position: sticky;
   top: 0;
-  background-color: rgb(99, 148, 94);
+  background-color: rgb(87, 183, 215);
 }
 
 .entetecache{
@@ -90,4 +90,15 @@ footer {
 .headerchoice{
   text-align: center;
   margin-bottom: 0px;
+}
+
+table.table-bordered{
+  border:1px solid darkgray;
+  margin-top:20px;
+}
+table.table-bordered > thead > tr > th{
+  border:1px solid darkgray;
+}
+table.table-bordered > tbody > tr > td{
+  border:1px solid darkgray;
 }

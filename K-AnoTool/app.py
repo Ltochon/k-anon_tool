@@ -99,10 +99,13 @@ def render_result():
 @app.route("/result/", methods=['POST'])
 def export_csv():
     data = current_app.config['final_df']
-    resp = make_response(data.to_csv())
+    allcomb = current_app.config['comb']
+    numsol = request.form.get('numdf')
+    resp = make_response(data[int(numsol)-1].to_csv(sep = ","))
     qids = '-'.join([str(item) for item in current_app.config['qid']])
-    weights = '-'.join([str(item) for item in current_app.config['weights']])
-    txt_file = "k-ano_tool.dataset(qids=[" + qids + "]|k-ano=" + current_app.config['k'] + "|weights=[" + weights + "])"
+    print(allcomb.replace("(",'').replace(")]",'').replace('[','').replace(" ","").split('),')[int(numsol)-1],sys.stderr)
+    txt_file = "k-ano_tool.dataset(qids=[" + qids + "]|comb=" + allcomb.replace("(",'').replace(")]",'').replace('[','').replace(" ","").split('),')[int(numsol)-1] +"|k=" + current_app.config['k'].split(",")[int(numsol)-1] + ")"
+    print(txt_file,sys.stderr)
     resp.headers["Content-Disposition"] = "attachment; filename=" + txt_file + ".csv"
     resp.headers["Content-Type"] = "text/csv"
     return resp
