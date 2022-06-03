@@ -141,12 +141,14 @@ button:hover{
 
 .fileupload {
   width: 35%;
-  border: solid 2px black;
+  border: solid 1px rgb(80, 76, 76);
   position: relative;
   overflow: hidden;
-  border-radius: 20%;
+  border-radius: 5%;
   background-color: rgb(166, 167, 166);
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 1rem;
   padding: 2px 7px;
 }
 

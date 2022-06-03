@@ -257,8 +257,8 @@ function update(source) {
 
   nodeEnter.append("circle")
 	  .attr("r", 1e-6)
-	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; })
-    .style("stroke", "green") ;
+	  .style("fill", function(d) { return d._children ? "rgb(87, 183, 215)" : "#fff"; })
+    .style("stroke", "rgb(87, 183, 215)") ;
 
   nodeEnter.append("text")
 	  .attr("x", function(d) { return d.children || d._children ? 13 : 13; })
@@ -274,8 +274,8 @@ function update(source) {
 
   nodeUpdate.select("circle")
 	  .attr("r", 10)
-	  .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; })
-    .style("stroke", "green") ;
+	  .style("fill", function(d) { return d._children ? "rgb(87, 183, 215)" : "#fff"; })
+    .style("stroke", "rgb(87, 183, 215)") ;
 
   nodeUpdate.select("text")
 	  .style("fill-opacity", 1);
@@ -574,18 +574,36 @@ function addnode(){
     if(okstr2){
       tabfinalstr.push(tabpos);
       localStorage.setItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''), JSON.stringify(tabfinalstr));
-      console.log(JSON.stringify(tabfinalstr))
     }
   }
   else{
     let allchildren = document.getElementById("original").children;
-    for(child in allchildren){
-      if(allchildren[child].hidden === false){
-        okcat = false;
-        alert("You need to define a category for all possible values !");
-        break;
+     //TO DO
+
+    let namel = "Other";
+    let allselected = document.querySelectorAll('#original p');
+    let tabselect = [];
+    allselected.forEach(function(elem){
+      if(!elem.hidden){
+        tabselect.push(elem.innerHTML);
       }
+    });
+    console.log(tabselect)
+    if(diccatfinal[namel] === undefined){
+      let stringlaw = "";
+      diccatfinal[namel] = tabselect;
+      stringlaw = "'" + namel + "' : [";
+      for(elem in tabselect){
+        stringlaw += tabselect[elem] + ", "
+      }
+      let div3 = document.getElementById("printlaw");
+      div3.innerHTML += stringlaw.slice(0, -2) + "]<br>";
     }
+    else{
+      alert("This category has already been defined !")
+    }
+
+      //
     if(okcat) {
       if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) === null){
         localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),'{' + document.getElementById("printlaw").innerHTML.replaceAll("<br>",' ; ').replaceAll("'",'"').slice(0, -2)+ "}")
@@ -593,7 +611,6 @@ function addnode(){
       else{
         localStorage.setItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''),localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) + "|" + '{' + document.getElementById("printlaw").innerHTML.replaceAll("<br>",' ; ').replaceAll("'",'"').slice(0, -2)+ "}")
       }
-      console.log(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')))
       let line = document.getElementById("printlaw").innerHTML.split("<br>");
       let l = 0;
       tabname = [];
@@ -799,7 +816,8 @@ function printinfo(){
         Import VGH
       </div>
       <div style="color: red; cursor: pointer; margin-top: 1px; margin-bottom: 5px;" onclick="printinfo()"> <u>Informations about imports</u></div>
-      <input type="submit" value="Save" class = "submit" style="margin-top : 10px">
+      <button type="submit" class="btn btn-primary" style="margin-top : 10px">Save</button>
+
     </form>
   </div>
 </div>
