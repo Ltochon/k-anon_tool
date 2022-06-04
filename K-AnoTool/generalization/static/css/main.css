@@ -40,8 +40,9 @@
 }
 
 button{
-  border-radius: 20%;
-  background-color: rgb(99, 148, 94);
+  border-radius: 5%;
+  background-color: rgb(87, 183, 215);
+  border: solid rgb(73, 149, 174) 1px;
   font-weight: bold;
 }
 
@@ -77,9 +78,9 @@ button:hover{
 }
 
 .popuptxt {
-  color : rgb(159, 54, 54);
+  color : rgb(87, 183, 215);
   padding: 2%;;
-  border: solid rgb(159, 54, 54) 3px;
+  border: solid red 3px;
   margin-left: auto;
   width: 60%;
   margin-right: auto;
@@ -87,19 +88,19 @@ button:hover{
   height: auto;
   position: relative;
   z-index: 0;
-  background-color: #fafbe3
+  background-color: #f5f6e8
 }
 
 .occu{
   display: inline-block;
   width: 45%;
-  color: black;
+  color: rgb(87, 183, 215);
 }
 
 .printoccu{
   height: 9em;
   padding: 2px;
-  border: solid rgb(159, 54, 54) 2px;
+  border: solid rgb(87, 183, 215) 2px;
   overflow-y: scroll;
 }
 

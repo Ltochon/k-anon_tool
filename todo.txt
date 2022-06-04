@@ -1,6 +1,8 @@
 make shiny
-k-anon pas k-ano
+k-anon pas k-ano OK
+data sans s OK
+pas lattice mais VGH OK
 ajouter niveau sur arrete
-Other dans categorical
+Other dans categorical OK
 
 test more qid > 2

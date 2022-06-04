@@ -299,6 +299,7 @@ function update(source) {
   // Enter any new links at the parent's previous position.
   link.enter().insert("path", "g")
 	  .attr("class", "link")
+    .attr("stroke-width", function(d) { return d.target.size; })
 	  .attr("d", function(d) {
 		var o = {x: source.x0, y: source.y0};
 		return diagonal({source: o, target: o});
@@ -318,6 +319,12 @@ function update(source) {
 	  })
 	  .remove();
   
+  link.enter().insert("text", "g")
+    .attr("x", function(d) { return ((d.target.depth -1)*105); })
+    .attr("y", function(d) { return (50); })
+    .text(function(d) { return ("Step " + (d.target.depth -1) + " to " + d.target.depth); })
+    .style('fill', 'rgb(87, 183, 215)')
+    .attr("font-weight", '800');
 
   // Stash the old positions for transition.
   nodes.forEach(function(d) {
@@ -797,7 +804,7 @@ function printinfo(){
     </div>
   </div>
   <div style="text-align: center;">
-    <p id="qid" style="font-weight: bold; font-size: large; color : green;">a</p>
+    <p id="qid" style="font-weight: bold; font-size: large; color : rgb(87, 183, 215);">a</p>
   </div>
   <div id = "inplvl" style="border: solid black 2px; padding: 1em; margin-bottom: 20px;">
     <div style="text-align: center; font-weight: bold; color: black;">
