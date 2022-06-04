@@ -2,7 +2,8 @@ make shiny
 k-anon pas k-ano OK
 data sans s OK
 pas lattice mais VGH OK
-ajouter niveau sur arrete
+ajouter niveau sur arrete OK
 Other dans categorical OK
+export JSON OK
 
 test more qid > 2

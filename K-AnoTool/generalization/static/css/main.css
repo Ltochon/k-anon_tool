@@ -151,11 +151,12 @@ button:hover{
   line-height: 1.5;
   font-size: 1rem;
   padding: 2px 7px;
+  cursor: pointer;
 }
 
 .fileupload:hover {
-  background-color: white;
-  color: green;
+  background-color: rgb(161, 162, 161);
+  color: black;
 }
 
 .fileupload input {
