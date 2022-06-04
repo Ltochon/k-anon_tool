@@ -33,19 +33,23 @@ footer {
 }
 
 #first {
-  width: 39%;
+  width: 40%;
   float: left;
+  border: solid black 1px;
+  border-top: solid black 1px;
+  border-left: solid black 1px;
 }
 
 #third {
+  border-bottom: solid black 1px;
+  border-top: solid black 1px;
   text-align: center;
-  margin-left: 2%;
-  margin-right: 2%;
-  width: 31%;
+  width: 33%;
   float: left;
 }
 #forth{
-  width: 25%;
+  border: solid black 1px;
+  width: 26%;
   float: left;
 }
 
@@ -93,12 +97,12 @@ footer {
 }
 
 table.table-bordered{
-  border:1px solid darkgray;
+  border:1px solid black;
   margin-top:20px;
 }
 table.table-bordered > thead > tr > th{
-  border:1px solid darkgray;
+  border:1px solid black;
 }
 table.table-bordered > tbody > tr > td{
-  border:1px solid darkgray;
+  border:1px solid black;
 }

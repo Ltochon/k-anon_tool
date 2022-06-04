@@ -854,7 +854,7 @@ function printinfo(){
     </div>
   </div>
   <div style="text-align: center;">
-    <p id="qid" style="font-weight: bold; font-size: large; color : rgb(87, 183, 215);">a</p>
+    <p id="qid" style="font-weight: bold; font-size: large; color : white;">a</p>
   </div>
   <div id = "inplvl" style="border: solid black 2px; padding: 1em; margin-bottom: 20px;">
     <div style="text-align: center; font-weight: bold; color: black;">
@@ -870,11 +870,11 @@ function printinfo(){
       <input type="hidden" id="senddepth" name="senddepth" type="text" />
       <div class="fileupload" style="margin-left: auto;margin-right: auto;">
         <input type="file" id="importedfile" accept=".json" onchange="readText(event)"/>
-        Import VGH
+        <b>Import</b> VGH
       </div>
-      <div onclick="savejson()" class="fileupload" style="margin-left: auto;margin-right: auto; margin-top: 10px;">Export VGH</div>
+      <div onclick="savejson()" class="fileupload" style="margin-left: auto;margin-right: auto; margin-top: 10px;"><b>Export</b> VGH</div>
       <div style="color: red; cursor: pointer; margin-top: 1px; margin-bottom: 5px;" onclick="printinfo()"> <u>Informations about imports</u></div>
-      <button type="submit" class="btn btn-primary" style="margin-top : 10px">Save</button>
+      <button id="subcustom" type="submit" class="btn btn-primary" style="margin-top : 10px;">Save</button>
 
     </form>
   </div>
@@ -884,7 +884,7 @@ function printinfo(){
   <h5 style="font-weight: bold; margin-bottom: 1em;">New custom node</h5>
   <div>
     <div class="occu">
-      <p id="enteteoriginal" style="font-weight: bold;">Original values</p>
+      <p id="enteteoriginal" style="font-weight: bold; color : white;">Original values</p>
       <div id="original" class="printoccu">
       </div>
     </div>
@@ -909,9 +909,9 @@ function printinfo(){
       <span id="spanlaw" class="inttxt" >Category's name : </span>
       <input type="text" name="" id="inputlaw" class="inplaw" >
     </div>
-    <button id="btnlaw" class="createlaw" onclick="namelaw()" hidden>Create category for selection</button>
+    <button id="btnlaw" class="fileupload" onclick="namelaw()" hidden><b>Create category for selection</b></button>
     <br>
-    <button style="margin-top: 15px;" onclick="addnode()">OK</button>
+    <button id = "customhover" style="margin-top: 15px; background-color: white; border-radius: 5%;" onclick="addnode()">OK</button>
   </div>
 </div>
 <script>
@@ -990,7 +990,7 @@ function printinfo(){
         }
         else{
           p.classList.remove("plaw");
-          p.style.color = "rgb(87, 183, 215)";
+          p.style.color = "white";
           p.style.fontStyle = "normal";
         }
       }
