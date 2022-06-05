@@ -6,10 +6,11 @@
         <li><a class="toclink" href="#goal">1. Goal</a></li>
         <li><a class="toclink" href="#context">2. Context</a></li>
         <li><a class="toclink" href="#description">3. Complete description</a></li>
+        <li><a class="toclink" href="#link">4. Github link</a></li>
     </ul>
 </div>
 
-<div style="margin-left: 5%; margin-right: 5%; margin-top: 2%; text-align: justify;">
+<div style="margin-left: 10%; margin-right: 10%; margin-top: 2%; text-align: justify;">
   <h1 style="font-weight: bold;"><u><i>K-AnoTool</i></u></h1>
   <h4 id="goal"><u>Goal</u></h4>
   <p>
@@ -20,15 +21,28 @@
   </p>
   <h4 id="description"><u>Complete description</u></h4>
   <p>
-    The goal will be to use this algorithm to provide k-anonymity of a dataset by incorporating weights on the attributes to evaluate the importance of each one of them. Indeed, the main purpose of this project is to allow the user to choose which one of the different attributes must be generalized first and on the opposite side, which one must not be generalized.
-
-This anonymization algorithm will be deployed on a web application written in Python through the framework Flask.
-
-In a second time, an interface on the same web application will be created to provide a tool to the user to easily create his own tree of generalization.
-
-The crucial point of this project is to do a user-friendly tool with easy interactions to make the experience as simple as possible.
-
-This project will focus on the medical domain to handle a single use case and go as deep as possible to provide a complete tool.
+    To realize this project, the algorithm created needs to incorporate the weights at each level of generalization to describe the quantity of information lost. The algorithm proposed is called SW and basically tests every possible generalization level to find the smallest information lost. However, testing all combinations is not a viable solution due to the exponential time needed. To solve this problem, a second algorithm is proposed which is called SSW (for Samarati-SW). This one includes a binary search which enables avoiding combinations which are leading to a larger information loss than a previous solution found.
   </p>
+
+  <p style="text-align : center;">
+    <img src="./static/files/supp_weight+Samarati.svg" alt="SSW Algorithm"/>
+    <br>
+    <i>
+    SSW Algorithm's model
+  </i>
+  </p>
+  <p>
+    This anonymization algorithm will be deployed on a web application written in Python through the framework Flask.
+  </p>
+    <p>
+  In a second time, an interface on the same web application will be created to provide a tool to the user to easily create his own tree of generalization.
+  </p>
+  <p>
+  The crucial point of this project is to do a user-friendly tool with easy interactions to make the experience as simple as possible.
+  </p><p>
+  This project will focus on the medical domain to handle a single use case and go as deep as possible to provide a complete tool.
+    </p>
+  <h4 id="link"><u>Github link</u></h4>
+  <p><a href="https://github.com/Ltochon/k-anon_Tool">Ltochon - K-anon_Tool</a></p>
 </div>
 {%endblock%}

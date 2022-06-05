@@ -66,9 +66,7 @@ The main goal of this project is to provide an anonymization tool to k-anonymize
 
 ## Description of the project
 
-*TO DO : Presentation of algorithm*
-
-The goal will be to use this algorithm to provide k-anonymity of a dataset by incorporating weights on the attributes to evaluate the importance of each one of them. Indeed, the main purpose of this project is to allow the user to choose which one of the different attributes must be generalized first and on the opposite side, which one must not be generalized. 
+To realize this project, the algorithm created needs to incorporate the weights at each level of generalization to describe the quantity of information lost. The algorithm proposed is called SW and basically tests every possible generalization level to find the smallest information lost. However, testing all combinations is not a viable solution due to the exponential time needed. To solve this problem, a second algorithm is proposed which is called SSW (for Samarati-SW). This one includes a binary search which enables avoiding combinations which are leading to a larger information loss than a previous solution found.
 
 This anonymization algorithm will be deployed on a web application written in Python through the framework *Flask*. 
 
@@ -128,11 +126,11 @@ Final complexity level : *O(log<sub>2</sub>(n<sup>k</sup>) * (k * n<sup>2</sup> 
 3) Implementing *Datafly* algorithm :heavy_check_mark:
 4) Algorithm's proposal with weighted attributes :heavy_check_mark:
 5) Implementation of Flask application with the algorithm :heavy_check_mark:
-6) Make Flask application be shiny :hourglass_flowing_sand:
+6) Make Flask application be shiny :heavy_check_mark:
 7) Prototyping the interface of custom generalization :heavy_check_mark:
-8) Prototype testing :hourglass_flowing_sand:
-9) Implementation of the generalization's interface
-10) Final application's usability tests
+8) Prototype testing :heavy_check_mark:
+9) Implementation of the generalization's interface :heavy_check_mark:
+10) Final application's usability tests :hourglass_flowing_sand:
 
 ## Run commands
 
