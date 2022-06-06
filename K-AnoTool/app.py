@@ -1,9 +1,7 @@
 import csv
 from datetime import timedelta
-import json
 import os
 import sys
-from numpy import save
 import pandas as pd
 from flask import Flask, current_app, make_response, redirect, render_template, request, send_from_directory, url_for, flash
 from upload.upload import upload
@@ -126,4 +124,4 @@ def back_upload():
 
 if (__name__ == "__main__"):
     print(app.url_map, sys.stderr)
-    app.run(port = 5000)
+    app.run(port = 5000, host="0.0.0.0")

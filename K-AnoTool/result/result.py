@@ -1,8 +1,7 @@
 import sys
 from operator import itemgetter 
 from flask import Blueprint, Response, current_app, flash, redirect, render_template, jsonify, url_for
-sys.path.append('./')
-from test_algo.ssw_web import SSW
+from algo.ssw_web import SSW
 
 result = Blueprint("result", __name__, static_folder="static", template_folder="templates")
 

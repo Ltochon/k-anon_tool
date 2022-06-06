@@ -1,5 +1,3 @@
-import sys
-from unittest import result
 from flask import Blueprint, redirect, render_template, current_app, url_for
 
 upload = Blueprint("upload", __name__, static_folder="static", template_folder="templates")
