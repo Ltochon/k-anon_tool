@@ -1,5 +1,6 @@
 import csv
 from datetime import timedelta
+import json
 import os
 import sys
 from numpy import save
@@ -98,14 +99,12 @@ def render_result():
 
 @app.route("/result/", methods=['POST'])
 def export_csv():
-    data = current_app.config['final_df']
-    allcomb = current_app.config['comb']
+    data = app.config['final_df']
     numsol = request.form.get('numdf')
     resp = make_response(data[int(numsol)-1].to_csv(sep = ","))
     qids = '-'.join([str(item) for item in current_app.config['qid']])
-    print(allcomb.replace("(",'').replace(")]",'').replace('[','').replace(" ","").split('),')[int(numsol)-1],sys.stderr)
-    txt_file = "k-ano_tool.dataset(qids=[" + qids + "]|comb=" + allcomb.replace("(",'').replace(")]",'').replace('[','').replace(" ","").split('),')[int(numsol)-1] +"|k=" + current_app.config['k'].split(",")[int(numsol)-1] + ")"
-    print(txt_file,sys.stderr)
+    txt_file = "K-anon_Tool([" + qids + "]-k=" + current_app.config['k'].split(",")[int(numsol)-1] + ")"
+    print(txt_file)
     resp.headers["Content-Disposition"] = "attachment; filename=" + txt_file + ".csv"
     resp.headers["Content-Type"] = "text/csv"
     return resp

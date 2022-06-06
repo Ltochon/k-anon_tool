@@ -24,7 +24,7 @@
 <h5 id = "ano" style="color: red; text-align: center;">This dataset is {{k[0]}}-anonyme</h5>
 <form method="POST" action="" enctype="multipart/form-data">
     <div class = "table-wrapper" style="text-align: center; margin-top: 1%;">
-        <table id = "table" class="table table-hover table-bordered"">
+        <table id = "table" class="table table-hover table-bordered">
             <tr>
                 {% for header in df.head(50).columns %}
                     <th>{{header}}</th>
@@ -47,7 +47,7 @@
         <div style="float: left; width: 80%;">
             <h4 style="text-align: center;">Informations about the solution n°<span id = "infosol" style="color:red;">1</span></h4>
             <h6 style="color: black; text-align: center;">QIDs : <span style="color: red;">{{qid}}</span></h6>
-            <h6 style="color: black; text-align: center;">Generalization levels : <span id = "comb" style="color: red;">{{comb[0]}}</span></h6>
+            <h6 style="color: black; text-align: center;">Generalization levels : <input id = "comb" name = "comb" style="color: red; border: none; background-color: transparent;" size = "" type = "text" value ="{{comb[0]}}" readonly></input></h6>
             <h6 style="color: black; text-align: center;">Percentage of suppression : <span id = "suppr" style="color: red;">{{suppr[0]}}%</span></h6>
             <h6 style="color: black; text-align: center;">Total cost : <span id = "cost" style="color: red;">{{cost[0]}}</span></h6>
         </div>
@@ -59,6 +59,7 @@
     </div>
     <div style="text-align: center;">
         <input type="number" id = "numdf" name = "numdf" value="1" hidden>
+        <input id="savealldf" name ="savealldf" hidden></input>
         <button type="submit" class="btn btn-primary" style="margin-top: 1%; background-color : #337ab7; border-color: #2e6da4; margin-top : 20px">Download CSV Anonymized</button>
     </div>
 </form>
@@ -67,6 +68,9 @@
         document.getElementById("next").hidden = true;
         document.getElementById("nexttxt").hidden = true;
     }
+    document.getElementById("savealldf").value = all_df;
+    lencomb = "{{comb[0]}}".replaceAll(")","").replaceAll("(","").split(",").filter(x => x != '').length
+    document.getElementById("comb").style.width = (2+(lencomb-1)).toString() +"em";
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 {% endblock %}
