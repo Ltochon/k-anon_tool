@@ -46,8 +46,8 @@
         </div>
         <div style="float: left; width: 80%;">
             <h4 style="text-align: center;">Informations about the solution n°<span id = "infosol" style="color:red;">1</span></h4>
-            <h6 style="color: black; text-align: center;">QIDs : <span style="color: red;">{{qid}}</span></h6>
-            <h6 style="color: black; text-align: center;">Generalization levels : <input id = "comb" name = "comb" style="color: red; border: none; background-color: transparent;" size = "" type = "text" value ="{{comb[0]}}" readonly></input></h6>
+            <h6 style="color: black; text-align: center;">QIDs : <span id="spanqid" style="color: red;"></span></h6>
+            <h6 style="color: black; text-align: center;">Generalization levels : <input id = "comb" name = "comb" style="color: red; border: none; background-color: transparent;" size = "" type = "text" readonly></input></h6>
             <h6 style="color: black; text-align: center;">Percentage of suppression : <span id = "suppr" style="color: red;">{{suppr[0]}}%</span></h6>
             <h6 style="color: black; text-align: center;">Total cost : <span id = "cost" style="color: red;">{{cost[0]}}</span></h6>
         </div>
@@ -69,7 +69,9 @@
         document.getElementById("nexttxt").hidden = true;
     }
     document.getElementById("savealldf").value = all_df;
-    lencomb = "{{comb[0]}}".replaceAll(")","").replaceAll("(","").split(",").filter(x => x != '').length
+    document.getElementById("spanqid").innerHTML = "{{qid}}".replace(",)",")");
+    lencomb = "{{comb[0]}}".replaceAll(")","").replaceAll("(","").split(",").filter(x => x != '').length;
+    document.getElementById("comb").value = "{{comb[0]}}".replace(",)",")");
     document.getElementById("comb").style.width = (2+(lencomb-1)).toString() +"em";
 </script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>

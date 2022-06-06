@@ -2,8 +2,7 @@ import sys
 from operator import itemgetter 
 from flask import Blueprint, Response, current_app, flash, redirect, render_template, jsonify, url_for
 sys.path.append('./')
-from test_algo.ssw import algo
-from test_algo.ssw_web import algo_web
+from test_algo.ssw_web import SSW
 
 result = Blueprint("result", __name__, static_folder="static", template_folder="templates")
 
@@ -44,11 +43,7 @@ def result_page():
         types = itemgetter(*index_qid)(tab_type)
         if(isinstance(types, str)):
             types = (types,)
-        #print(types,sys.stderr)
-        #print(tab_depth,sys.stderr)
-        #print(tab_lattice,sys.stderr)
-        #print(tab_weight,sys.stderr)
-        compute_ano = algo_web(data,qid_str,tab_depth,tab_weight,k,max_supp,types,tab_lattice)
+        compute_ano = SSW.algo_web(data,qid_str,tab_depth,tab_weight,k,max_supp,types,tab_lattice)
         list_cost = []
         list_tuple = []
         for i in compute_ano:

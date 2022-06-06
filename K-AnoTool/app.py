@@ -104,7 +104,6 @@ def export_csv():
     resp = make_response(data[int(numsol)-1].to_csv(sep = ","))
     qids = '-'.join([str(item) for item in current_app.config['qid']])
     txt_file = "K-anon_Tool([" + qids + "]-k=" + current_app.config['k'].split(",")[int(numsol)-1] + ")"
-    print(txt_file)
     resp.headers["Content-Disposition"] = "attachment; filename=" + txt_file + ".csv"
     resp.headers["Content-Type"] = "text/csv"
     return resp

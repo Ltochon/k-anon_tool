@@ -7,6 +7,8 @@ Other dans categorical OK
 export JSON OK
 test bad JSON file OK
 download df OK
+clean algo code with class OK
+clean display result (remove ',') OK
 test user bad behaviour OK?
 
 test more qid > 2 OK

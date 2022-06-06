@@ -190,7 +190,6 @@ function createTree(txt){
         importtreeData.push([json[keys[key]].join(''),cmptnode,cmptnode-1,cmptnode-1])
       }
       localStorage.setItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",''),JSON.stringify(savestr));
-      console.log(JSON.stringify(savestr))
       var toconvert = [];
       for(elem in importtreeData){
         let dic = {
@@ -508,7 +507,6 @@ function add(){
   else{
     let div3 = document.getElementById("printlaw");
     div3.hidden = false;
-    console.log(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')))
     if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
       tabname = [];
       let w2 = 0;
@@ -526,7 +524,6 @@ function add(){
       while(div3.firstChild) {
         div3.removeChild(div3.lastChild);
       }
-      console.log(tabname)
       for(w in tabname){
         let p = document.createElement("p");
         p.innerHTML = '"' + tabname[w] + '"';
@@ -619,7 +616,6 @@ function addnode(){
         tabselect.push(elem.innerHTML);
       }
     });
-    console.log(tabselect)
     if(tabselect.length > 0){
       if(diccatfinal[namel] === undefined){
         let stringlaw = "";
@@ -768,7 +764,6 @@ function savejson(){
       for(elem in full){
         dictojson[(parseInt(elem)+1).toString()] = [JSON.parse(full[elem])];
       }
-      console.log(dictojson)
       blob = new Blob([JSON.stringify(dictojson).replaceAll("}],","}],\n")], {type: 'text'});
     }
     else if(localStorage.getItem("tabfinalstr_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
@@ -777,13 +772,11 @@ function savejson(){
       for(elem in full){
         dictojson[(parseInt(elem)+1).toString()] = JSON.parse(full[elem]);
       }
-      console.log(dictojson)
       blob = new Blob([JSON.stringify(dictojson).replaceAll("],","],\n")], {type: 'text'});
     }
     else{
       let full = localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",'')).replaceAll("],","];;\n").split(";;");
       blob = new Blob([full], {type: 'text'});
-      console.log(full)
     }
     
     if(window.navigator.msSaveOrOpenBlob) {
