@@ -6,7 +6,7 @@ ajouter niveau sur arrete OK
 Other dans categorical OK
 export JSON OK
 test bad JSON file OK
-
-test user bad behaviour
+download df OK
+test user bad behaviour OK?
 
 test more qid > 2 OK

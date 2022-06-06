@@ -737,15 +737,27 @@ function click(d) {
 function saveweights(){
   j = 0;
     tabweight = []
+    cmptempty = 0
     while(j < nblvl){
       let inptosave = document.getElementById("inp"+j.toString()).value;
+      if(inptosave == ""){
+        cmptempty++;
+      }
       tabweight.push(inptosave);
       j++;
     }
     if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "int"){
-      tabweight.push(document.getElementById("lastinp").value);
+      if( document.getElementById("lastinp").value != ""){
+        tabweight.push(document.getElementById("lastinp").value);
+      }
+      else{
+        cmptempty++;
+      }
     }
-    localStorage.setItem("weights_" + localStorage.getItem("qid").replace("hiera_",''),tabweight);
+    if(cmptempty < 1){
+      localStorage.setItem("weights_" + localStorage.getItem("qid").replace("hiera_",''),tabweight);
+    }
+    return cmptempty;
 }
 
 function savejson(){
@@ -789,6 +801,8 @@ function savejson(){
 
 
 var sub = (function(){
+  let emp = saveweights();
+  if(emp < 1){
     var savenodes = tree.nodes(root).reverse(),links = tree.links(savenodes);
     allnodes = savenodes.reverse()
     tabtosave = [];
@@ -801,7 +815,6 @@ var sub = (function(){
       }
     }
     localStorage.setItem("tree_" + localStorage.getItem("qid").replace("hiera_",''),JSON.stringify(tabtosave));
-    saveweights();
     document.getElementById("sendweights").value = localStorage.getItem("weights_" + localStorage.getItem("qid").replace("hiera_",''));
     if(localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",'')) != null){
       document.getElementById("sendlattice").value = localStorage.getItem("diccategories_" + localStorage.getItem("qid").replace("hiera_",''));
@@ -811,8 +824,17 @@ var sub = (function(){
     }
     else{
       document.getElementById("sendlattice").value = localStorage.getItem("dictint_" + localStorage.getItem("qid").replace("hiera_",''));
+    }  
+  }
+  else{
+    if(emp < 2){
+      alert(emp.toString() + " weight is empty.")
     }
-    
+    else{
+      alert(emp.toString() + " weights are empty.")
+    }
+    return false; 
+  }  
   });
 
 function namelaw(){
@@ -879,7 +901,7 @@ function printinfo(){
     </div>
   </div>
   <div style="text-align: center;">
-    <form method="POST" action="" onsubmit="sub()" enctype="multipart/form-data" >
+    <form method="POST" action="" onsubmit="return sub()" enctype="multipart/form-data" >
       <input type="hidden" value="hiddenqid" name="hiddenqid" id="hiddenqid" />
       <input type="hidden" id="sendlattice" name="sendlattice" type="text" />
       <input type="hidden" id="sendweights" name="sendweights" type="text" />
