@@ -1,4 +1,3 @@
-make shiny
 k-anon pas k-ano OK
 data sans s OK
 pas lattice mais VGH OK
@@ -11,5 +10,14 @@ clean algo code with class OK
 clean display result (remove ',') OK
 test user bad behaviour OK?
 test more qid > 2 OK
-
+make shiny OK?
 dockerized ~OK
+
+_______________________
+
+New to do
+
+information sans s
+log(n^k) = k log n
+log(a*b) = log(a) + log(b)
+faire vidéo

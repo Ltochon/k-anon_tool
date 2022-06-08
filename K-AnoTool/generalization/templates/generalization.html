@@ -125,7 +125,7 @@ function createTree(txt){
       document.getElementById("senddepth").value = nblvl;
     }
     catch (e){
-      alert('Your JSON file is not correct for an Integer hierarchy.\nPls check the "Informations about imports link".')
+      alert('Your JSON file is not correct for an Integer hierarchy.\nPlease check the "Informations about imports link".')
     }
   }
   else if(localStorage.getItem("type_" + localStorage.getItem("qid").replace("hiera_",'')) === "cat"){
@@ -173,7 +173,7 @@ function createTree(txt){
       document.getElementById("senddepth").value = nblvl-1;
     }
     catch (e){
-      alert('Your JSON file is not correct for a Categorical hierarchy.\nPls check the "Informations about imports link".')
+      alert('Your JSON file is not correct for a Categorical hierarchy.\nPlease check the "Informations about imports link".')
     }
   }
   else{
@@ -209,7 +209,7 @@ function createTree(txt){
       document.getElementById("senddepth").value = nblvl-1;
     }
     catch (e){
-      alert('Your JSON file is not correct for a String hierarchy.\nPls check the "Informations about imports link".')
+      alert('Your JSON file is not correct for a String hierarchy.\nPlease check the "Informations about imports link".')
     }
   }
 

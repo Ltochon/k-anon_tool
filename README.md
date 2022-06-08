@@ -114,7 +114,7 @@ max-level generalization = *O(k * n<sup>2</sup>)*
 anonimity level check = *O(n)*   
 supression check = *O(n)*   
 
-Final complexity level : *O(log<sub>2</sub>(n<sup>k</sup>) * (k * n<sup>2</sup> + n + n + n))* = *O(log<sub>2</sub>(n<sup>k</sup>) * (k * n<sup>2</sup> + 3n))* = *O(log<sub>2</sub>(n<sup>k</sup>) * n<sup>2</sup>)*
+Final complexity level : *O(log<sub>2</sub>(n<sup>k</sup>) * (k * n<sup>2</sup> + n + n + n))* = *O(log<sub>2</sub>(n<sup>k</sup>) * (k * n<sup>2</sup> + 3n))* = *O(k*log<sub>2</sub>(n) * n<sup>2</sup>)*
 
 
 ## Milestones
